@@ -1,0 +1,38 @@
+{
+    "name": "School Times",
+    "short_name": "School Times",
+    "description": "View your school timetables, homework, tests, and organize everything about your school day in one place with School Times",
+    "start_url": "index.html",
+    "id": "SchoolTimes",
+    "display": "standalone",
+    "background_color": "#151515",
+    "theme_color": "#151515",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "public/icons/icon-any-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "public/icons/icon-any-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "public/icons/icon-maskable-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "public/icons/icon-maskable-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+      }
+    ]
+  }
+  
