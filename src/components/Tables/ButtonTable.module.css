@@ -1,0 +1,12 @@
+div.container {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--palette-50);
+}
+div {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 10px;
+    border-radius: 30px;
+}

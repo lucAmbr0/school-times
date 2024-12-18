@@ -1,0 +1,31 @@
+/* Theme name: Cornflower */
+
+:root {
+    --palette-50: #F2F9FD;
+    --palette-100: #E4F1FA;
+    --palette-200: #C4E2F3;
+    --palette-300: #9DD1EC;
+    --palette-400: #54AFDC;
+    --palette-500: #2E96C9;
+    --palette-600: #1F78AA;
+    --palette-700: #1A608A;
+    --palette-800: #195173;
+    --palette-900: #1A4560;
+    --palette-950: #122C3F;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --palette-50: #122C3F;
+        --palette-100: #1A4560;
+        --palette-200: #195173;
+        --palette-300: #1A608A;
+        --palette-400: #1F78AA;
+        --palette-500: #2E96C9;
+        --palette-600: #54AFDC;
+        --palette-700: #9DD1EC;
+        --palette-800: #C4E2F3;
+        --palette-900: #E4F1FA;
+        --palette-950: #F2F9FD;
+    }
+}
