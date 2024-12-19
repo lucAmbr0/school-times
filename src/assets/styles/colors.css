@@ -14,7 +14,7 @@
     --palette-950: #122C3F;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     :root {
         --palette-50: #122C3F;
         --palette-100: #1A4560;
@@ -28,4 +28,4 @@
         --palette-900: #E4F1FA;
         --palette-950: #F2F9FD;
     }
-}
+} */

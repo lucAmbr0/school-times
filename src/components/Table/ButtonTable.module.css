@@ -1,9 +1,9 @@
-div.container {
+.container {
     display: flex;
     flex-direction: row;
     background-color: var(--palette-50);
 }
-div {
+.container div {
     display: flex;
     flex-direction: column;
     width: fit-content;
