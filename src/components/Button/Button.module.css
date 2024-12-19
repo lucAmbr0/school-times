@@ -9,12 +9,14 @@
     justify-content: center;
     transition: all 0.2s ease;
     margin: 10px;
+    height: 42px;
     transition: 0.2s ease;
 }
 
 .iconOnly {
     padding: 5px;
-    border-radius: 50%;
+    border-radius: 50px;
+    width: 42px;
 
     .icon {
         margin: 0;
@@ -52,7 +54,7 @@
 .filled {
     background-color: var(--palette-200);
     color: var(--palette-950);
-    border: 2px solid var(--palette-500);
+    border: 1px solid var(--palette-500);
     font-weight: 500;
 
     .icon {
@@ -67,7 +69,7 @@
 .outlined {
     background-color: transparent;
     color: var(--palette-800);
-    border: 2px solid var(--palette-800);
+    border: 1px solid var(--palette-800);
     font-weight: 500;
 
     .icon {
