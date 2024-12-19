@@ -8,6 +8,9 @@ function App() {
   return (
     <>
       <SpeedInsights />
+      <div>
+        <ButtonTable />
+      </div>
       <Navbar />
     </>
   );

@@ -1,12 +1,14 @@
 .container {
     display: flex;
+    width: fit-content;
+    margin: 10px auto;
+    border-radius: 30px;
     flex-direction: row;
-    background-color: var(--palette-50);
+    background-color: var(--palette-100);
 }
 .container div {
     display: flex;
     flex-direction: column;
     width: fit-content;
     margin: 10px;
-    border-radius: 30px;
 }
