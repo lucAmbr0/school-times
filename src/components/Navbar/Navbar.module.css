@@ -1,0 +1,9 @@
+.navbarContainer {
+    width: 412px;
+    height: 106px;
+    background-color: var(--palette-100);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    flex-direction: row;
+    justify-content: space-around;
+}
