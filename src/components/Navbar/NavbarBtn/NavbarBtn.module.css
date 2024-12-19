@@ -1,0 +1,54 @@
+button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.label {
+    font-family: "Inter";
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 5px;
+    margin-top: 12px;
+    color: var(--palette-950);
+}
+
+.labelActive {
+    font-weight: 700;
+}
+
+.pill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: solid 1px transparent;
+    padding: 4px 9px;
+    border-radius: 20px;
+    transition: 0.2s ease;
+}
+
+.pillActive {
+    background-color: var(--palette-300);
+    border: solid 1px var(--palette-500);
+    padding: 4px 19px;
+    .icon {
+        font-variation-settings:
+        'FILL' 1;
+    }
+}
+
+.icon {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+    color: var(--palette-950);
+    margin: auto;
+}
