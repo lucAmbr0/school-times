@@ -1,13 +1,11 @@
 import React from "react";
 import styles from "./NavbarBtn.module.css";
 
+function NavbarBtn({ text = "", iconName = "", active = false, tab = 0 }) {
+  const iconClasses = `material-symbols-outlined ${styles.icon}`;
+  const pillClasses = `${styles.pill} ${active && styles.pillActive}`;
+  const textClasses = `${styles.label} ${active && styles.labelActive}`;
 
-function NavbarBtn({text = "", iconName = "", active = false}) {
-
-    const iconClasses = `material-symbols-outlined ${styles.icon}`;
-    const pillClasses = `${styles.pill} ${active && styles.pillActive}`
-    const textClasses = `${styles.label} ${active && styles.labelActive}`
-    
   return (
     <>
       <button>

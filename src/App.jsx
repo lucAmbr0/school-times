@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <SpeedInsights />
-      <NavbarBtn text="Home" iconName="home" active={true} />
+      <NavbarBtn text="Home" iconName="home" active={false} />
     </>
   );
 }
