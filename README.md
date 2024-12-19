@@ -146,4 +146,4 @@ Not ready yet :D
 Earn a spot here by contributing!
 
 ##  :lock: License
-<!-- This project is licensed with the GNU General Public License v3.0, please refer to the file to know more. -->
+This project is licensed with the GNU General Public License v3.0, please refer to the file to know more.
