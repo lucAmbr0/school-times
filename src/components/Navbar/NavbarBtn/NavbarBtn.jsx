@@ -6,16 +6,16 @@ function NavbarBtn({ text = "", iconName = "", active = false, tab = 0 }) {
   const pillClasses = `${styles.pill} ${active && styles.pillActive}`;
   const textClasses = `${styles.label} ${active && styles.labelActive}`;
 
-  return (
-    <>
-      <button>
-        <div className={pillClasses}>
-          {iconName && <span className={iconClasses}>{iconName}</span>}
-        </div>
-        <p className={textClasses}> {text && text} </p>
-      </button>
-    </>
+  const element = (
+    <button>
+      <div className={pillClasses}>
+        {iconName && <span className={iconClasses}>{iconName}</span>}
+      </div>
+      <p className={textClasses}> {text && text} </p>
+    </button>
   );
+
+  return element;
 }
 
 export default NavbarBtn;
