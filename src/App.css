@@ -1,4 +1,12 @@
 body {
     background-color: var(--palette-50);
     margin: 0;
+    color: var(--palette-900);
+}
+
+.appContainer {
+    display: flex;
+    background-color: red;
+    height: 100%;
+    width: 100%;
 }
