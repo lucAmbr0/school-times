@@ -8,29 +8,28 @@ import Calendar from "./pages/Calendar/Calendar";
 import Settings from "./pages/Settings/Settings";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState("Home");
   const renderPage = () => {
     console.log(currentPage);
     switch (currentPage) {
-      case "home":
+      case "Home":
         return <Home />;
-      case "schedule":
+      case "Schedule":
         return <Schedule />;
-      case "calendar":
+      case "Calendar":
         return <Calendar />;
-      case "settings":
+      case "Settings":
         return <Settings />;
       default:
         return <Home />;
     }
   };
-
   return (
     <>
       <SpeedInsights />
       <div>
         {renderPage()}
-        <Navbar onNavigate={setCurrentPage} />
+        <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
       </div>
     </>
   );
