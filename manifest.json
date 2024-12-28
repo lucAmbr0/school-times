@@ -33,6 +33,44 @@
         "type": "image/png",
         "purpose": "maskable"
       }
-    ]
+    ],
+    "screenshots": [
+    {
+      "src": "https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/mobile-screenshot1.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/mobile-screenshot1.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/mobile-screenshot1.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/mobile-screenshot1.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/mobile-screenshot1.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/mobile-screenshot1.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    }
+  ]
   }
   
