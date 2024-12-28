@@ -7,28 +7,36 @@ self.addEventListener('install', (event) => {
     '../src/assets/fonts/Inter-Italic.ttf',
     '../src/assets/fonts/material-symbols-outlined.woff2'
   ];
-
-  event.waitUntil(
-    caches.open('vite-cache-v1').then((cache) => cache.addAll(urlsToCache))
-  );
-});
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      // If there's a cached response, return it
-      if (cachedResponse) return cachedResponse;
-
-      // Otherwise, fetch and cache dynamically
-      return fetch(event.request).then((response) => {
-        // Only cache requests for assets that can be cached (e.g., images, js, css)
-        if (event.request.url.includes('.jpg') || event.request.url.includes('.js') || event.request.url.includes('.css')) {
-          caches.open('vite-cache-v1').then((cache) => {
-            cache.put(event.request, response.clone());
-          });
-        }
-        return response;
-      });
-    })
-  );
-});
+  self.addEventListener('install', (event) => {
+    event.waitUntil(
+      caches.open(CACHE_NAME)
+        .then((cache) => {
+          console.log('Caching files...');
+          return cache.addAll(filesToCache);
+        })
+    );
+  });
+  
+  self.addEventListener('activate', (event) => {
+    const cacheWhitelist = [CACHE_NAME];
+    event.waitUntil(
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((cacheName) => {
+            if (!cacheWhitelist.includes(cacheName)) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+    );
+  });
+  
+  self.addEventListener('fetch', (event) => {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        return cachedResponse || fetch(event.request);
+      })
+    );
+  });
+})
