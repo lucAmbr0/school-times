@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <SpeedInsights />
-      <div>
+      <div className="appContainer">
         {renderPage()}
         <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
       </div>

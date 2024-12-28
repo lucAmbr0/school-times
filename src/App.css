@@ -10,10 +10,3 @@ body {
 ::selection {
     background-color: var(--palette-300);
 }
-
-.appContainer {
-    display: flex;
-    background-color: red;
-    height: 100%;
-    width: 100%;
-}
