@@ -2,12 +2,9 @@ const CACHE_NAME = 'vite-pwa-cache-v1';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
-  '/manifest.webmanifest',
-  '/favicon.svg',
-  '/public',
-  '/src/assets/fonts/Inter.ttf',
-  '/src/assets/fonts/Inter-Italic.ttf',
-  '/src/assets/fonts/material-symbols-outlined.woff2'
+  '../src/assets/fonts/Inter.ttf',
+  '../src/assets/fonts/Inter-Italic.ttf',
+  '../src/assets/fonts/material-symbols-outlined.woff2'
 ];
 
 self.addEventListener('install', (event) => {
