@@ -1,4 +1,5 @@
 import "./App.css";
+import "./index.js"
 import React, { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -30,6 +31,7 @@ function App() {
         {renderPage()}
         <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
       </div>
+      <script src="/index.js" />
     </>
   );
 }
