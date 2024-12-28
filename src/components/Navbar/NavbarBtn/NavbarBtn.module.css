@@ -20,7 +20,7 @@ button {
 }
 
 .labelActive {
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .pill {
@@ -29,7 +29,7 @@ button {
     align-items: center;
     background-color: transparent;
     border: solid 1px transparent;
-    padding: 4px 9px;
+    padding: 4px;
     border-radius: 20px;
     transition: 0.2s ease;
 }

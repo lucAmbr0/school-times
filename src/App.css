@@ -2,6 +2,13 @@ body {
     background-color: var(--palette-50);
     margin: 0;
     color: var(--palette-900);
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    user-select: text;
+}
+
+::selection {
+    background-color: var(--palette-300);
 }
 
 .appContainer {

@@ -10,7 +10,6 @@ import Settings from "./pages/Settings/Settings";
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
   const renderPage = () => {
-    console.log(currentPage);
     switch (currentPage) {
       case "Home":
         return <Home />;

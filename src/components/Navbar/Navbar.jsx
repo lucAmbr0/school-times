@@ -2,9 +2,7 @@ import React from "react";
 import NavbarBtn from "./NavbarBtn/NavbarBtn";
 import styles from "./Navbar.module.css";
 
-function Navbar({onNavigate}, {currentPage}) {
-  
-  console.log(currentPage);
+function Navbar({onNavigate, currentPage}) {
   
   const element = 
   (<nav className={styles.navbarContainer}>
