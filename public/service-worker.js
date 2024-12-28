@@ -5,7 +5,9 @@ const URLS_TO_CACHE = [
   '/manifest.webmanifest',
   '/favicon.svg',
   '/public',
-  '/src/assets/fonts/Inter.ttf'
+  '/src/assets/fonts/Inter.ttf',
+  '/src/assets/fonts/Inter-Italic.ttf',
+  '/src/assets/fonts/material-symbols-outlined.woff2'
 ];
 
 self.addEventListener('install', (event) => {
