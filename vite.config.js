@@ -10,34 +10,35 @@ export default defineConfig({
       manifest: {
         name: 'School Times',
         short_name: 'School Times',
+        description: 'An app to manage school schedules and tasks',
         start_url: '/',
         display: 'standalone',
         background_color: "#151515",
-        theme_color: "#151515",
+        theme_color: "#ffffff",
         icons: [
           {
-            "src": "https://github.com/lucAmbr0/school-times/blob/main/public/icons/icon-any-192x192.png?raw=true",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any"
+            src: 'icons/icon-any-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any'
           },
           {
-            "src": "https://github.com/lucAmbr0/school-times/blob/main/public/icons/icon-any-512x512.png?raw=true",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "any"
+            src: 'icons/icon-maskable-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable'
           },
           {
-            "src": "https://github.com/lucAmbr0/school-times/blob/main/public/icons/icon-maskable-192x192.png?raw=true",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable"
+            src: 'icons/icon-any-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any'
           },
           {
-            "src": "https://github.com/lucAmbr0/school-times/blob/main/public/icons/icon-maskable-512x512.png?raw=true",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
+            src: 'icons/icon-maskable-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
           }
         ],
         screenshots: [

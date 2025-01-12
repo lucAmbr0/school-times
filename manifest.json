@@ -1,40 +1,40 @@
 {
-    "name": "School Times",
-    "short_name": "School Times",
-    "description": "View your school timetables, homework, tests, and organize everything about your school day in one place with School Times",
-    "start_url": "index.html",
-    "id": "SchoolTimes",
-    "display": "standalone",
-    "background_color": "#151515",
-    "theme_color": "#151515",
-    "orientation": "portrait",
-    "icons": [
-      {
-        "src": "https://github.com/lucAmbr0/school-times/blob/main/public/icons/icon-any-192x192.png?raw=true",
-        "sizes": "192x192",
-        "type": "image/png",
-        "purpose": "any"
-      },
-      {
-        "src": "https://github.com/lucAmbr0/school-times/blob/main/public/icons/icon-any-512x512.png?raw=true",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any"
-      },
-      {
-        "src": "https://github.com/lucAmbr0/school-times/blob/main/public/icons/icon-maskable-192x192.png?raw=true",
-        "sizes": "192x192",
-        "type": "image/png",
-        "purpose": "maskable"
-      },
-      {
-        "src": "https://github.com/lucAmbr0/school-times/blob/main/public/icons/icon-maskable-512x512.png?raw=true",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "maskable"
-      }
-    ],
-    "screenshots": [
+  "name": "School Times",
+  "short_name": "SchoolTimes",
+  "description": "An app to manage school schedules and tasks",
+  "start_url": "/",
+  "id": "SchoolTimes",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icons/icon-any-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-any-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
     {
       "src": "https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/mobile-screenshot1.png?raw=true",
       "sizes": "1082x2402",
@@ -72,5 +72,4 @@
       "platform": "mobile"
     }
   ]
-  }
-  
+}
