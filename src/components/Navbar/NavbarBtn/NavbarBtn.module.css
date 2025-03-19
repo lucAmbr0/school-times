@@ -46,9 +46,9 @@ button {
 
 .icon {
     display: flex;
-    width: 32px;
-    height: 32px;
-    font-size: 32px;
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
     color: var(--palette-950);
     margin: auto;
 }
