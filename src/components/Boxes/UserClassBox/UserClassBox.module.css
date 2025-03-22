@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-300);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    border-radius: 22px;
+}
+
+.room {
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--palette-950);
+    margin: 20px 0 10px 0;
+}
+
+.subjectAndTeacher {
+    margin: 0;
+    font-size: 28px;
+    color: var(--palette-900);
+    font-weight: 500;
+}
