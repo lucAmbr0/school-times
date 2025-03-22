@@ -1,3 +1,5 @@
+import ButtonTable from '../../components/Table/ButtonTable';
+
 function Home() {
 
   const element = (
@@ -8,6 +10,7 @@ function Home() {
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, rem maxime excepturi veniam quis fugiat officia ab quasi natus quaerat aliquid repellat molestias. Consequatur doloremque earum mollitia doloribus quos beatae?</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium magni porro adipisci odio ipsum! Perferendis accusantium non ea, nisi nam ullam similique quo vero hic minus soluta adipisci nobis provident.</p>
     </div>
+    <ButtonTable />
   </>
   )
   

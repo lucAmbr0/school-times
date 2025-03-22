@@ -29,7 +29,7 @@ button {
     align-items: center;
     background-color: transparent;
     border: solid 1px transparent;
-    padding: 4px;
+    padding: 2px;
     border-radius: 20px;
     transition: 0.2s ease;
 }
@@ -37,7 +37,7 @@ button {
 .pillActive {
     background-color: var(--palette-300);
     border: solid 1px var(--palette-500);
-    padding: 4px 19px;
+    padding: 2px 19px;
     .icon {
         font-variation-settings:
         'FILL' 1;
@@ -45,10 +45,9 @@ button {
 }
 
 .icon {
-    display: flex;
-    width: 28px;
-    height: 28px;
-    font-size: 28px;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    padding: 2px 0;
     color: var(--palette-950);
-    margin: auto;
 }
