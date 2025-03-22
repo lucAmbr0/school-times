@@ -6,7 +6,7 @@
     margin: 0 auto;
     background-color: var(--palette-100);
     border: solid 1px var(--palette-300);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
     width: 90%;
     border-radius: 22px;
 }

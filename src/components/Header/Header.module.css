@@ -36,4 +36,9 @@
 .buttonsContainer Button {
     margin: 5px;
     background-color: var(--palette-300);
+    border: none;
+}
+
+.buttonsContainer Button:hover {
+    background-color: var(--palette-300);
 }

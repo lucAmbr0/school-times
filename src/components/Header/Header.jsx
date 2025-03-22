@@ -9,8 +9,8 @@ function Header() {
       <div className={styles.headerContainer}>
         <h1 className={styles.appName}>School Times</h1>
         <div className={styles.buttonsContainer}>
-          <Button iconName="table_edit" variant="clear" />
-          <Button iconName="more_vert" variant="clear" />
+          <Button iconName="table_edit" variant="outlined" />
+          <Button iconName="more_vert" variant="outlined" />
         </div>
       </div>
       <div className={styles.placeholder}></div>
