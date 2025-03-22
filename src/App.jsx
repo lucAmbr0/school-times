@@ -1,7 +1,8 @@
 import "./App.css";
 import React, { useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react"
+import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Schedule from "./pages/Schedule/Schedule";
 import Calendar from "./pages/Calendar/Calendar";
@@ -27,6 +28,7 @@ function App() {
   return (
     <>
       <SpeedInsights />
+      <Analytics />
         <Header />
       <div className="appContainer">
         {renderPage()}
