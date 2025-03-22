@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import Schedule from "./pages/Schedule/Schedule";
 import Calendar from "./pages/Calendar/Calendar";
 import Settings from "./pages/Settings/Settings";
+import Header from "./components/Header/Header";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -26,6 +27,7 @@ function App() {
   return (
     <>
       <SpeedInsights />
+        <Header />
       <div className="appContainer">
         {renderPage()}
         <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />

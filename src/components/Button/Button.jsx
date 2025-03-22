@@ -22,7 +22,7 @@ function Button({ text = "", variant = "filled", iconName = "", onClick = errNoC
 
 Button.propTypes = {
   text: PropTypes.string,
-  type: PropTypes.string,
+  variant: PropTypes.oneOf(["filled", "outlined", "clear"]),
   iconName: PropTypes.string,
   onClick: PropTypes.func,
 };
