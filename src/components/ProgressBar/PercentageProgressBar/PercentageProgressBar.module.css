@@ -1,0 +1,13 @@
+.bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 22px;
+    background-color: var(--palette-200);
+}
+
+.barActive {
+    background-color: var(--palette-300);
+    height: 22px;
+}

@@ -1,12 +1,36 @@
 .box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: fit-content;
-    height: fit-content;
+    width: 45%;
+    margin: 5%;
     aspect-ratio: 1 / 1;
-    border-radius: 20px;
+    border-radius: 22px;
     background-color: var(--palette-100);
     border: solid 1px var(--palette-300);
+    overflow: hidden;
+}
+
+h3,h4,h5 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.className {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.room {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.subjectAndTeacher {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
 }

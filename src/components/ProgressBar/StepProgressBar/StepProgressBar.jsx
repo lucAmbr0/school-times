@@ -1,7 +1,7 @@
-import styles from "./ProgressBar.module.css";
+import styles from "./StepProgressBar.module.css";
 import PropTypes from 'prop-types';
 
-function ProgressBar({ totalBars, activeBars }) {
+function StepProgressBar({ totalBars, activeBars }) {
     if (totalBars === undefined) {
         console.warn('Warning: totalBars prop was not passed to ProgressBar.');
         totalBars = 5;
@@ -30,7 +30,7 @@ function ProgressBar({ totalBars, activeBars }) {
     return element;
 }
 
-ProgressBar.propTypes = {
+StepProgressBar.propTypes = {
     totalBars: function(props, propName, componentName) {
         if (props[propName] < 1 || props[propName] > 10) {
             return new Error(
@@ -47,4 +47,4 @@ ProgressBar.propTypes = {
     }
 };
 
-export default ProgressBar;
+export default StepProgressBar;
