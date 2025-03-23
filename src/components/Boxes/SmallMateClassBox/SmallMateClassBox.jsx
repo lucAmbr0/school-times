@@ -1,5 +1,6 @@
 import PercentageProgressBar from "../../ProgressBar/PercentageProgressBar/PercentageProgressBar";
 import VerticalDots from "../../VerticalDots/VerticalDots";
+import boxStyles from "../Box.module.css";
 import styles from "./SmallMateClassBox.module.css";
 import PropTypes from "prop-types";
 
@@ -13,9 +14,9 @@ function SmallMateClassBox({ className = "N/A", room = "N/A", subject = "N/A", t
   };
 
   return (
-    <div className={styles.box}>
+    <div className={boxStyles.box}>
       <VerticalDots dots={5} activeDotIdx={3} />
-      <h3 className={styles.className}>Class {className}</h3>
+      <h3 className={boxStyles.boxTitle}>Class {className}</h3>
       <h4 className={styles.room}>{room}</h4>
       <h5 className={styles.subjectAndTeacher}>
         {subject}
