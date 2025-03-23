@@ -5,8 +5,8 @@
   "start_url": "/",
   "id": "SchoolTimes",
   "display": "standalone",
-  "background_color": "#1A4560",
-  "theme_color": "#C4E2F3",
+  "background_color": "#0c1e2b",
+  "theme_color": "#0c1e2b",
   "orientation": "portrait",
   "icons": [
     {
