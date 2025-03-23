@@ -6,7 +6,6 @@ body {
     -webkit-tap-highlight-color: transparent;
     user-select: text;
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 ::selection {
@@ -22,10 +21,4 @@ body {
     padding: 10px 0;
     overflow-y: scroll;
     z-index: 3;
-}
-
-.placeholder {
-    height: 85px;
-    margin-top: 85px;
-    display: block;
 }

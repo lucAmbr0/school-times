@@ -1,6 +1,7 @@
 import UpcomingEventsBox from "../../components/Boxes/UpcomingEventsBox/UpcomingEventsBox";
 import UserClassBox from "../../components/Boxes/UserClassBox/UserClassBox";
 import HorizontalLine from "../../components/Separator/HorizontalLine";
+import SmallChip from "../../components/Boxes/SmallChip/SmallChip";
 import styles from "./Home.module.css";
 import SmallMateClassBox from "../../components/Boxes/SmallMateClassBox/SmallMateClassBox";
 
@@ -21,6 +22,10 @@ function Home({ userName = "Guest", userClassName = "0NA" }) {
       <div className={styles.smallBoxesContainer}>
         <SmallMateClassBox />
         <UpcomingEventsBox />
+        <SmallChip text={"Card balance"} iconName={"account_balance_wallet"} type={"euro"} />
+        <SmallChip text={"Homework"} iconName={"lists"} type={"progress"} />
+        <SmallChip text={"School site"} iconName={"arrow_outward"} type={"link"} />
+        <SmallChip text={"Classroom"} iconName={"arrow_outward"} type={"link"} />
       </div>
     </>
   );

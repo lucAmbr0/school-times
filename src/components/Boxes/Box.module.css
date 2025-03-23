@@ -4,12 +4,16 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 50%;
+    width: 100%;
     aspect-ratio: 1 / 1;
     border-radius: 22px;
     background-color: var(--palette-100);
     border: solid 1px var(--palette-300);
     overflow: hidden;
+}
+
+.thinBox {
+    aspect-ratio: 2 / 1;
 }
 
 .boxTitle {
