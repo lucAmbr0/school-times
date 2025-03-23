@@ -7,14 +7,13 @@
     width: 100%;
     height: 57px;
     padding: 5px 0;
-    padding-top: 20px;
     position: absolute;
     z-index: 1;
     margin: 0;
 }
 
 .placeholder {
-    height: 72px;
+    height: 52px;
     position: relative;
     background-color: var(--palette-50);
     z-index: 0;
