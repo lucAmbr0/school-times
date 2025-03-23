@@ -1,0 +1,12 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-300);
+}
