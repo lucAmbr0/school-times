@@ -1,7 +1,7 @@
 {
   "name": "School Times",
   "short_name": "SchoolTimes",
-  "description": "An app to manage school schedules and tasks",
+  "description": "Manage school schedules and tasks",
   "start_url": "/",
   "id": "SchoolTimes",
   "display": "standalone",

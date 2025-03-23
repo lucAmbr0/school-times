@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react"
+import useThemeColor from "./scripts/useThemeColor";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Schedule from "./pages/Schedule/Schedule";
@@ -11,6 +12,7 @@ import Header from "./components/Header/Header";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
+  useThemeColor();
   const renderPage = () => {
     switch (currentPage) {
       case "Home":
