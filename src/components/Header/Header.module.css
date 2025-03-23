@@ -13,7 +13,7 @@
 }
 
 .placeholder {
-    height: 52px;
+    height: 57px;
     position: relative;
     background-color: var(--palette-50);
     z-index: 0;
