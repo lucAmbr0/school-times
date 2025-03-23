@@ -4,11 +4,16 @@ const useThemeColor = () => {
   useEffect(() => {
     const updateThemeColor = () => {
       const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const themeColor = isDarkMode ? "#195173" : "#C4E2F3"; // Change these to your preferred colors
+      const themeColor = isDarkMode ? "#195173" : "#C4E2F3"
 
-      document
-        .querySelector('meta[name="theme-color"]')
-        ?.setAttribute("content", themeColor);
+      // Update the <meta name="theme-color">
+      let themeMetaTag = document.querySelector('meta[name="theme-color"]');
+      if (!themeMetaTag) {
+        themeMetaTag = document.createElement("meta");
+        themeMetaTag.setAttribute("name", "theme-color");
+        document.head.appendChild(themeMetaTag);
+      }
+      themeMetaTag.setAttribute("content", themeColor);
     };
 
     // Set initial theme color
