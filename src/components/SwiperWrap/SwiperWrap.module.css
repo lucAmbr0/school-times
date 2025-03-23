@@ -1,0 +1,22 @@
+.swiper {
+    margin: 10px 0;
+    width: 100%;
+    transform: translate3d(0, 0, 0) !important;
+}
+
+.swiperSlide {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 300;
+    padding: 5px 0px;
+    border-radius: 50px;
+    height: 30px;
+    border: solid 0px var(--palette-300);
+    transition: 0.2s ease all;
+}
+
+.selectedSlide {
+    font-weight: 600;
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-300);
+}
