@@ -65,7 +65,13 @@ function SwiperWrap({ type, start, length }) {
         scrollbar={{ draggable: true }}
         className={styles.swiper}
         touchRatio={1.5}
-        freeMode={true}
+        longSwipes={true}
+        grabCursor={true}
+        cssMode={true}
+        freeMode={{
+          enabled: true,
+          momentumBounce: true,
+        }}
         >
         {slides}
       </Swiper>
