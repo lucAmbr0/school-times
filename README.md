@@ -58,8 +58,6 @@ school-times
 │   package.json
 │   public
 │   README.md
-│   src
-│   vite.config.js
 │
 ├───public
 │   ├───icons
@@ -69,29 +67,111 @@ school-times
 │   │       icon-maskable-512x512.png
 │   │
 │   └───screenshots
-└───src
-    │   App.css
-    │   App.jsx
-    │   index.css
-    │   main.jsx
-    │
-    ├───assets
-    │   ├───fonts
-    │   │       Inter-Italic.ttf
-    │   │       Inter.ttf
-    │   │
-    │   └───styles
-    │           colors.css
-    │           fonts.css
-    │
-    └───components
-        ├───Button
-        │       Button.jsx
-        │       Button.module.css
-        │
-        └───Tables
-                ButtonTable.jsx
-                ButtonTable.module.css
+├───assets
+│   ├───fonts
+│   │       Inter-Italic.ttf
+│   │       Inter.ttf
+│   │       material-symbols-outlined.woff2
+│   │
+│   └───styles
+│           colors.css
+│           fonts.css
+│
+├───src
+│   │   vite.config.js
+│   │   App.css
+│   │   App.jsx
+│   │   index.css
+│   │   index.js
+│   │   main.jsx
+│   │
+│   ├───components
+│   │   ├───Boxes
+│   │   │   │   Box.module.css
+│   │   │   │
+│   │   │   ├───SmallChip
+│   │   │   │       SmallChip.jsx
+│   │   │   │       SmallChip.module.css
+│   │   │   │
+│   │   │   ├───SmallMateClassBox
+│   │   │   │       SmallMateClassBox.jsx
+│   │   │   │       SmallMateClassBox.module.css
+│   │   │   │
+│   │   │   ├───UpcomingEventsBox
+│   │   │   │   │   UpcomingEventsBox.jsx
+│   │   │   │   │   UpcomingEventsBox.module.css
+│   │   │   │   │
+│   │   │   │   └───SmallEventChip
+│   │   │   │           SmallEventChip.jsx
+│   │   │   │           SmallEventChip.module.css
+│   │   │   │
+│   │   │   └───UserClassBox
+│   │   │           UserClassBox.jsx
+│   │   │           UserClassBox.module.css
+│   │   │
+│   │   ├───Button
+│   │   │       Button.jsx
+│   │   │       Button.module.css
+│   │   │
+│   │   ├───Header
+│   │   │       Header.jsx
+│   │   │       Header.module.css
+│   │   │
+│   │   ├───Navbar
+│   │   │   │   Navbar.jsx
+│   │   │   │   Navbar.module.css
+│   │   │   │
+│   │   │   └───NavbarBtn
+│   │   │           NavbarBtn.jsx
+│   │   │           NavbarBtn.module.css
+│   │   │
+│   │   ├───ProgressBar
+│   │   │   ├───PercentageProgressBar
+│   │   │   │       PercentageProgressBar.jsx
+│   │   │   │       PercentageProgressBar.module.css
+│   │   │   │
+│   │   │   └───StepProgressBar
+│   │   │           StepProgressBar.jsx
+│   │   │           StepProgressBar.module.css
+│   │   │
+│   │   ├───Separator
+│   │   │       HorizontalLine.jsx
+│   │   │       Separator.module.css
+│   │   │
+│   │   ├───SwiperWrap
+│   │   │       SwiperWrap.jsx
+│   │   │       SwiperWrap.module.css
+│   │   │
+│   │   ├───Table
+│   │   │       ButtonTable.jsx
+│   │   │       ButtonTable.module.css
+│   │   │
+│   │   └───VerticalDots
+│   │           VerticalDots.jsx
+│   │           VerticalDots.module.css
+│   │
+│   ├───context
+│   ├───pages
+│   │   ├───Calendar
+│   │   │       Calendar.jsx
+│   │   │       Calendar.module.css
+│   │   │
+│   │   ├───Home
+│   │   │       Home.jsx
+│   │   │       Home.module.css
+│   │   │
+│   │   ├───Schedule
+│   │   │       Schedule.jsx
+│   │   │       Schedule.module.css
+│   │   │
+│   │   └───Settings
+│   │           Settings.jsx
+│   │           Settings.module.css
+│   │
+│   └───scripts
+│           Data.js
+│           useData.jsx
+│           useThemeColor.js
 ```
 
 ## :cherry_blossom: Community
