@@ -64,6 +64,7 @@ function SwiperWrap({ type, start, length }) {
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         className={styles.swiper}
+        touchRatio={2}
         >
         {slides}
       </Swiper>
