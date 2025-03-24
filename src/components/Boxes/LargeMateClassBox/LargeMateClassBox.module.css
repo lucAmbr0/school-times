@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-300);
+    /* box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1); */
+    width: 90%;
+    padding: 5px 0;
+    border-radius: 22px;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+.mainProperty {
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--palette-950);
+    margin: 5px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+}
+
+.property {
+    font-size: 20px;
+    font-weight:300;
+    margin: 5px 10px;
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.property:nth-child(odd) {
+    text-align: left;
+}
+
+.property:nth-child(even) {
+    text-align: right;
+}

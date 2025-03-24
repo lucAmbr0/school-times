@@ -1,9 +1,6 @@
 .swipers {
-    margin: 0 0;
-    position: absolute;
-    top: 100px;
+    margin: 5px 0;
     width: 100%;
-    left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,4 +10,18 @@
 
 .swiper dir {
     transform: translate3d(0, 0, 0) !important;
+}
+
+.setTimeAndDayLabel {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.matesLabel {
+    text-align: center;
+    font-weight: 300;
+    font-size: 24px;
+    margin: 0;
+    line-height: 0.5;
+    margin-bottom: 20px;
 }

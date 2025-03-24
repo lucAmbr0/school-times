@@ -9,11 +9,6 @@ import { useData } from "../../scripts/useData";
 function Home() {
   const [data, setData] = useData();
 
-  // const updateUserName = () => {
-  //   data.user.name = "Luca";
-  //   setData(data);
-  // };
-
   const element = (
     <>
       <h1 className={styles.title}>
