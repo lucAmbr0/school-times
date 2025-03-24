@@ -70,7 +70,7 @@ function SwiperWrap({ type, start, length }) {
         cssMode={true}
         freeMode={{
           enabled: true,
-          momentumBounce: true,
+          momentumBounce: false,
         }}
         >
         {slides}
