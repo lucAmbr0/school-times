@@ -4,12 +4,20 @@ import HorizontalLine from "../../components/Separator/HorizontalLine";
 import SmallChip from "../../components/Boxes/SmallChip/SmallChip";
 import styles from "./Home.module.css";
 import SmallMateClassBox from "../../components/Boxes/SmallMateClassBox/SmallMateClassBox";
+import { useData } from "../../scripts/useData";
 
-function Home({ userName = "Guest", userClassName = "0NA" }) {
+function Home() {
+  const [data, setData] = useData();
+
+  // const updateUserName = () => {
+  //   data.user.name = "Luca";
+  //   setData(data);
+  // };
+
   const element = (
     <>
       <h1 className={styles.title}>
-        Welcome, {userName} - {userClassName}
+        Welcome, {data.user.name ? data.user.name : "Guest"} - {data.user.className}
       </h1>
       <UserClassBox />
       <HorizontalLine

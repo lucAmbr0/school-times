@@ -9,11 +9,16 @@ import Schedule from "./pages/Schedule/Schedule";
 import Calendar from "./pages/Calendar/Calendar";
 import Settings from "./pages/Settings/Settings";
 import Header from "./components/Header/Header";
+import { useData } from "./scripts/useData";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("Home");
+  const [data, setData] = useData();
+  const [currentPage, setCurrentPage] = useState(data.settings.tab);
   useThemeColor();
+
   const renderPage = () => {
+    data.settings.tab = currentPage
+    setData(data);
     switch (currentPage) {
       case "Home":
         return <Home />;

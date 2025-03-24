@@ -4,6 +4,21 @@ class Data {
         this.mates = [];
         this.settings = new Settings();
     }
+
+    saveToLocalStorage() {
+        localStorage.setItem('data', JSON.stringify(this));
+    }
+
+    static loadFromLocalStorage() {
+        const data = localStorage.getItem('data');
+        if (data) {
+            const parsedData = JSON.parse(data);
+            const dataObj = new Data();
+            Object.assign(dataObj, parsedData);
+            return dataObj;
+        }
+        return new Data();
+    }
 }
 
 class Person {
@@ -40,5 +55,8 @@ class Settings {
     constructor() {
         this.darkMode = true;
         this.language = "eng";
+        this.tab = "Home";
     }
 }
+
+export default Data;
