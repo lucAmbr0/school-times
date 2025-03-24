@@ -57,7 +57,7 @@ function SwiperWrap({ type, start, length }) {
         a11y={true}
         slidesPerView={5}
         centeredSlides={true}
-        onSlideChange={onSlideChange}
+        onSlideChangeTransitionEnd={onSlideChange}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={0}
         navigation
@@ -72,6 +72,7 @@ function SwiperWrap({ type, start, length }) {
           enabled: true,
           momentumBounce: false,
         }}
+freeModeSticky={true}
         >
         {slides}
       </Swiper>
