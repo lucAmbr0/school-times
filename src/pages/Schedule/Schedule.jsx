@@ -3,6 +3,7 @@ import HorizontalLine from "../../components/Separator/HorizontalLine";
 import UserClassBox from "../../components/Boxes/UserClassBox/UserClassBox";
 import LargeMateClassBox from "../../components/Boxes/LargeMateClassBox/LargeMateClassBox";
 import styles from "./Schedule.module.css";
+import { useEffect } from "react";
 
 function Schedule() {
   const element = (

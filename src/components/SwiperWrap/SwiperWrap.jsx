@@ -31,7 +31,7 @@ function SwiperWrap({ type, start, length }) {
         slides.push(
           <SwiperSlide
             key={`time-${hour}`}
-            className={[styles.swiperSlide, (i == 0 ? styles.selectedSlide : "")].join(" ")}
+            className={styles.swiperSlide}
           >{`${hour}:00`}</SwiperSlide>
         );
       }
@@ -41,7 +41,7 @@ function SwiperWrap({ type, start, length }) {
         slides.push(
           <SwiperSlide
             key={`day-${days[i]}`}
-            className={[styles.swiperSlide, (i == 0 ? styles.selectedSlide : "")].join(" ")}
+            className={styles.swiperSlide}
           >{`${days[i]}`}</SwiperSlide>
         );
       }
@@ -50,7 +50,7 @@ function SwiperWrap({ type, start, length }) {
   };
 
   const slides = generateSlides();
-  
+
   const element = (
     <>
       <Swiper
