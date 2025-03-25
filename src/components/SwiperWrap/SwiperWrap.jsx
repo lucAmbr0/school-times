@@ -8,22 +8,6 @@ import 'swiper/css/pagination';
 import { useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
-  const onSlideChange = (swiper) => {
-    const centeredIndex = swiper.activeIndex;
-    swiper.slides.forEach((slide) => {
-      slide.classList.remove(styles.selectedSlide);
-    });
-    const centeredSlide = swiper.slides[centeredIndex];
-    console.log(centeredSlide ? centeredSlide.innerText : "No centered slide");
-    setTimeout(() => {
-      swiper.slides.forEach((slide) => {
-        if (slide.innerText == centeredSlide.innerText) {
-          slide.classList.add(styles.selectedSlide);
-          swiper.update();
-        }
-      });
-    }, 5);
-  };
 
   const generateSlides = () => {
     const slides = [];
@@ -66,6 +50,7 @@ function SwiperWrap({ type, start, length }) {
         resistanceRatio={0.7}
         grabCursor={true}
         longSwipes={false}
+        slideActiveClass={styles.selectedSlide}
         cssMode={false}
         slideToClickedSlide={true}
         freeMode={{
@@ -75,14 +60,6 @@ function SwiperWrap({ type, start, length }) {
         }}
         onSlideTransitionEnd ={(swiper) => {
               swiper.slideToClosest();
-              swiper.slides.forEach((slide) => {
-                slide.classList.remove(styles.selectedSlide);
-              });
-              const centeredSlide = swiper.slides[swiper.activeIndex];
-              if (centeredSlide) {
-                centeredSlide.classList.add(styles.selectedSlide);
-              }
-              console.log("A");
         }}
       >
         {slides}
