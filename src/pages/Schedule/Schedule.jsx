@@ -10,9 +10,10 @@ function Schedule() {
     <>
     {/* <h2 className={styles.setTimeAndDayLabel}>Set time and day</h2> */}
     <div className={styles.swipers}>
-      <div className={styles.swipersIndicator}></div>
       <SwiperWrap className={styles.swiper} type={"days"} />
       <SwiperWrap className={styles.swiper} type={"time"} start={7} length={10} />
+      <div className={styles.swipersIndicator}></div>
+      <div className={styles.swipersGradient}></div>
     </div>
     <UserClassBox />
     <HorizontalLine

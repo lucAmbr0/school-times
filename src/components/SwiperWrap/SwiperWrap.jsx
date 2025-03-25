@@ -85,6 +85,7 @@ function SwiperWrap({ type, start, length }) {
               index === swiper.activeIndex
             );
           });
+          handleSlideChange(swiper, swiper.slides[swiper.activeIndex]);
         }}
       >
         {slides}
@@ -93,6 +94,12 @@ function SwiperWrap({ type, start, length }) {
   );
 
   return element;
+}
+
+function handleSlideChange(swiper, activeSlide) {
+  activeSlide.classList.add(styles.selectedSlide);
+  console.log(activeSlide.textContent);
+  
 }
 
 export default SwiperWrap;
