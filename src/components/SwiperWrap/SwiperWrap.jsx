@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
   let startActive = null;
-  
+
   const generateSlides = () => {
     const slides = [];
     startActive = new Date().getHours() - 7;
@@ -28,7 +28,7 @@ function SwiperWrap({ type, start, length }) {
     } else if (type == "days") {
       const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
       startActive = new Date().getDay() - 1;
-      
+
       for (let i = 0; i < days.length; i++) {
         slides.push(
           <SwiperSlide
@@ -43,20 +43,18 @@ function SwiperWrap({ type, start, length }) {
 
   const slides = generateSlides();
 
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(startActive);
 
   useEffect(() => {
-    if (activeIndex !== null) {
-      const swiperSlides = document.querySelectorAll(`.${styles.swiperSlide}`);
-
-      swiperSlides.forEach((slide, index) => {
-        if (index === activeIndex) {
-          slide.classList.add(styles.selectedSlide);
-        } else {
-          slide.classList.remove(styles.selectedSlide);
-        }
-      });
-    }
+    const swiperSlides = document.querySelectorAll(`.${styles.swiperSlide}`);
+    
+    swiperSlides.forEach((slide, index) => {
+      if (index === activeIndex) {
+        slide.classList.add(styles.selectedSlide);
+      } else {
+        slide.classList.remove(styles.selectedSlide);
+      }
+    });
   }, [activeIndex]);
 
   const element = (
@@ -84,13 +82,7 @@ function SwiperWrap({ type, start, length }) {
           sticky: true,
         }}
         onSlideChangeTransitionEnd={(swiper) => {
-          swiper.slideToClosest();
-          swiper.slides.forEach((slide, index) => {
-            slide.classList.toggle(
-              styles.selectedSlide,
-              index === swiper.activeIndex
-            );
-          });
+          setActiveIndex(swiper.activeIndex);
           handleSlideChange(swiper, swiper.slides[swiper.activeIndex]);
         }}
       >
@@ -105,7 +97,6 @@ function SwiperWrap({ type, start, length }) {
 function handleSlideChange(swiper, activeSlide) {
   activeSlide.classList.add(styles.selectedSlide);
   console.log(activeSlide.textContent);
-  
 }
 
 export default SwiperWrap;
