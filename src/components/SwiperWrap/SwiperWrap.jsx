@@ -37,12 +37,27 @@ function SwiperWrap({ type, start, length }) {
 
   const slides = generateSlides();
 
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      const swiperSlides = document.querySelectorAll(`.${styles.swiperSlide}`);
+      swiperSlides.forEach((slide, index) => {
+        if (index === activeIndex) {
+          slide.classList.add(styles.selectedSlide);
+        } else {
+          slide.classList.remove(styles.selectedSlide);
+        }
+      });
+    }
+  }, [activeIndex]);
+
   const element = (
     <>
       <Swiper
         slidesPerView={5}
         centeredSlides={true}
-        modules={[ FreeMode, Pagination, Navigation ]}
+        modules={[FreeMode, Pagination, Navigation]}
         spaceBetween={0}
         className={styles.swiper}
         touchRatio={1}
@@ -50,7 +65,6 @@ function SwiperWrap({ type, start, length }) {
         resistanceRatio={0.7}
         grabCursor={true}
         longSwipes={false}
-        slideActiveClass={styles.selectedSlide}
         cssMode={false}
         slideToClickedSlide={true}
         freeMode={{
@@ -58,8 +72,9 @@ function SwiperWrap({ type, start, length }) {
           momentumBounce: true,
           sticky: true,
         }}
-        onSlideTransitionEnd ={(swiper) => {
-              swiper.slideToClosest();
+        onSlideTransitionEnd={(swiper) => {
+          swiper.slideToClosest();
+          setActiveIndex(swiper.activeIndex);
         }}
       >
         {slides}
