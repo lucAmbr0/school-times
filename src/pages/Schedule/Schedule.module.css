@@ -14,6 +14,7 @@
     width: 20%;
     height: 100%;
     z-index: 3;
+    pointer-events: none;
     border-radius: 20px;
     border-right: 2px solid var(--palette-200);
     border-left: 2px solid var(--palette-200);
