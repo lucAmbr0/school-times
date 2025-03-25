@@ -65,7 +65,6 @@ function SwiperWrap({ type, start, length }) {
         touchMoveStopPropagation={true}
         grabCursor={true}
         longSwipes={false}
-        slideActiveClass={styles.selectedSlide}
         cssMode={false}
         slideToClickedSlide={true}
         freeMode={{
@@ -75,6 +74,13 @@ function SwiperWrap({ type, start, length }) {
         }}
         onSlideNextTransitionEnd ={(swiper) => {
               swiper.slideToClosest();
+              swiper.slides.forEach((slide) => {
+                slide.classList.remove(styles.selectedSlide);
+              });
+              const centeredSlide = swiper.slides[swiper.activeIndex];
+              if (centeredSlide) {
+                centeredSlide.classList.add(styles.selectedSlide);
+              }
               console.log("A");
         }}
       >
