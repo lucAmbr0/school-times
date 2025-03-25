@@ -61,10 +61,11 @@ function SwiperWrap({ type, start, length }) {
         modules={[ FreeMode, Pagination, Navigation ]}
         spaceBetween={0}
         className={styles.swiper}
-        touchRatio={1}
-        touchMoveStopPropagation={false}
+        touchRatio={0.5}
+        touchMoveStopPropagation={true}
         grabCursor={true}
         longSwipes={false}
+        slideActiveClass={styles.selectedSlide}
         cssMode={false}
         slideToClickedSlide={true}
         freeMode={{
@@ -74,7 +75,6 @@ function SwiperWrap({ type, start, length }) {
         }}
         onSlideNextTransitionEnd ={(swiper) => {
               swiper.slideToClosest();
-              slides[swiper.activeIndex].classList.add(styles.selectedSlide);
               console.log("A");
         }}
       >
