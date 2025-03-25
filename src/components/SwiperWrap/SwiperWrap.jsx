@@ -63,9 +63,10 @@ function SwiperWrap({ type, start, length }) {
         modules={[FreeMode, Pagination, Navigation]}
         spaceBetween={0}
         className={styles.swiper}
-        touchRatio={1}
-        longSwipesRatio={5}
-        resistanceRatio={0.7}
+        touchRatio={0.5}
+        longSwipesRatio={10000}
+        resistanceRatio={1}
+        slideActiveClass={styles.selectedSlide}
         grabCursor={true}
         longSwipes={false}
         cssMode={false}
