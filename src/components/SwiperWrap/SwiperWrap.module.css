@@ -10,12 +10,14 @@
     padding: 5px 0px;
     border-radius: 50px;
     height: 30px;
+    color: var(--palette-900);
     border: solid 0px var(--palette-300);
     transition: background-color 0.2s ease, border 0.2s ease, font-weight 0.2s ease;
 }
 
 .selectedSlide {
     font-weight: 600 !important;
+    color: var(--palette-950) !important;
     background-color: var(--palette-100) !important;
     border: solid 1px var(--palette-300) !important;
 }
