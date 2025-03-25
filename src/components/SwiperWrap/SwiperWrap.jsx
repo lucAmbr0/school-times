@@ -62,7 +62,8 @@ function SwiperWrap({ type, start, length }) {
         spaceBetween={0}
         className={styles.swiper}
         touchRatio={0.5}
-        touchMoveStopPropagation={true}
+        longSwipesRatio={2}
+        resistanceRatio={2}
         grabCursor={true}
         longSwipes={false}
         cssMode={false}
@@ -72,7 +73,7 @@ function SwiperWrap({ type, start, length }) {
           momentumBounce: true,
           sticky: true,
         }}
-        onSlideNextTransitionEnd ={(swiper) => {
+        onSlideTransitionEnd ={(swiper) => {
               swiper.slideToClosest();
               swiper.slides.forEach((slide) => {
                 slide.classList.remove(styles.selectedSlide);
