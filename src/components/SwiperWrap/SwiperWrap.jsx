@@ -5,25 +5,9 @@ import styles from "./SwiperWrap.module.css";
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
-  const onSlideChange = (swiper) => {
-    const centeredIndex = swiper.activeIndex;
-    swiper.slides.forEach((slide) => {
-      slide.classList.remove(styles.selectedSlide);
-    });
-    const centeredSlide = swiper.slides[centeredIndex];
-    console.log(centeredSlide ? centeredSlide.innerText : "No centered slide");
-    setTimeout(() => {
-      swiper.slides.forEach((slide) => {
-        if (slide.innerText == centeredSlide.innerText) {
-          slide.classList.add(styles.selectedSlide);
-          swiper.update();
-        }
-      });
-    }, 5);
-  };
 
   const generateSlides = () => {
     const slides = [];
@@ -53,16 +37,35 @@ function SwiperWrap({ type, start, length }) {
 
   const slides = generateSlides();
 
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      const swiperSlides = document.querySelectorAll(`.${styles.swiperSlide}`);
+      console.log(swiperSlides);
+      console.log(activeIndex);
+      
+      swiperSlides.forEach((slide, index) => {
+        if (index === activeIndex) {
+          slide.classList.add(styles.selectedSlide);
+        } else {
+          slide.classList.remove(styles.selectedSlide);
+        }
+      });
+    }
+  }, [activeIndex]);
+
   const element = (
     <>
       <Swiper
         slidesPerView={5}
         centeredSlides={true}
-        modules={[ FreeMode, Pagination, Navigation ]}
+        modules={[FreeMode, Pagination, Navigation]}
         spaceBetween={0}
         className={styles.swiper}
-        touchRatio={0.5}
-        touchMoveStopPropagation={true}
+        touchRatio={1}
+        longSwipesRatio={0}
+        resistanceRatio={0.7}
         grabCursor={true}
         longSwipes={false}
         cssMode={false}
@@ -81,7 +84,6 @@ function SwiperWrap({ type, start, length }) {
               if (centeredSlide) {
                 centeredSlide.classList.add(styles.selectedSlide);
               }
-              console.log("A");
         }}
       >
         {slides}
