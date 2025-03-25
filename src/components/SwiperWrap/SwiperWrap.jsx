@@ -18,13 +18,10 @@ function SwiperWrap({ type, start, length }) {
     if (type == "time") {
       for (let i = 0; i < length; i++) {
         const hour = start + i;
-        const slideStyles = `${styles.swiperSlide} ${
-          i === startActive ? styles.selectedSlide : ""
-        }`;
         slides.push(
           <SwiperSlide
             key={`time-${hour}`}
-            className={slideStyles}
+            className={styles.swiperSlide}
           >{`${hour}:00`}</SwiperSlide>
         );
       }
@@ -33,13 +30,10 @@ function SwiperWrap({ type, start, length }) {
       startActive = new Date().getDay() - 1;
 
       for (let i = 0; i < days.length; i++) {
-        const slideStyles = `${styles.swiperSlide} ${
-          i === startActive ? styles.selectedSlide : ""
-        }`;
         slides.push(
           <SwiperSlide
             key={`day-${days[i]}`}
-            className={slideStyles}
+            className={styles.swiperSlide}
           >{`${days[i]}`}</SwiperSlide>
         );
       }
@@ -49,20 +43,18 @@ function SwiperWrap({ type, start, length }) {
 
   const slides = generateSlides();
 
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(startActive);
 
   useEffect(() => {
-    if (activeIndex !== null) {
-      const swiperSlides = document.querySelectorAll(`.${styles.swiperSlide}`);
-
-      swiperSlides.forEach((slide, index) => {
-        if (index === activeIndex) {
-          slide.classList.add(styles.selectedSlide);
-        } else {
-          slide.classList.remove(styles.selectedSlide);
-        }
-      });
-    }
+    const swiperSlides = document.querySelectorAll(`.${styles.swiperSlide}`);
+    
+    swiperSlides.forEach((slide, index) => {
+      if (index === activeIndex) {
+        slide.classList.add(styles.selectedSlide);
+      } else {
+        slide.classList.remove(styles.selectedSlide);
+      }
+    });
   }, [activeIndex]);
 
   const element = (
@@ -90,13 +82,7 @@ function SwiperWrap({ type, start, length }) {
           sticky: true,
         }}
         onSlideChangeTransitionEnd={(swiper) => {
-          swiper.slideToClosest();
-          swiper.slides.forEach((slide, index) => {
-            slide.classList.toggle(
-              styles.selectedSlide,
-              index === swiper.activeIndex
-            );
-          });
+          setActiveIndex(swiper.activeIndex);
           handleSlideChange(swiper, swiper.slides[swiper.activeIndex]);
         }}
       >
