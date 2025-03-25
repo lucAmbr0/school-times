@@ -2,13 +2,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Pagination, FreeMode } from "swiper/modules";
 import styles from "./SwiperWrap.module.css";
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 import { useState, useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
-
   const generateSlides = () => {
     const slides = [];
     if (type == "time") {
@@ -44,7 +43,7 @@ function SwiperWrap({ type, start, length }) {
       const swiperSlides = document.querySelectorAll(`.${styles.swiperSlide}`);
       console.log(swiperSlides);
       console.log(activeIndex);
-      
+
       swiperSlides.forEach((slide, index) => {
         if (index === activeIndex) {
           slide.classList.add(styles.selectedSlide);
@@ -63,28 +62,29 @@ function SwiperWrap({ type, start, length }) {
         modules={[FreeMode, Pagination, Navigation]}
         spaceBetween={0}
         className={styles.swiper}
-        touchRatio={0.5}
-        longSwipesRatio={10000}
-        resistanceRatio={1}
-        slideActiveClass={styles.selectedSlide}
-        grabCursor={true}
-        longSwipes={false}
-        cssMode={false}
+        touchRatio={1}
+        resistanceRatio={0.85}
+        longSwipes={true}
+        longSwipesRatio={0.1}
+        longSwipesMs={300}
         slideToClickedSlide={true}
+        grabCursor={true}
+        cssMode={false}
         freeMode={{
           enabled: true,
-          momentumBounce: true,
+          momentum: true,
+          momentumRatio: 0.2,
+          momentumVelocityRatio: 0.2,
           sticky: true,
         }}
-        onSlideChangeTransitionEnd ={(swiper) => {
-              swiper.slideToClosest();
-              swiper.slides.forEach((slide) => {
-                slide.classList.remove(styles.selectedSlide);
-              });
-              const centeredSlide = swiper.slides[swiper.activeIndex];
-              if (centeredSlide) {
-                centeredSlide.classList.add(styles.selectedSlide);
-              }
+        onSlideChangeTransitionEnd={(swiper) => {
+          swiper.slideToClosest();
+          swiper.slides.forEach((slide, index) => {
+            slide.classList.toggle(
+              styles.selectedSlide,
+              index === swiper.activeIndex
+            );
+          });
         }}
       >
         {slides}
