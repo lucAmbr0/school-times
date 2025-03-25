@@ -8,8 +8,13 @@ import "swiper/css/pagination";
 import { useState, useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
+  let startActive = null;
+  
   const generateSlides = () => {
     const slides = [];
+    startActive = new Date().getHours() - 7;
+    if (startActive < 0) startActive = 0;
+    else if (startActive > 9) startActive = 9;
     if (type == "time") {
       for (let i = 0; i < length; i++) {
         const hour = start + i;
@@ -22,6 +27,8 @@ function SwiperWrap({ type, start, length }) {
       }
     } else if (type == "days") {
       const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      startActive = new Date().getDay() - 1;
+      
       for (let i = 0; i < days.length; i++) {
         slides.push(
           <SwiperSlide
@@ -41,8 +48,6 @@ function SwiperWrap({ type, start, length }) {
   useEffect(() => {
     if (activeIndex !== null) {
       const swiperSlides = document.querySelectorAll(`.${styles.swiperSlide}`);
-      console.log(swiperSlides);
-      console.log(activeIndex);
 
       swiperSlides.forEach((slide, index) => {
         if (index === activeIndex) {
@@ -67,6 +72,7 @@ function SwiperWrap({ type, start, length }) {
         longSwipes={true}
         longSwipesRatio={0.1}
         longSwipesMs={300}
+        initialSlide={startActive}
         slideToClickedSlide={true}
         grabCursor={true}
         cssMode={false}

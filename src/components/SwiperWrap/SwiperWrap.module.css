@@ -18,6 +18,4 @@
 .selectedSlide {
     font-weight: 600 !important;
     color: var(--palette-950) !important;
-    background-color: var(--palette-100) !important;
-    border: solid 1px var(--palette-300) !important;
 }
