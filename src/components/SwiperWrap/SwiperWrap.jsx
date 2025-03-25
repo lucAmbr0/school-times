@@ -75,11 +75,15 @@ function SwiperWrap({ type, start, length }) {
           momentumBounce: true,
           sticky: true,
         }}
-        onSlideTransitionEnd={(swiper) => {
-          swiper.slideToClosest();
-          console.log("AA");
-          
-          setActiveIndex(swiper.activeIndex);
+        onSlideChangeTransitionEnd ={(swiper) => {
+              swiper.slideToClosest();
+              swiper.slides.forEach((slide) => {
+                slide.classList.remove(styles.selectedSlide);
+              });
+              const centeredSlide = swiper.slides[swiper.activeIndex];
+              if (centeredSlide) {
+                centeredSlide.classList.add(styles.selectedSlide);
+              }
         }}
       >
         {slides}
