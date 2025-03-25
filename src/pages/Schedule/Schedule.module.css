@@ -32,6 +32,7 @@
         transparent 80%,
         var(--palette-50) 98%
     );
+    pointer-events: none;
 }
 
 .setTimeAndDayLabel {
