@@ -42,6 +42,9 @@ function SwiperWrap({ type, start, length }) {
   useEffect(() => {
     if (activeIndex !== null) {
       const swiperSlides = document.querySelectorAll(`.${styles.swiperSlide}`);
+      console.log(swiperSlides);
+      console.log(activeIndex);
+      
       swiperSlides.forEach((slide, index) => {
         if (index === activeIndex) {
           slide.classList.add(styles.selectedSlide);
@@ -74,6 +77,8 @@ function SwiperWrap({ type, start, length }) {
         }}
         onSlideTransitionEnd={(swiper) => {
           swiper.slideToClosest();
+          console.log("AA");
+          
           setActiveIndex(swiper.activeIndex);
         }}
       >
