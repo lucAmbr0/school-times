@@ -64,7 +64,7 @@ function SwiperWrap({ type, start, length }) {
         spaceBetween={0}
         className={styles.swiper}
         touchRatio={1}
-        longSwipesRatio={500}
+        longSwipesRatio={0}
         resistanceRatio={0.7}
         grabCursor={true}
         longSwipes={false}
