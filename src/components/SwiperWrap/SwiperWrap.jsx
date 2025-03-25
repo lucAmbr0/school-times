@@ -64,8 +64,8 @@ function SwiperWrap({ type, start, length }) {
         touchRatio={1}
         touchMoveStopPropagation={false}
         grabCursor={true}
+        longSwipes={false}
         cssMode={false}
-        slideActiveClass={styles.selectedSlide}
         slideToClickedSlide={true}
         freeMode={{
           enabled: true,
@@ -74,7 +74,8 @@ function SwiperWrap({ type, start, length }) {
         }}
         onSlideNextTransitionEnd ={(swiper) => {
               swiper.slideToClosest();
-              console.log("BOBBO");
+              slides[swiper.activeIndex].classList.add(styles.selectedSlide);
+              console.log("A");
         }}
       >
         {slides}
