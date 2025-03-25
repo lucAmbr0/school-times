@@ -27,8 +27,8 @@ function Home() {
         <UpcomingEventsBox />
         <SmallChip text={"Card balance"} iconName={"account_balance_wallet"} type={"euro"} />
         <SmallChip text={"Homework"} iconName={"lists"} type={"progress"} />
-        <SmallChip text={"School site"} iconName={"arrow_outward"} type={"link"} />
-        <SmallChip text={"Classroom"} iconName={"arrow_outward"} type={"link"} />
+        <SmallChip text={"School site"} iconName={"arrow_outward"} type={"link"} value={"./"} />
+        <SmallChip text={"Classroom"} iconName={"arrow_outward"} type={"link"} value={"./"} />
       </div>
     </>
   );
