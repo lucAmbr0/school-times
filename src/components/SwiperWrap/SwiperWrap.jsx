@@ -5,7 +5,7 @@ import styles from "./SwiperWrap.module.css";
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
 
