@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
   let startActive = null;
-  
+
   const generateSlides = () => {
     const slides = [];
     startActive = new Date().getHours() - 7;
@@ -18,22 +18,28 @@ function SwiperWrap({ type, start, length }) {
     if (type == "time") {
       for (let i = 0; i < length; i++) {
         const hour = start + i;
+        const slideStyles = `${styles.swiperSlide} ${
+          i === startActive ? styles.selectedSlide : ""
+        }`;
         slides.push(
           <SwiperSlide
             key={`time-${hour}`}
-            className={styles.swiperSlide}
+            className={slideStyles}
           >{`${hour}:00`}</SwiperSlide>
         );
       }
     } else if (type == "days") {
       const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
       startActive = new Date().getDay() - 1;
-      
+
       for (let i = 0; i < days.length; i++) {
+        const slideStyles = `${styles.swiperSlide} ${
+          i === startActive ? styles.selectedSlide : ""
+        }`;
         slides.push(
           <SwiperSlide
             key={`day-${days[i]}`}
-            className={styles.swiperSlide}
+            className={slideStyles}
           >{`${days[i]}`}</SwiperSlide>
         );
       }
@@ -105,7 +111,6 @@ function SwiperWrap({ type, start, length }) {
 function handleSlideChange(swiper, activeSlide) {
   activeSlide.classList.add(styles.selectedSlide);
   console.log(activeSlide.textContent);
-  
 }
 
 export default SwiperWrap;
