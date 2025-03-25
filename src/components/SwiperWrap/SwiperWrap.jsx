@@ -73,7 +73,11 @@ function SwiperWrap({ type, start, length }) {
           momentumBounce: true,
           sticky: true,
         }}
-        
+        onTouchEnd={(swiper) => {
+          setTimeout(() => {
+            swiper.slideToClosest();
+          }, 300);
+        }}
       >
         {slides}
       </Swiper>
