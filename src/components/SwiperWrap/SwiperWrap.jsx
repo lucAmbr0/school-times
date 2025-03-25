@@ -22,7 +22,6 @@ function SwiperWrap({ type, start, length }) {
     }, 5);
   };
 
-  
   const generateSlides = () => {
     const slides = [];
     if (type == "time") {
@@ -54,10 +53,9 @@ function SwiperWrap({ type, start, length }) {
   const element = (
     <>
       <Swiper
-        a11y={true}
         slidesPerView={5}
         centeredSlides={true}
-        onSlideChangeTransitionEnd={onSlideChange}
+        // onSlideChangeTransitionEnd={onSlideChange}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={0}
         navigation
@@ -65,20 +63,23 @@ function SwiperWrap({ type, start, length }) {
         scrollbar={{ draggable: true }}
         className={styles.swiper}
         touchRatio={1.5}
-        longSwipes={false}
+        longSwipes={true}
         grabCursor={true}
         cssMode={true}
+        slideActiveClass={styles.selectedSlide}
+        slideToClickedSlide={true}
         freeMode={{
           enabled: true,
-          momentumBounce: false,
+          momentumBounce: true,
+          sticky: true,
         }}
-freeModeSticky={true}
-        >
+        
+      >
         {slides}
       </Swiper>
     </>
   );
-  
+
   return element;
 }
 
