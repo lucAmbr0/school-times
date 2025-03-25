@@ -1,7 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Pagination, FreeMode } from "swiper/modules";
 import styles from "./SwiperWrap.module.css";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 import { useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
@@ -55,17 +58,13 @@ function SwiperWrap({ type, start, length }) {
       <Swiper
         slidesPerView={5}
         centeredSlides={true}
-        // onSlideChangeTransitionEnd={onSlideChange}
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[ FreeMode, Pagination, Navigation ]}
         spaceBetween={0}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
         className={styles.swiper}
-        touchRatio={1.5}
-        longSwipes={true}
+        touchRatio={1}
+        touchMoveStopPropagation={false}
         grabCursor={true}
-        cssMode={true}
+        cssMode={false}
         slideActiveClass={styles.selectedSlide}
         slideToClickedSlide={true}
         freeMode={{
@@ -73,10 +72,9 @@ function SwiperWrap({ type, start, length }) {
           momentumBounce: true,
           sticky: true,
         }}
-        onTouchEnd={(swiper) => {
-          setTimeout(() => {
-            swiper.slideToClosest();
-          }, 300);
+        onSlideNextTransitionEnd ={(swiper) => {
+              swiper.slideToClosest();
+              console.log("BOBBO");
         }}
       >
         {slides}

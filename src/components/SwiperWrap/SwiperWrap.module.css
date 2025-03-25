@@ -1,7 +1,13 @@
 .swiper {
     margin: 5px 0;
     width: 100%;
-    transform: translate3d(0, 0, 0) !important;
+}
+
+.swipersIndicator {
+    height: 100%;
+    width: 2px;
+    position: absolute;
+    background-color: lime;
 }
 
 .swiperSlide {
