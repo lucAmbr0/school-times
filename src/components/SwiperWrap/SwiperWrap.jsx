@@ -72,7 +72,7 @@ function SwiperWrap({ type, start, length }) {
           momentumBounce: true,
           sticky: true,
         }}
-        onSlideNextTransitionEnd ={(swiper) => {
+        onSlideChangeTransitionEnd ={(swiper) => {
               swiper.slideToClosest();
               swiper.slides.forEach((slide) => {
                 slide.classList.remove(styles.selectedSlide);
