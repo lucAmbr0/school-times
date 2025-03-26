@@ -16,7 +16,7 @@ function ProfileCard() {
         <StudentStats label={"Absences"} value={0} />
         <StudentStats label={"Infractions"} value={0} />
         <StudentStats label={"Delays"} value={0} />
-        <StudentStats label={"Grades"} value={0} />
+        <StudentStats label={"GPA"} value={0} />
       </div>
       <h3 className={styles.latestGradesLabel}>Latest grades</h3>
       <GradesList grades={["", "", "", "", "", "", "", ""]} />

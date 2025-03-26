@@ -2,7 +2,7 @@ import styles from "./ProfileOverview.module.css";
 
 function ProfileOverview({user}) {
   let imgSrc = null;
-  const isPresent = true;
+  const isPresent = null;
   const indicatorStyle = `${styles.studentStatusIndicator} ${
     isPresent ? styles.present : styles.absent
   }`;
