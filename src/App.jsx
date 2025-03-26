@@ -5,8 +5,8 @@ import { Analytics } from "@vercel/analytics/react"
 import useThemeColor from "./scripts/useThemeColor";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
-import Schedule from "./pages/Schedule/Schedule";
-import Calendar from "./pages/Calendar/Calendar";
+import Explore from "./pages/Explore/Explore";
+import Gradebook from "./pages/Gradebook/Gradebook";
 import Settings from "./pages/Settings/Settings";
 import Header from "./components/Header/Header";
 import { useData } from "./scripts/useData";
@@ -22,10 +22,10 @@ function App() {
     switch (currentPage) {
       case "Home":
         return <Home />;
-      case "Schedule":
-        return <Schedule />;
-      case "Calendar":
-        return <Calendar />;
+      case "Explore":
+        return <Explore />;
+      case "Gradebook":
+        return <Gradebook />;
       case "Settings":
         return <Settings />;
       default:

@@ -7,8 +7,8 @@ function Navbar({onNavigate, currentPage}) {
   const element = 
   (<nav className={styles.navbarContainer}>
   <NavbarBtn onNavigate={onNavigate} active={currentPage === "Home"} text="Home" iconName="home" />
-  <NavbarBtn onNavigate={onNavigate} active={currentPage === "Schedule"} text="Schedule" iconName="action_key" />
-  <NavbarBtn onNavigate={onNavigate} active={currentPage === "Calendar"} text="Calendar" iconName="calendar_today" />
+  <NavbarBtn onNavigate={onNavigate} active={currentPage === "Explore"} text="Explore" iconName="action_key" />
+  <NavbarBtn onNavigate={onNavigate} active={currentPage === "Gradebook"} text="Gradebook" iconName="book_6" />
   <NavbarBtn onNavigate={onNavigate} active={currentPage === "Settings"} text="Settings" iconName="settings" />
   </nav>);
   

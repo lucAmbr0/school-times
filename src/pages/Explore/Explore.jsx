@@ -2,10 +2,10 @@ import SwiperWrap from "../../components/SwiperWrap/SwiperWrap";
 import HorizontalLine from "../../components/Separator/HorizontalLine";
 import UserClassBox from "../../components/Boxes/UserClassBox/UserClassBox";
 import LargeMateClassBox from "../../components/Boxes/LargeMateClassBox/LargeMateClassBox";
-import styles from "./Schedule.module.css";
+import styles from "./Explore.module.css";
 import { useEffect } from "react";
 
-function Schedule() {
+function Explore() {
   const element = (
     <>
     {/* <h2 className={styles.setTimeAndDayLabel}>Set time and day</h2> */}
@@ -34,4 +34,4 @@ function Schedule() {
   return element;
 }
 
-export default Schedule;
+export default Explore;

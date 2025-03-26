@@ -1,4 +1,4 @@
-function Calendar() {
+function Gradebook() {
 
   const element = (
     <>
@@ -8,4 +8,4 @@ function Calendar() {
   return ( element );
 }
 
-export default Calendar;
+export default Gradebook;
