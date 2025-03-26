@@ -1,3 +1,8 @@
+.swiper {
+    width: 100%;
+    overflow: hidden;
+}
+
 .container {
     background-color: var(--palette-100);
     border: solid 1px var(--palette-300);

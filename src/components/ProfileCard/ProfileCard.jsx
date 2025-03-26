@@ -4,6 +4,13 @@ import FavoriteSubject from "./FavoriteSubject/FavoriteSubject";
 import StudentStats from "./StudentStats/StudentStats";
 import GradesList from "./GradesList/GradesList";
 import HorizontalLine from "../Separator/HorizontalLine";
+import ButtonTable from "../Table/ButtonTable"
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-flip";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination, EffectFlip } from "swiper/modules";
 import { useData } from "../../scripts/useData";
 
 function ProfileCard() {
@@ -32,7 +39,28 @@ function ProfileCard() {
     </div>
   );
 
-  return element;
+  const swiper = (
+    <Swiper
+      slidesPerView={1}
+      centeredSlides={true}
+      modules={[EffectFlip]}
+      spaceBetween={0}
+      loop={true}
+      className={styles.swiper}
+      touchRatio={3}
+      effect={"flip"}
+      longSwipes={false}
+      initialSlide={0}
+      simulateTouch={true}
+      cssMode={true}
+    >
+      <SwiperSlide>{element}</SwiperSlide>
+      <SwiperSlide>{element}</SwiperSlide>
+
+    </Swiper>
+  );
+
+  return swiper;
 }
 
 export default ProfileCard;
