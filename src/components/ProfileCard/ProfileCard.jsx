@@ -55,10 +55,11 @@ function ProfileCard() {
         slideShadows: false
       }}
       effect={"flip"}
+      allowSlidePrev={false}
       cssMode={true}
       speed={400}
-      onSlideChangeTransitionEnd = {(swiper) => {
-        swiper.slideTo(swiper.activeIndex);
+      onTouchEnd = {(swiper) => {
+        swiper.slideTo(swiper.activeIndex, 400);
       }}
     >
       <SwiperSlide>{element}</SwiperSlide>
