@@ -16,7 +16,7 @@ function SwiperWrap({ type, start, length }) {
     } else if (type === "days") {
       setActiveSlide(new Date().getDay() - 1);
     }
-  }, [type]);
+  }, []);
 
   const generateSlides = () => {
     const slides = [];
@@ -77,6 +77,11 @@ function SwiperWrap({ type, start, length }) {
           if (swiper.params.slideActiveClass) {
             swiper.params.slideActiveClass = null;
           }
+        }}
+        onSlideChangeTransitionStart={(swiper) => {
+          swiper.slides.forEach(s => {
+            s.classList.remove(`${styles.selectedSlide}`);
+          })
         }}
         onSlideChangeTransitionEnd={(swiper) => {
           setActiveSlide(swiper.activeIndex);
