@@ -1,0 +1,29 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.bubble {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: var(--palette-200);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number {
+    color: var(--palette-950);
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.label {
+    text-align: left;
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: 300;
+}
