@@ -12,10 +12,9 @@ function SwiperWrap({ type, start, length }) {
 
   useEffect(() => {
     if (type === "time") {
-      // setActiveSlide(new Date().getHours() - 7);
-      setActiveSlide(0);
+      setActiveSlide(new Date().getHours() - 7);
     } else if (type === "days") {
-      setActiveSlide(6);
+      setActiveSlide(new Date().getDay() - 1);
     }
   }, []);
 
@@ -71,6 +70,7 @@ function SwiperWrap({ type, start, length }) {
       slideActiveClass={styles.selectedSlide}
       slideToClickedSlide={true}
       grabCursor={true}
+      simulateTouch={true}
       cssMode={false}
       freeMode={{
         enabled: true,
