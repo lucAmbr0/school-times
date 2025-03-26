@@ -14,7 +14,7 @@ import { EffectFlip } from "swiper/modules";
 import { useData } from "../../scripts/useData";
 
 function ProfileCard() {
-  const [data, setData] = useData();
+  const [data] = useData();
 
   const element = (
     <div className={styles.container}>
@@ -39,6 +39,15 @@ function ProfileCard() {
     </div>
   );
 
+  const back = (
+    <div className={styles.container}>
+      <div className={styles.elementPlchd}>{element}</div>
+      <div className={styles.backDiv}>
+        <h2 className={styles.backLabel}>Save and share this card to your friends!</h2>
+      </div>
+    </div>
+  );
+
   const swiper = (
     <Swiper
       effect={'flip'}
@@ -49,7 +58,7 @@ function ProfileCard() {
       className={styles.swiper}
     >
       <SwiperSlide className={styles.swiperSlide}>{element}</SwiperSlide>
-      <SwiperSlide className={styles.swiperSlide}>{element}</SwiperSlide>
+      <SwiperSlide className={styles.swiperSlide}>{back}</SwiperSlide>
     </Swiper>
   );
 
