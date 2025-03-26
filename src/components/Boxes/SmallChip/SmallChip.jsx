@@ -21,8 +21,6 @@ function SmallChip({ text, iconName, value, type, onClick }) {
         break;
       case "link":
         valueStyles = `${styles.value} ${styles.underlineLink}`;
-        console.log("HKJAHGKJA");
-
         break;
     }
   }
