@@ -1,7 +1,8 @@
 .userInfoContainer {
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 28% 72%;
     margin: 20px 20px 10px 20px;
+    overflow: hidden;
 }
 
 .userProfilePicContainer {
@@ -27,13 +28,17 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 10px 20px;
+    margin: 10px 0 10px 20px;
 }
 
 .userName {
     margin: 0;
+    width: 100%;
     color: var(--palette-950);
-    font-weight: 800;
+    font-weight: 700;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .presenceIndicator {
