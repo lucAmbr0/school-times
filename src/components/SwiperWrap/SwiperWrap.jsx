@@ -23,20 +23,22 @@ function SwiperWrap({ type, start, length }) {
     if (type === "time") {
       for (let i = 0; i < length; i++) {
         const hour = start + i;
+        const slst = `${styles.swiperSlide} ${i === activeSlide ? styles.selectedSlide : ""}`
         slides.push(
           <SwiperSlide
             key={`time-${hour}`}
-            className={styles.swiperSlide}
+            className={slst}
           >{`${hour}:00`}</SwiperSlide>
         );
       }
     } else if (type === "days") {
       const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
       for (let i = 0; i < days.length; i++) {
+        const slst = `${styles.swiperSlide} ${i === activeSlide ? styles.selectedSlide : ""}` 
         slides.push(
           <SwiperSlide
             key={`day-${days[i]}`}
-            className={styles.swiperSlide}
+            className={slst}
           >{`${days[i]}`}</SwiperSlide>
         );
       }
@@ -60,6 +62,7 @@ function SwiperWrap({ type, start, length }) {
         longSwipesRatio={0.1}
         longSwipesMs={300}
         initialSlide={activeSlide}
+        slideActiveClass={styles.selectedSlide}
         slideToClickedSlide={true}
         grabCursor={true}
         cssMode={false}
@@ -69,6 +72,11 @@ function SwiperWrap({ type, start, length }) {
           momentumRatio: 0.2,
           momentumVelocityRatio: 0.2,
           sticky: true,
+        }}
+        onSlideChange ={(swiper) => {
+          if (swiper.params.slideActiveClass) {
+            swiper.params.slideActiveClass = null;
+          }
         }}
         onSlideChangeTransitionEnd={(swiper) => {
           setActiveSlide(swiper.activeIndex);
