@@ -44,12 +44,12 @@ function ProfileCard() {
       effect={'flip'}
       grabCursor={true}
       loop={true}
-      touchRatio={1.5}
+      touchRatio={1}
       modules={[EffectFlip]}
+      className={styles.swiper}
     >
-      <SwiperSlide>{element}</SwiperSlide>
-      <SwiperSlide>{element}</SwiperSlide>
-
+      <SwiperSlide className={styles.swiperSlide}>{element}</SwiperSlide>
+      <SwiperSlide className={styles.swiperSlide}>{element}</SwiperSlide>
     </Swiper>
   );
 
