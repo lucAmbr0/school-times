@@ -26,6 +26,9 @@ class Person {
         this.isUser = isUser;
         this.name = "";
         this.className = "";
+        this.schoolName = "";
+        this.schoolAddress = "";
+        this.favoriteSubject = "";
         this.timetable = new Timetable();
     }
 }
