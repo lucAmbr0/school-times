@@ -41,26 +41,11 @@ function ProfileCard() {
 
   const swiper = (
     <Swiper
-      slidesPerView={1}
-      centeredSlides={false}
-      modules={[EffectFlip]}
-      spaceBetween={0}
+      effect={'flip'}
+      grabCursor={true}
       loop={true}
-      className={styles.swiper}
       touchRatio={1.5}
-      resistance={false}
-      resistanceRatio={0}
-      longSwipes={false}
-      flipEffect={{
-        slideShadows: false
-      }}
-      effect={"flip"}
-      allowSlidePrev={false}
-      cssMode={true}
-      speed={400}
-      onTouchEnd = {(swiper) => {
-        swiper.slideTo(swiper.activeIndex, 400);
-      }}
+      modules={[EffectFlip]}
     >
       <SwiperSlide>{element}</SwiperSlide>
       <SwiperSlide>{element}</SwiperSlide>
