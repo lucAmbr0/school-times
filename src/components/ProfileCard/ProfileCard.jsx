@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/effect-flip";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, EffectFlip } from "swiper/modules";
+import { FreeMode, EffectFlip } from "swiper/modules";
 import { useData } from "../../scripts/useData";
 
 function ProfileCard() {
@@ -43,16 +43,24 @@ function ProfileCard() {
     <Swiper
       slidesPerView={1}
       centeredSlides={false}
-      modules={[EffectFlip]}
+      modules={[FreeMode, EffectFlip]}
       spaceBetween={0}
       loop={true}
       className={styles.swiper}
-      touchRatio={1}
+      touchRatio={1.5}
+      resistance={false}
+      resistanceRatio={0}
+      longSwipes={true}
       flipEffect={{
         slideShadows: false
       }}
       effect={"flip"}
       cssMode={true}
+      speed={400}
+      freeMode={true}
+      onSlideChangeTransitionEnd = {(swiper) => {
+        swiper.slideTo(swiper.activeIndex);
+      }}
     >
       <SwiperSlide>{element}</SwiperSlide>
       <SwiperSlide>{element}</SwiperSlide>
