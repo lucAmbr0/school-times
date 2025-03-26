@@ -16,3 +16,10 @@
     margin: 10px 20px;
     gap: 5px;
 }
+
+.latestGradesLabel {
+    margin: 10px 0 0 20px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+}

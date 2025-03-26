@@ -2,6 +2,7 @@ import styles from "./ProfileCard.module.css";
 import ProfileOverview from "./ProfileOverview/ProfileOverview";
 import FavoriteSubject from "./FavoriteSubject/FavoriteSubject";
 import StudentStats from "./StudentStats/StudentStats";
+import GradesList from "./GradesList/GradesList";
 import { useData } from "../../scripts/useData";
 
 function ProfileCard() {
@@ -17,6 +18,8 @@ function ProfileCard() {
         <StudentStats label={"Delays"} value={0} />
         <StudentStats label={"Grades"} value={0} />
       </div>
+      <h3 className={styles.latestGradesLabel}>Latest grades</h3>
+      <GradesList grades={["", "", "", "", "", "", "", ""]} />
     </div>
   );
 

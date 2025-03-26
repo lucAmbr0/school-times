@@ -1,0 +1,41 @@
+.container {
+    margin: 10px 20px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow: auto;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--palette-950);
+    text-align: left;
+}
+
+.gradeBubble {
+    min-width: 55px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gradeValue {
+    color: var(--palette-950);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.excellent {
+    background-color: var(--palette-400);
+}
+
+.good {
+    background-color: var(--palette-300);
+}
+
+.bad {
+    background-color: var(--palette-200);
+}
