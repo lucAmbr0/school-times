@@ -42,16 +42,16 @@ function ProfileCard() {
   const swiper = (
     <Swiper
       slidesPerView={1}
-      centeredSlides={true}
+      centeredSlides={false}
       modules={[EffectFlip]}
       spaceBetween={0}
       loop={true}
       className={styles.swiper}
-      touchRatio={3}
+      touchRatio={1}
+      flipEffect={{
+        slideShadows: false
+      }}
       effect={"flip"}
-      longSwipes={false}
-      initialSlide={0}
-      simulateTouch={true}
       cssMode={true}
     >
       <SwiperSlide>{element}</SwiperSlide>
