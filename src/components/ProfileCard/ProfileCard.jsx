@@ -1,5 +1,6 @@
 import styles from "./ProfileCard.module.css";
 import ProfileOverview from "./ProfileOverview/ProfileOverview";
+import FavoriteSubject from "./FavoriteSubject/FavoriteSubject";
 import { useData } from "../../scripts/useData";
 
 function ProfileCard() {
@@ -7,11 +8,8 @@ function ProfileCard() {
 
   const element = (
     <div className={styles.container}>
-      <ProfileOverview />
-      <div className={styles.favSubjContainer}>
-        <h4 className={styles.favSubjLabel}>Favorite subject:</h4>
-        <h3 className={styles.favSubj}>{data.user.favoriteSubject ? data.user.favoriteSubject : "Unknown"}</h3>
-      </div>
+      <ProfileOverview user={data.user} />
+      <FavoriteSubject favSubject={data.user.favoriteSubject} />
     </div>
   );
 

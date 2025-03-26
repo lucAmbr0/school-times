@@ -7,21 +7,3 @@
     border-radius: 22px;
     margin: 10px auto;
 }
-
-.favSubjContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: start;
-    margin: 10px 20px 20px 20px;
-}
-
-.favSubjLabel {
-    font-weight: 300;
-    font-size: 16px;
-}
-
-.favSubj {
-    font-weight: 600;
-    font-size: 24px;
-}

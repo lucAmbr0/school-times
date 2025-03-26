@@ -1,8 +1,6 @@
 import styles from "./ProfileOverview.module.css";
-import { useData } from "../../../scripts/useData";
 
-function ProfileOverview() {
-  const [data, setData] = useData();
+function ProfileOverview({user}) {
   let imgSrc = null;
   const isPresent = true;
   const indicatorStyle = `${styles.studentStatusIndicator} ${
@@ -19,7 +17,7 @@ function ProfileOverview() {
       </div>
       <div className={styles.userInfo}>
         <h2 className={styles.userName}>
-          {data.user.name ? data.user.name : "Guest"}
+          {user.name ? user.name : "Guest"}
         </h2>
         <div className={styles.presenceIndicator}>
           <div className={indicatorStyle}></div>
@@ -28,7 +26,7 @@ function ProfileOverview() {
           </h3>
         </div>
         <h4 className={styles.schoolName}>
-          {data.user.schoolName ? data.user.schoolName : "Unknown School"}
+          {user.schoolName ? user.schoolName : "Unknown School"}
         </h4>
       </div>
     </div>
