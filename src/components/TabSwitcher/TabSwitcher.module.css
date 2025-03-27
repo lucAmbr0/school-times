@@ -3,15 +3,15 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 90%;
-    margin: 0 5%;
+    width: 100%;
+    margin: 0 auto;
     position: relative;
 }
 
 .tabName {
     text-align: center;
-    font-size: 24px;
-    font-weight: 200;
+    font-size: 26px;
+    font-weight: 300;
     color: var(--palette-900);
     width: 50%;
     margin: 10px 0;
@@ -44,10 +44,10 @@
 }
 
 .container {
-    background-color: var(--palette-100);
-    border: solid 1px var(--palette-300);
+    /* background-color: var(--palette-100); */
+    /* border: solid 1px var(--palette-300); */
     border-radius: 12px;
     width: 90%;
-    margin: 0 5%;
+    margin: 0 7.5%;
     min-height: 50px;
 }

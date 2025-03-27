@@ -1,25 +1,38 @@
+import Post from "../Post/Post";
 import {useEffect, useState} from "react";
 import styles from "./TabSwitcher.module.css";
 
-class Post {
+class Content {
     constructor() {
+        this.type
         this.date
         this.author
         this.text
     }
 }
 
-
-
-function TabSwitcher() {
+function TabSwitcher({posts}) {
     const [tab, setTab] = useState("Events");
     
-    let homeworkTab, eventsTab;
-    
-    let posts = [];
-    let postElements = (
-        0
-    );
+    let homeworkTab = [], eventsTab = []; // Initialize as empty arrays
+
+    if (Array.isArray(posts)) {
+        for (let i = 0; i < posts.length; i++) {
+            if (posts[i].type === "Homework") {
+                if (i > 0 && posts[i].date == posts[i-1].date) {
+                    homeworkTab.push(<Post key={`homework-post-${i}`} author={posts[i].author} text={posts[i].text} />);
+                } else {
+                    homeworkTab.push(<Post key={`homework-post-${i}`} date={posts[i].date} author={posts[i].author} text={posts[i].text} />);
+                }
+            } else {
+                if (i > 0 && posts[i].date == posts[i-1].date) {
+                    eventsTab.push(<Post key={`events-post-${i}`} author={posts[i].author} text={posts[i].text} />);
+                } else {
+                    eventsTab.push(<Post key={`events-post-${i}`} date={posts[i].date} author={posts[i].author} text={posts[i].text} />);
+                }
+            }
+        }
+    }
 
     const element =
   <>
@@ -29,7 +42,9 @@ function TabSwitcher() {
       <div className={[styles.pill, tab === "Homework" ? styles.pillHomework : styles.pillEvents].join(" ")}></div>
     </div>
     <div className={styles.container}>
-        {tab === "Homework" ? homeworkTab : eventsTab}
+        <div className={styles.containerMargin}>
+            {tab === "Homework" ? homeworkTab : eventsTab}
+        </div>
     </div>
   </>;
 
