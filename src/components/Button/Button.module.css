@@ -1,7 +1,7 @@
 .button {
     font-family: "Inter";
     padding: 5px 10px;
-    border-radius: 12px;
+    border-radius: 0px;
     font-size: 24px;
     cursor: pointer;
     display: flex;
@@ -12,6 +12,18 @@
     margin: 10px;
     height: 42px;
     transition: 0.2s ease;
+}
+
+.square {
+    border-radius: 0;
+}
+
+.soft {
+    border-radius: 12px;
+}
+
+.rounded {
+    border-radius: 50px;
 }
 
 .iconOnly {
