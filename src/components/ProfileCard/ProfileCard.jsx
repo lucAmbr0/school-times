@@ -12,10 +12,19 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { EffectFlip } from "swiper/modules";
 import { useData } from "../../scripts/useData";
+import { useState, useEffect } from "react";
 
 function ProfileCard() {
   const [data] = useData();
-  const daysStreak = 0;
+  const [daysStreak, setDaysStreak] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDaysStreak((prev) => prev + 1);
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const element = (
     <div className={styles.container}>
