@@ -6,8 +6,8 @@ import useThemeColor from "./scripts/useThemeColor";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Explore from "./pages/Explore/Explore";
-import Gradebook from "./pages/Gradebook/Gradebook";
-import Settings from "./pages/Settings/Settings";
+import Events from "./pages/Events/Events";
+import Profile from "./pages/Profile/Profile";
 import Header from "./components/Header/Header";
 import { useData } from "./scripts/useData";
 
@@ -24,10 +24,10 @@ function App() {
         return <Home />;
       case "Explore":
         return <Explore />;
-      case "Gradebook":
-        return <Gradebook />;
-      case "Settings":
-        return <Settings />;
+      case "Events":
+        return <Events />;
+      case "Profile":
+        return <Profile />;
       default:
         return <Home />;
     }
