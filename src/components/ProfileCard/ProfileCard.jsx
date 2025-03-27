@@ -1,4 +1,5 @@
 import styles from "./ProfileCard.module.css";
+import Button from "../Button/Button";
 import ProfileOverview from "./ProfileOverview/ProfileOverview";
 import FavoriteSubject from "./FavoriteSubject/FavoriteSubject";
 import StudentStats from "./StudentStats/StudentStats";
@@ -14,6 +15,7 @@ import { useData } from "../../scripts/useData";
 
 function ProfileCard() {
   const [data] = useData();
+  const daysStreak = 0;
 
   const element = (
     <div className={styles.container}>
@@ -38,11 +40,19 @@ function ProfileCard() {
     </div>
   );
 
+  const pokeStreak = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${daysStreak + 1}.png`;
+
   const back = (
     <div className={styles.container}>
       <div className={styles.elementPlchd}>{element}</div>
       <div className={styles.backDiv}>
+        <img src={pokeStreak} alt="Your pokemon streak!" className={styles.pokeStreak} />
+        <h2 className={styles.pokeStreakLabel}><span style={{fontWeight: 600}}>{daysStreak} days</span> since last absence</h2>
         <h2 className={styles.backLabel}>Save and share this card to your friends!</h2>
+      </div>
+      <div className={styles.btnContainer}>
+        <Button text="Download" border="rounded" variant="filled" iconName="download" />
+        <Button text="Share" border="rounded" variant="filled" iconName="share" />
       </div>
     </div>
   );

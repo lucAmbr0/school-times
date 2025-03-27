@@ -47,9 +47,10 @@
 .backDiv {
     position: absolute;
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background: linear-gradient(135deg, var(--palette-400), var(--palette-300), var(--palette-200), var(--palette-300), var(--palette-400));
     border: solid 1px var(--palette-500);
@@ -76,4 +77,27 @@
     margin: 0 10%;
     text-align: center;
     color: var(--palette-950);
+}
+
+.btnContainer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    Button {
+        margin: 10px 5px;
+    }
+}
+
+.pokeStreak {
+    width: 50%;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+}
+
+.pokeStreakLabel {
+    color: var(--palette-950);
+    font-weight: 400;
+    margin: 10px 0 20px 0;
 }
