@@ -2,7 +2,7 @@
     font-family: "Inter";
     padding: 5px 10px;
     border-radius: 0px;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -42,7 +42,7 @@
             'FILL' 0,
             'wght' 400,
             'GRAD' 0,
-            'opsz' 24
+            'opsz' 20
     }
 }
 
@@ -62,7 +62,7 @@
         'FILL' 0,
         'wght' 600,
         'GRAD' 0,
-        'opsz' 24
+        'opsz' 20
 }
 
 .filled {
