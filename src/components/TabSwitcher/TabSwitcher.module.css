@@ -1,0 +1,53 @@
+.switchContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin: 0 5%;
+    position: relative;
+}
+
+.tabName {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 200;
+    color: var(--palette-900);
+    width: 50%;
+    margin: 10px 0;
+    transition: 0.15s ease;
+}
+
+.selectedTabName {
+    font-weight: 600;
+    color: var(--palette-950);
+}
+
+.pill {
+    position: absolute;
+    height: 5px;
+    background-color: var(--palette-300);
+    bottom: 0;
+    border-radius: 20px 20px 0 0;
+    width: 25%;
+    left: 37.5%;
+    transform: translateX(-100%);
+    transition: 0.15s ease transform;
+}
+
+.pillEvents {
+    transform: translateX(-100%);
+}
+
+.pillHomework {
+    transform: translateX(100%);
+}
+
+.container {
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-300);
+    border-radius: 12px;
+    width: 90%;
+    margin: 0 5%;
+    min-height: 50px;
+}
