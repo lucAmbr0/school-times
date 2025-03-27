@@ -76,7 +76,7 @@
     }
 }
 
-.filled:hover {
+.filled:active {
     background-color: var(--palette-300);
 }
 
@@ -91,7 +91,7 @@
     }
 }
 
-.outlined:hover {
+.outlined:active {
     background-color: var(--palette-100);
 }
 
@@ -106,6 +106,6 @@
     }
 }
 
-.clear:hover {
+.clear:active {
     color: var(--palette-900);
 }

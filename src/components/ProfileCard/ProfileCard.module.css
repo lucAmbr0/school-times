@@ -72,10 +72,11 @@
 }
 
 .backLabel {
-    font-size: 24px;
-    font-weight: 500;
-    margin: 0 10%;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 30px 15%;
     text-align: center;
+    word-break: break-all;
     color: var(--palette-950);
 }
 
