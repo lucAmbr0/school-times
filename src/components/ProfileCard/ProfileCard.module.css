@@ -102,3 +102,18 @@
     font-weight: 400;
     margin: 10px 0 20px 0;
 }
+
+.icon360Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    color: var(--palette-800);
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.icon360 {
+    font-size: 28px;
+    margin: 0 10px;
+}

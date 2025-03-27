@@ -5,7 +5,7 @@ import FavoriteSubject from "./FavoriteSubject/FavoriteSubject";
 import StudentStats from "./StudentStats/StudentStats";
 import GradesList from "./GradesList/GradesList";
 import HorizontalLine from "../Separator/HorizontalLine";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-flip";
 import "swiper/css/navigation";
@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 function ProfileCard() {
   const [data] = useData();
   const [daysStreak, setDaysStreak] = useState(0);
+  const icon360Styles = `material-symbols-outlined ${styles.icon360}`;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,7 +28,7 @@ function ProfileCard() {
     return () => clearInterval(interval);
   }, []);
 
-  const element = (
+  const frontCard = (
     <div className={styles.container}>
       <ProfileOverview user={data.user} />
       <FavoriteSubject favSubject={data.user.favoriteSubject} />
@@ -56,7 +57,7 @@ function ProfileCard() {
 
   const back = (
     <div className={styles.container}>
-      <div className={styles.elementPlchd}>{element}</div>
+      <div className={styles.elementPlchd}>{frontCard}</div>
       <div className={styles.backDiv}>
         <img
           src={pokeStreak}
@@ -88,7 +89,7 @@ function ProfileCard() {
     </div>
   );
 
-  const swiper = (
+  const swiperElement = (
     <Swiper
       effect={"flip"}
       grabCursor={true}
@@ -97,12 +98,22 @@ function ProfileCard() {
       modules={[EffectFlip]}
       className={styles.swiper}
     >
-      <SwiperSlide className={styles.swiperSlide}>{element}</SwiperSlide>
+      <SwiperSlide className={styles.swiperSlide}>{frontCard}</SwiperSlide>
       <SwiperSlide className={styles.swiperSlide}>{back}</SwiperSlide>
+      <div
+        className={styles.icon360Container}
+        onClick={() => {
+          const swiper = document.querySelector(`.${styles.swiper}`).swiper;
+          swiper.slideNext();
+        }}
+      >
+        <span className={icon360Styles}>360</span>
+        Rotate
+      </div>
     </Swiper>
   );
 
-  return swiper;
+  return swiperElement;
 }
 
 export default ProfileCard;
