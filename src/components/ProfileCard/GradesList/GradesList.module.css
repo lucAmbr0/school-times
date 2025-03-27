@@ -14,8 +14,9 @@
 }
 
 .gradeBubble {
-    min-width: 55px;
+    width: 20%;
     aspect-ratio: 1 / 1;
+    border: solid 1px var(--palette-300);
     border-radius: 50%;
     display: flex;
     justify-content: center;

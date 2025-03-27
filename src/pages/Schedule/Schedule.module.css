@@ -1,0 +1,62 @@
+.swipers {
+    margin: 10px 0 20px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+.swipersIndicator {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 18px;
+    background-color: rgba(var(--palette-300-rgb), 0.15);
+    /* border: 1px solid var(--palette-200); */
+    /* border-left: 2px solid var(--palette-200); */
+}
+.swipersIndicator::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: var(--palette-200);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.swipersGradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    border-radius: 7px;
+    background: linear-gradient(
+        to right,
+        var(--palette-50) 2%,
+        transparent 15%,
+        transparent 85%,
+        var(--palette-50) 98%
+    );
+    pointer-events: none;
+}
+
+.setTimeAndDayLabel {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.matesLabel {
+    text-align: center;
+    font-weight: 300;
+    font-size: 24px;
+    margin: 0;
+    line-height: 0.5;
+    margin-bottom: 20px;
+}

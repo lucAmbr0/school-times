@@ -4,7 +4,6 @@ import FavoriteSubject from "./FavoriteSubject/FavoriteSubject";
 import StudentStats from "./StudentStats/StudentStats";
 import GradesList from "./GradesList/GradesList";
 import HorizontalLine from "../Separator/HorizontalLine";
-import ButtonTable from "../Table/ButtonTable"
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-flip";
@@ -35,7 +34,7 @@ function ProfileCard() {
         <StudentStats label={"GPA"} value={0} />
       </div>
       <h3 className={styles.sectionLabel}>Latest grades</h3>
-      <GradesList grades={["", "", "", "", "", "", "", ""]} />
+      <GradesList grades={["", "", "", "", ""]} />
     </div>
   );
 

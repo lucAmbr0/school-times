@@ -16,11 +16,11 @@
     display: grid;
     grid-template-columns: 1fr;
     border-radius: 22px;
-    background: linear-gradient(135deg, var(--palette-200), var(--palette-100), var(--palette-200));
+    background: linear-gradient(135deg, var(--palette-300), var(--palette-100), var(--palette-300));
     background-size: 400% 400%;
     margin: 0;
     position: relative;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.15);
     animation: shinyEffect 5s linear infinite;
 }
 
@@ -30,7 +30,7 @@
     grid-template-rows: 1fr 1fr;
     height: 100px;
     margin: 10px 20px;
-    gap: 5px;
+    gap: 10px;
 }
 
 .sectionLabel {
@@ -51,8 +51,8 @@
     height: 100%;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, var(--palette-500), var(--palette-400), var(--palette-300), var(--palette-400), var(--palette-500));
-    border: solid 2px var(--palette-300);
+    background: linear-gradient(135deg, var(--palette-400), var(--palette-300), var(--palette-200), var(--palette-300), var(--palette-400));
+    border: solid 1px var(--palette-500);
     background-size: 400% 400%;
     border-radius: 22px;
     animation: shinyEffect 5s linear infinite;

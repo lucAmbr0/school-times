@@ -9,6 +9,7 @@
     height: 100%;
     aspect-ratio: 1 / 1;
     background-color: var(--palette-200);
+    border: solid 1px var(--palette-300);
     border-radius: 50%;
     display: flex;
     justify-content: center;
