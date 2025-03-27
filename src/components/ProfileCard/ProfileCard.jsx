@@ -20,7 +20,8 @@ function ProfileCard() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDaysStreak((prev) => prev + 1);
+      if (daysStreak < 365) setDaysStreak((prev) => prev + 1);
+      else setDaysStreak(0);
     }, 1500);
 
     return () => clearInterval(interval);
@@ -49,26 +50,47 @@ function ProfileCard() {
     </div>
   );
 
-  const pokeStreak = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${daysStreak + 1}.png`;
+  const pokeStreak = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${
+    daysStreak + 1
+  }.png`;
 
   const back = (
     <div className={styles.container}>
       <div className={styles.elementPlchd}>{element}</div>
       <div className={styles.backDiv}>
-        <img src={pokeStreak} alt="Your pokemon streak!" className={styles.pokeStreak} />
-        <h2 className={styles.pokeStreakLabel}><span style={{fontWeight: 600}}>{daysStreak} days</span> since last absence</h2>
-        <h2 className={styles.backLabel}>Save and share this card to your friends!</h2>
+        <img
+          src={pokeStreak}
+          alt="Your pokemon streak!"
+          className={styles.pokeStreak}
+        />
+        <h2 className={styles.pokeStreakLabel}>
+          <span style={{ fontWeight: 600 }}>{daysStreak} days</span> since last
+          absence
+        </h2>
+        <h2 className={styles.backLabel}>
+          Save and share this card to your friends!
+        </h2>
       </div>
       <div className={styles.btnContainer}>
-        <Button text="Download" border="rounded" variant="filled" iconName="download" />
-        <Button text="Share" border="rounded" variant="filled" iconName="share" />
+        <Button
+          text="Download"
+          border="rounded"
+          variant="filled"
+          iconName="download"
+        />
+        <Button
+          text="Share"
+          border="rounded"
+          variant="filled"
+          iconName="share"
+        />
       </div>
     </div>
   );
 
   const swiper = (
     <Swiper
-      effect={'flip'}
+      effect={"flip"}
       grabCursor={true}
       loop={true}
       touchRatio={1}
