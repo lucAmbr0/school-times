@@ -51,7 +51,10 @@ function ProfileCard() {
     </div>
   );
 
-  const pokemonIndexes = [10,19,25,16,41,52,54,66,93,125,123,130,143,248,373,448,445,635,468,637,376,149,257,658,681,9,718,384,890,151,150];
+  const pokemonIndexes = [
+    10, 19, 25, 16, 41, 52, 54, 66, 93, 125, 123, 130, 143, 248, 373, 448, 445,
+    635, 468, 637, 376, 149, 257, 658, 681, 9, 718, 384, 890, 151, 150,
+  ];
   const pokeStreak = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${
     pokemonIndexes[daysStreak > 30 ? 30 : daysStreak]
   }.png`;
@@ -105,7 +108,11 @@ function ProfileCard() {
         className={styles.icon360Container}
         onClick={() => {
           const swiper = document.querySelector(`.${styles.swiper}`).swiper;
-          swiper.slideNext();
+          if (swiper.activeIndex === 0) {
+            swiper.slideNext();
+          } else if (swiper.activeIndex === 1) {
+            swiper.slidePrev();
+          }
         }}
       >
         <span className={icon360Styles}>360</span>
