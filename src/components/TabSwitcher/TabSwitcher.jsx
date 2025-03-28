@@ -1,6 +1,7 @@
 import Post from "../Post/Post";
 import {useEffect, useState} from "react";
 import styles from "./TabSwitcher.module.css";
+import { useSwipeable } from "react-swipeable";
 
 class Content {
     constructor() {
@@ -34,19 +35,42 @@ function TabSwitcher({posts}) {
         }
     }
 
+    const [swipeProgress, setSwipeProgress] = useState(0);
+
+    const swipeHandlers = useSwipeable({
+        onSwipedLeft: () => {
+            setTab("Homework");
+            setSwipeProgress(0);
+        },
+        onSwipedRight: () => {
+            setTab("Events");
+            setSwipeProgress(0);
+        },
+        onSwiping: (eventData) => {
+            const deltaX = eventData.deltaX;
+            const progress = Math.min(Math.abs(deltaX) / window.innerWidth, 1); // Normalize progress
+            setSwipeProgress(tab === "Events" ? progress * 100 : -progress * 100);
+        },
+    });
+
+    const pillStyle = {
+        transform: `translateX(${tab === "Homework" ? 100 + swipeProgress : -100 + swipeProgress}%)`,
+        transition: swipeProgress === 0 ? "transform 0.2s ease" : "none",
+    };
+
     const element =
-  <>
-    <div className={styles.switchContainer}>
-      <button onClick={() => setTab("Events")} className={[styles.tabName, tab == "Events" ? styles.selectedTabName : ""].join(" ")} id="Events-btn">Events</button>
-      <button onClick={() => setTab("Homework")} className={[styles.tabName, tab == "Homework" ? styles.selectedTabName : ""].join(" ")} id="Homework-btn">Homework</button>
-      <div className={[styles.pill, tab === "Homework" ? styles.pillHomework : styles.pillEvents].join(" ")}></div>
-    </div>
-    <div className={styles.container}>
-        <div className={styles.containerMargin}>
-            {tab === "Homework" ? homeworkTab : eventsTab}
+    <div {...swipeHandlers}>
+        <div className={styles.switchContainer}>
+            <button onClick={() => setTab("Events")} className={[styles.tabName, tab == "Events" ? styles.selectedTabName : ""].join(" ")} id="Events-btn">Events</button>
+            <button onClick={() => setTab("Homework")} className={[styles.tabName, tab == "Homework" ? styles.selectedTabName : ""].join(" ")} id="Homework-btn">Homework</button>
+            <div className={[styles.pill, tab === "Homework" ? styles.pillHomework : styles.pillEvents].join(" ")} style={pillStyle}></div>
         </div>
-    </div>
-  </>;
+        <div className={styles.container}>
+            <div className={styles.containerMargin}>
+                {tab === "Homework" ? homeworkTab : eventsTab}
+            </div>
+        </div>
+    </div>;
 
   return element;
 }
