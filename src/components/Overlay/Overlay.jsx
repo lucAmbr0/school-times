@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import styles from "./Overlay.module.css";
 
-function Overlay({ window, blur = 10, color = "rbga(0,0,0,0.7)", zIndex = 0 }) {
+function Overlay({ event, blur = 10, color = "rbga(0,0,0,0.7)", zIndex = 0 }) {
   const overlayRef = useRef(null);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function Overlay({ window, blur = 10, color = "rbga(0,0,0,0.7)", zIndex = 0 }) {
   }, [color, blur]);
 
   return (
-    <div ref={overlayRef} onClick={window} className={styles.container}></div>
+    <div ref={overlayRef} onClick={event} className={styles.container}></div>
   );
 }
 
