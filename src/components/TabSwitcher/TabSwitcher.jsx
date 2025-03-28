@@ -79,8 +79,8 @@ function TabSwitcher({posts}) {
             <button onClick={() => setTab("Homework")} className={[styles.tabName, tab == "Homework" ? styles.selectedTabName : ""].join(" ")} id="Homework-btn">Homework</button>
             <div className={[styles.pill, tab === "Homework" ? styles.pillHomework : styles.pillEvents].join(" ")} style={pillStyle}></div>
         </div>
-        <div style={containerStyle} className={styles.container}>
-            <div className={styles.containerMargin}>
+        <div className={styles.container}>
+            <div style={containerStyle} className={styles.containerMargin}>
                 {postsContent}
             </div>
         </div>
