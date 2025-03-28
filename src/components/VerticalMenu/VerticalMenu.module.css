@@ -1,13 +1,15 @@
 @keyframes menuIn {
     0% {
-        clip-path: inset(0 0 100% 0);
+        transform: translateY(-5%);
+        clip-path: inset(0 0 100% 0 round 15px);
         opacity: 0;
     }
     50% {
         opacity: 1;
     }
     100% {
-        clip-path: inset(0 0 0 0);
+        transform: translateY(0%);
+        clip-path: inset(0 0 0 0 round 15px);
         opacity: 1;
     }
 }
@@ -29,17 +31,17 @@
 .container {
     position: fixed;
     min-width: 50px;
-    min-height: 100px;
+    min-height: 50px;
     background-color: var(--palette-50);
     border: solid 1px var(--palette-300);
     z-index: 102;
     top: 12.5px;
     left: auto;
     right: calc(5% + 5px);
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 5px 0;
-    box-shadow: 0 0 15px rgba(0,0,0,0.25);
-    animation: menuIn 0.3s;
+    /* box-shadow: 0 0 15px rgba(0,0,0,0.25); */
+    animation: menuIn 0.4s;
 }
 
 .button {
