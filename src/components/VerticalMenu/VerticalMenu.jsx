@@ -27,7 +27,7 @@ function VerticalMenu({showMenu, setShowMenu}) {
     }, [showSettings]);
     const menu = showMenu ? (
     <>
-        <Overlay zIndex={101} blur={"3px"} color={"rgba(0,0,0,0.1)"} event={() => setShowMenu(false)} />
+        <Overlay zIndex={101} blur={"0px"} color={"rgba(0,0,0,0.1)"} event={() => setShowMenu(false)} />
         <div className={styles.container}>
             <button onClick={() => { window.location.reload(true) }} className={styles.button}>
                 <span className="material-symbols-outlined">refresh</span>Reload
