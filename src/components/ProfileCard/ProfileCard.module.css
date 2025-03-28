@@ -21,7 +21,7 @@
     margin: 0;
     position: relative;
     box-shadow: 0 2px 15px rgba(0,0,0,0.15);
-    animation: shinyEffect 5s linear infinite;
+    animation: shinyEffect 4.5s ease-in-out infinite;
 }
 
 .statsContainer {
@@ -56,7 +56,7 @@
     border: solid 1px var(--palette-500);
     background-size: 400% 400%;
     border-radius: 22px;
-    animation: shinyEffect 5s linear infinite;
+    animation: shinyEffect 5s ease-in-out infinite;
 }
 
 @keyframes shinyEffect {
