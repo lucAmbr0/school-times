@@ -79,7 +79,7 @@
         transform: translateX(-10%);
         opacity: 0.25;
     }
-    70% {
+    90% {
         opacity: 1;
     }
     100% {
@@ -93,7 +93,7 @@
         transform: translateX(10%);
         opacity: 0.25;
     }
-    70% {
+    90% {
         opacity: 1;
     }
     100% {

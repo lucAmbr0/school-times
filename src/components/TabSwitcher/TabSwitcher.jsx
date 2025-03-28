@@ -1,5 +1,5 @@
 import Post from "../Post/Post";
-import {useEffect, useState, useRef} from "react";
+import { useState, useRef} from "react";
 import styles from "./TabSwitcher.module.css";
 import { useSwipeable } from "react-swipeable";
 
@@ -68,7 +68,7 @@ function TabSwitcher({posts}) {
     };
 
     containerStyle = {
-        transform: `translateX(${-swipeProgress/20}%)`,
+        transform: `translateX(${-swipeProgress/10}%)`,
         transition: swipeProgress === 0 ? "transform 0.2s ease" : "none",
         opacity: tab === "Events" ? 1-(swipeProgress/120) : 1+(swipeProgress/120)
     };
