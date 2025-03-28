@@ -17,7 +17,7 @@ function Header() {
   };
   const element = (
     <>
-      {showMenu ? <VerticalMenu {...verticalMenuProps} /> : ""}
+      <VerticalMenu {...verticalMenuProps} />
       <div className={styles.headerContainer}>
         <h1 className={styles.appName}>School Times</h1>
         <div className={styles.buttonsContainer}>

@@ -8,6 +8,8 @@ function Settings() {
       </div>
     </>
   );
+
+  return element;
 }
 
 export default Settings;
