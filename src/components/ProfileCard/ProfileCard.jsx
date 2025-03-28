@@ -51,8 +51,9 @@ function ProfileCard() {
     </div>
   );
 
+  const pokemonIndexes = [10,19,25,16,41,52,54,66,93,125,123,130,143,248,373,448,445,635,468,637,376,149,257,658,681,9,718,384,890,151,150];
   const pokeStreak = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${
-    daysStreak + 1
+    pokemonIndexes[daysStreak > 30 ? 30 : daysStreak]
   }.png`;
 
   const back = (
