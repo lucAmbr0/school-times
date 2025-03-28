@@ -1,5 +1,7 @@
 .container {
     text-align: left;
+    width: 90%;
+    padding: 0 7.5%;
 }
 
 .date {

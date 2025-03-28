@@ -1,5 +1,5 @@
 import Post from "../Post/Post";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import styles from "./TabSwitcher.module.css";
 import { useSwipeable } from "react-swipeable";
 
@@ -14,8 +14,10 @@ class Content {
 
 function TabSwitcher({posts}) {
     const [tab, setTab] = useState("Events");
+    const initialRender = useRef(true); // Use useRef to track initial render
     
     let homeworkTab = [], eventsTab = []; // Initialize as empty arrays
+    
 
     if (Array.isArray(posts)) {
         for (let i = 0; i < posts.length; i++) {
@@ -35,6 +37,13 @@ function TabSwitcher({posts}) {
         }
     }
 
+    const postsContent = (
+        <div className={tab === "Homework" ? styles.appearRight : styles.appearLeft}>
+            {tab === "Homework" ? homeworkTab : eventsTab}
+        </div>
+    );
+
+    let containerStyle;
     const [swipeProgress, setSwipeProgress] = useState(0);
 
     const swipeHandlers = useSwipeable({
@@ -58,6 +67,11 @@ function TabSwitcher({posts}) {
         transition: swipeProgress === 0 ? "transform 0.2s ease" : "none",
     };
 
+    containerStyle = {
+        transform: `translateX(${-swipeProgress/20}%)`,
+        transition: swipeProgress === 0 ? "transform 0.2s ease" : "none",
+    };
+
     const element =
     <div {...swipeHandlers}>
         <div className={styles.switchContainer}>
@@ -65,9 +79,9 @@ function TabSwitcher({posts}) {
             <button onClick={() => setTab("Homework")} className={[styles.tabName, tab == "Homework" ? styles.selectedTabName : ""].join(" ")} id="Homework-btn">Homework</button>
             <div className={[styles.pill, tab === "Homework" ? styles.pillHomework : styles.pillEvents].join(" ")} style={pillStyle}></div>
         </div>
-        <div className={styles.container}>
+        <div style={containerStyle} className={styles.container}>
             <div className={styles.containerMargin}>
-                {tab === "Homework" ? homeworkTab : eventsTab}
+                {postsContent}
             </div>
         </div>
     </div>;

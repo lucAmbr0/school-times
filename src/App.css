@@ -21,6 +21,7 @@ body {
     border-radius: 30px;
     padding: 10px 0;
     z-index: 3;
+    overflow-x: hidden;
 }
 
 .placeholder {

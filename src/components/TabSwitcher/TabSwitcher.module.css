@@ -47,7 +47,57 @@
     /* background-color: var(--palette-100); */
     /* border: solid 1px var(--palette-300); */
     border-radius: 12px;
-    width: 90%;
-    margin: 0 7.5%;
+    width: 100%;
+    margin: 0 0;
     min-height: 50px;
+    overflow: hidden;
+    opacity: 0;
+    animation: appearOpacity 0.3s ease forwards;
+}
+
+.appearLeft {
+    animation: appearLeft 0.3s ease forwards;
+}
+
+.appearRight {
+    animation: appearRight 0.3s ease forwards;
+}
+
+@keyframes appearOpacity {
+    from {
+        opacity: 1;
+        transform: translateX(10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes appearLeft {
+    0% {
+        transform: translateX(-10%);
+        opacity: 0.25;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes appearRight {
+    0% {
+        transform: translateX(10%);
+        opacity: 0.25;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
 }
