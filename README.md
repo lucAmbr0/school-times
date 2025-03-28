@@ -77,101 +77,154 @@ school-times
 │           colors.css
 │           fonts.css
 │
-├───src
-│   │   vite.config.js
-│   │   App.css
-│   │   App.jsx
-│   │   index.css
-│   │   index.js
-│   │   main.jsx
-│   │
-│   ├───components
-│   │   ├───Boxes
-│   │   │   │   Box.module.css
-│   │   │   │
-│   │   │   ├───SmallChip
-│   │   │   │       SmallChip.jsx
-│   │   │   │       SmallChip.module.css
-│   │   │   │
-│   │   │   ├───SmallMateClassBox
-│   │   │   │       SmallMateClassBox.jsx
-│   │   │   │       SmallMateClassBox.module.css
-│   │   │   │
-│   │   │   ├───UpcomingEventsBox
-│   │   │   │   │   UpcomingEventsBox.jsx
-│   │   │   │   │   UpcomingEventsBox.module.css
-│   │   │   │   │
-│   │   │   │   └───SmallEventChip
-│   │   │   │           SmallEventChip.jsx
-│   │   │   │           SmallEventChip.module.css
-│   │   │   │
-│   │   │   └───UserClassBox
-│   │   │           UserClassBox.jsx
-│   │   │           UserClassBox.module.css
-│   │   │
-│   │   ├───Button
-│   │   │       Button.jsx
-│   │   │       Button.module.css
-│   │   │
-│   │   ├───Header
-│   │   │       Header.jsx
-│   │   │       Header.module.css
-│   │   │
-│   │   ├───Navbar
-│   │   │   │   Navbar.jsx
-│   │   │   │   Navbar.module.css
-│   │   │   │
-│   │   │   └───NavbarBtn
-│   │   │           NavbarBtn.jsx
-│   │   │           NavbarBtn.module.css
-│   │   │
-│   │   ├───ProgressBar
-│   │   │   ├───PercentageProgressBar
-│   │   │   │       PercentageProgressBar.jsx
-│   │   │   │       PercentageProgressBar.module.css
-│   │   │   │
-│   │   │   └───StepProgressBar
-│   │   │           StepProgressBar.jsx
-│   │   │           StepProgressBar.module.css
-│   │   │
-│   │   ├───Separator
-│   │   │       HorizontalLine.jsx
-│   │   │       Separator.module.css
-│   │   │
-│   │   ├───SwiperWrap
-│   │   │       SwiperWrap.jsx
-│   │   │       SwiperWrap.module.css
-│   │   │
-│   │   ├───Table
-│   │   │       ButtonTable.jsx
-│   │   │       ButtonTable.module.css
-│   │   │
-│   │   └───VerticalDots
-│   │           VerticalDots.jsx
-│   │           VerticalDots.module.css
-│   │
-│   ├───context
-│   ├───pages
-│   │   ├───Calendar
-│   │   │       Calendar.jsx
-│   │   │       Calendar.module.css
-│   │   │
-│   │   ├───Home
-│   │   │       Home.jsx
-│   │   │       Home.module.css
-│   │   │
-│   │   ├───Schedule
-│   │   │       Schedule.jsx
-│   │   │       Schedule.module.css
-│   │   │
-│   │   └───Settings
-│   │           Settings.jsx
-│   │           Settings.module.css
-│   │
-│   └───scripts
-│           Data.js
-│           useData.jsx
-│           useThemeColor.js
+└───src
+    │   App.css
+    │   App.jsx
+    │   index.css
+    │   index.js
+    │   main.jsx
+    │
+    ├───assets
+    │   ├───fonts
+    │   │       Inter-Italic.ttf
+    │   │       Inter.ttf
+    │   │       material-symbols-outlined.woff2
+    │   │
+    │   └───styles
+    │           colors.css
+    │           fonts.css
+    │
+    ├───components
+    │   ├───Boxes
+    │   │   │   Box.module.css
+    │   │   │
+    │   │   ├───LargeMateClassBox
+    │   │   │       LargeMateClassBox.jsx
+    │   │   │       LargeMateClassBox.module.css
+    │   │   │
+    │   │   ├───SmallChip
+    │   │   │       SmallChip.jsx
+    │   │   │       SmallChip.module.css
+    │   │   │
+    │   │   ├───SmallMateClassBox
+    │   │   │       SmallMateClassBox.jsx
+    │   │   │       SmallMateClassBox.module.css
+    │   │   │
+    │   │   ├───UpcomingEventsBox
+    │   │   │   │   UpcomingEventsBox.jsx
+    │   │   │   │   UpcomingEventsBox.module.css
+    │   │   │   │
+    │   │   │   └───SmallEventChip
+    │   │   │           SmallEventChip.jsx
+    │   │   │           SmallEventChip.module.css
+    │   │   │
+    │   │   └───UserClassBox
+    │   │           UserClassBox.jsx
+    │   │           UserClassBox.module.css
+    │   │
+    │   ├───Button
+    │   │       Button.jsx
+    │   │       Button.module.css
+    │   │
+    │   ├───Header
+    │   │       Header.jsx
+    │   │       Header.module.css
+    │   │
+    │   ├───Navbar
+    │   │   │   Navbar.jsx
+    │   │   │   Navbar.module.css
+    │   │   │
+    │   │   └───NavbarBtn
+    │   │           NavbarBtn.jsx
+    │   │           NavbarBtn.module.css
+    │   │
+    │   ├───Overlay
+    │   │       Overlay.jsx
+    │   │       Overlay.module.css
+    │   │
+    │   ├───Post
+    │   │       Post.jsx
+    │   │       Post.module.css
+    │   │
+    │   ├───ProfileCard
+    │   │   │   ProfileCard.jsx
+    │   │   │   ProfileCard.module.css
+    │   │   │
+    │   │   ├───FavoriteSubject
+    │   │   │       FavoriteSubject.jsx
+    │   │   │       FavoriteSubject.module.css
+    │   │   │
+    │   │   ├───GradesList
+    │   │   │       GradesList.jsx
+    │   │   │       GradesList.module.css
+    │   │   │
+    │   │   ├───ProfileOverview
+    │   │   │       ProfileOverview.jsx
+    │   │   │       ProfileOverview.module.css
+    │   │   │
+    │   │   └───StudentStats
+    │   │           StudentStats.jsx
+    │   │           StudentStats.module.css
+    │   │
+    │   ├───ProgressBar
+    │   │   ├───PercentageProgressBar
+    │   │   │       PercentageProgressBar.jsx
+    │   │   │       PercentageProgressBar.module.css
+    │   │   │
+    │   │   └───StepProgressBar
+    │   │           StepProgressBar.jsx
+    │   │           StepProgressBar.module.css
+    │   │
+    │   ├───Separator
+    │   │       HorizontalLine.jsx
+    │   │       Separator.module.css
+    │   │
+    │   ├───SwiperWrap
+    │   │       SwiperWrap.jsx
+    │   │       SwiperWrap.module.css
+    │   │
+    │   ├───Table
+    │   │       ButtonTable.jsx
+    │   │       ButtonTable.module.css
+    │   │
+    │   ├───TabSwitcher
+    │   │       TabSwitcher.jsx
+    │   │       TabSwitcher.module.css
+    │   │
+    │   ├───VerticalDots
+    │   │       VerticalDots.jsx
+    │   │       VerticalDots.module.css
+    │   │
+    │   └───VerticalMenu
+    │           VerticalMenu.jsx
+    │           VerticalMenu.module.css
+    │
+    ├───context
+    ├───pages
+    │   ├───Events
+    │   │       Events.jsx
+    │   │       Events.module.css
+    │   │
+    │   ├───Explore
+    │   │       Explore.jsx
+    │   │       Explore.module.css
+    │   │
+    │   ├───Home
+    │   │       Home.jsx
+    │   │       Home.module.css
+    │   │
+    │   ├───Profile
+    │   │       Profile.jsx
+    │   │       Profile.module.css
+    │   │
+    │   └───Settings
+    │           Settings.jsx
+    │           Settings.module.css
+    │
+    └───scripts
+            Data.js
+            useData.jsx
+            useThemeColor.js
 ```
 
 ## :cherry_blossom: Community
