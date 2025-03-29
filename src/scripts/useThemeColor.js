@@ -49,7 +49,7 @@ const palettes = {
       "--palette-700-rgb": "114, 188, 228",
       "--palette-800-rgb": "153, 205, 234",
       "--palette-900-rgb": "186, 219, 242",
-      "--palette-950-rgb":  "201, 230, 243",
+      "--palette-950-rgb": "201, 230, 243",
     }
   },
   Pine: {
@@ -119,7 +119,11 @@ const useThemeColor = (mode = "system", palette = "Cornflower") => {
         themeMode = isDarkMode ? "dark" : "light";
       }
 
-      const themeColor = themeMode === "dark" ? "#195173" : "#C4E2F3";
+      // Apply the palette
+      const currentPalette = data.settings.palette || "Cornflower";
+      const selectedPalette = palettes[currentPalette][themeMode];
+
+      const themeColor = palettes[palette][themeMode]["--palette-200"];
 
       // Update the <meta name="theme-color">
       let themeMetaTag = document.querySelector('meta[name="theme-color"]');
@@ -129,10 +133,6 @@ const useThemeColor = (mode = "system", palette = "Cornflower") => {
         document.head.appendChild(themeMetaTag);
       }
       themeMetaTag.setAttribute("content", themeColor);
-
-      // Apply the palette
-      const currentPalette = data.settings.palette || "Cornflower";
-      const selectedPalette = palettes[currentPalette][themeMode];
 
       // Apply the selected palette to the document
       Object.entries(selectedPalette).forEach(([key, value]) => {
