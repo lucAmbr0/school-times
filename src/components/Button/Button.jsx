@@ -8,8 +8,10 @@ import styles from './Button.module.css';
 
 const errNoClkEvent = () => { console.error("Error: No onClick event provided") };
 
-function Button({ text = "", border = "soft", variant = "filled", iconName = "", onClick = errNoClkEvent }) {
-  const iconClasses = `material-symbols-outlined ${styles.icon}`;
+function Button({ text = "", border = "soft", variant = "filled", iconName = "", iconState = "empty", onClick = errNoClkEvent }) {
+  const iconClasses = `material-symbols-outlined ${styles.icon} ${iconState == "filled" ? styles.filledIcon : ""}`;
+  console.log(iconState);
+  
   let btnClasses = `${styles.button} ${styles[border]} ${styles[variant]} ${!text && styles.iconOnly}`
   
   return (

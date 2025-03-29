@@ -65,6 +65,11 @@
         'opsz' 20
 }
 
+.filledIcon {
+    font-variation-settings:
+    'FILL' 1 !important;
+}
+
 .filled {
     background-color: var(--palette-200);
     color: var(--palette-950);
