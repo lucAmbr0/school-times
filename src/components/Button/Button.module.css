@@ -97,12 +97,12 @@
 
 .clear {
     background-color: transparent;
-    color: var(--palette-900);
+    color: var(--palette-950);
     border: solid 2px transparent;
     font-weight: 400;
 
     .icon {
-        color: var(--palette-900);
+        color: var(--palette-950);
     }
 }
 

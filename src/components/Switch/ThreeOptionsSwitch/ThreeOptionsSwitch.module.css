@@ -1,0 +1,46 @@
+/* ThemeToggle.module.css */
+.buttonsContainer {
+    position: relative;
+    padding: 4px;
+    margin: 0;
+    display: grid;
+    width: fit-content;
+    height: fit-content;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+    z-index: 5;
+}
+
+.buttonsContainer Button {
+    margin: 0px !important;
+    width: 30px !important;
+    height: 30px !important;
+    z-index: 10;
+}
+
+.buttonsContainer Button span {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+    z-index: 10;
+}
+
+.container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-200);
+    border-radius: 16px;
+}
+
+.indicator {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    background-color: var(--palette-300);
+    border-radius: 12px;
+}
