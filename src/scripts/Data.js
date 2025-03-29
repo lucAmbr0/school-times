@@ -56,7 +56,8 @@ class Cell {
 
 class Settings {
     constructor() {
-        this.darkMode = true;
+        this.darkMode = "system";
+        this.palette = "Cornflower";
         this.language = "eng";
         this.tab = "Home";
     }
