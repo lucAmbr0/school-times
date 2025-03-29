@@ -37,10 +37,11 @@
 .indicator {
     position: absolute;
     top: 4px;
-    left: 4px;
+    left: 38px;
     width: 30px;
     aspect-ratio: 1 / 1;
     z-index: 1;
     background-color: var(--palette-300);
     border-radius: 12px;
+    transition: .1s cubic-bezier(0.18, 0.90, 0.50, 1.275) transform;
 }

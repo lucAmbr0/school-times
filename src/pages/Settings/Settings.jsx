@@ -1,4 +1,3 @@
-import Button from "../../components/Button/Button";
 import DarkModeSwitch from "../../components/Switch/DarkModeSwitch/DarkModeSwitch";
 import styles from "./Settings.module.css";
 
