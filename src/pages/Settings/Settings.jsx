@@ -1,4 +1,5 @@
 import DarkModeSwitch from "../../components/Switch/DarkModeSwitch/DarkModeSwitch";
+import DropdownMenu from "../../components/ThemeSelector/ThemeSelector";
 import styles from "./Settings.module.css";
 
 function Settings({onBack}) {
@@ -16,6 +17,8 @@ function Settings({onBack}) {
           <div className={styles.settingsGrid}>
             <p className={styles.settingLabel}>Dark mode</p>
             <DarkModeSwitch />
+            <p className={styles.settingLabel}>Color theme</p>
+            <DropdownMenu options={["Cornflower", "Pine"]} />
           </div>
         </div>
       </div>

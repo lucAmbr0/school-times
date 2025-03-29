@@ -1,0 +1,34 @@
+.selectContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.container {
+    all: unset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 8px 40px 8px 10px;
+    cursor: pointer;
+    position: relative;
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-200);
+    border-radius: 12px;
+    font-size: 20px;
+    color: var(--palette-950);
+    font-weight: 300;
+}
+
+.dropdownIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.option {
+    font-size: 20px;
+    color: var(--palette-950);
+    font-weight: 300;
+}
