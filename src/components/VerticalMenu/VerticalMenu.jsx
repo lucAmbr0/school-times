@@ -45,7 +45,7 @@ function VerticalMenu({showMenu, setShowMenu}) {
     const element = (
         <>
         {menu}
-        {showSettings ? <Settings /> : ""}
+        {showSettings ? <Settings onBack={() => setShowSettings(false)} /> : ""}
         </>
     )
 
