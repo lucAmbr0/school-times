@@ -1,5 +1,5 @@
 import Button from "../../components/Button/Button";
-import ThreeOptionsSwitch from "../../components/Switch/ThreeOptionsSwitch/ThreeOptionsSwitch";
+import DarkModeSwitch from "../../components/Switch/DarkModeSwitch/DarkModeSwitch";
 import styles from "./Settings.module.css";
 
 function Settings({onBack}) {
@@ -16,7 +16,7 @@ function Settings({onBack}) {
           <h3 className={styles.sectionTitle}>Preferences</h3>
           <div className={styles.settingsGrid}>
             <p className={styles.settingLabel}>Dark mode</p>
-            <ThreeOptionsSwitch />
+            <DarkModeSwitch />
           </div>
         </div>
       </div>

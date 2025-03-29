@@ -1,8 +1,8 @@
-import styles from "./ThreeOptionsSwitch.module.css";
+import styles from "./DarkModeSwitch.module.css";
 import Button from "../../Button/Button";
 import { useState } from "react";
 
-function ThreeOptionsSwitch() {
+function DarkModeSwitch() {
     const [selected, setSelected] = useState("light");
 
     const element = 
@@ -18,4 +18,4 @@ function ThreeOptionsSwitch() {
     return element;
 }
 
-export default ThreeOptionsSwitch;
+export default DarkModeSwitch;
