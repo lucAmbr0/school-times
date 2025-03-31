@@ -7,7 +7,7 @@ function setDeepValue(obj, path, value) {
   let temp = obj;
 
   for (let i = 0; i < keys.length - 1; i++) {
-    if (!temp[keys[i]]) temp[keys[i]] = {}; // Ensure nested object exists
+    if (!temp[keys[i]]) temp[keys[i]] = {};
     temp = temp[keys[i]];
   }
 
@@ -15,41 +15,71 @@ function setDeepValue(obj, path, value) {
 }
 
 function getDeepValue(obj, path) {
-  return path.split(".").reduce((o, key) => (o && o[key] !== undefined ? o[key] : ""), obj);
+  return path
+    .split(".")
+    .reduce((o, key) => (o && o[key] !== undefined ? o[key] : ""), obj);
 }
 
-function TextInput({ type = "text", path, name, id }) {
+function TextInput({ type, path, name, id, placeholder }) {
   const [data, setData] = useData();
+  let eventPtr;
 
-  // Load the entire "data" object from localStorage
   const storedData = JSON.parse(localStorage.getItem("data")) || {};
-  const storedValue = getDeepValue(storedData, path) || getDeepValue(data, path);
+  const storedValue =
+    getDeepValue(storedData, path) || getDeepValue(data, path);
 
   const [value, setValue] = useState(storedValue);
 
   useEffect(() => {
-    // Save the entire "data" object to localStorage when value changes
     const newData = { ...data };
     setDeepValue(newData, path, value);
     localStorage.setItem("data", JSON.stringify(newData));
     setData(newData);
   }, [value, path]);
 
+  useEffect(() => {
+    if (type == "textarea") {
+      setValue(
+        value.toString()
+          .split(",")
+          .map(
+            (v) =>
+              " " + v.trim().charAt(0).toUpperCase() + v.trim().substring(1)
+          ).toString().trim()
+      );
+    }
+  }, []);
+
   const handleTextChange = (event) => {
-    const newValue = event.target.value;
+    let newValue = event.target.value;
+    if (event.target.localName == "textarea") newValue = newValue.split(",");
     setValue(newValue);
   };
 
-  return (
-    <input
-      type={type}
-      className={styles.inputElement}
-      value={value}
-      name={name}
-      id={id}
-      onChange={handleTextChange}
-    />
-  );
+  if (type == "textarea") {
+    return (
+      <textarea
+        className={styles.textArea}
+        value={value}
+        placeholder={placeholder + "..."}
+        name={name}
+        id={id}
+        rows={4}
+        onChange={handleTextChange}
+      ></textarea>
+    );
+  } else {
+    return (
+      <input
+        type={type}
+        className={styles.inputElement}
+        value={value}
+        name={name}
+        id={id}
+        onChange={handleTextChange}
+      />
+    );
+  }
 }
 
 export default TextInput;

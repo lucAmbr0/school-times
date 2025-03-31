@@ -47,6 +47,16 @@ function Settings({onBack}) {
             <TextInput path={"user.favoriteSubject"} id={"favorite-subject"} name={"Favorite subject"} />
           </div>
         </div>
+        <div className={styles.settingsSection}>
+          <h3 className={styles.sectionTitle}>School data</h3>
+          <p className={styles.schDataLabel}>Write your rooms, subjects and teachers in the boxes below separated by comma to fill classes' timetables</p>
+          <h3 className={styles.textAreaLabel}>Rooms</h3>
+          <TextInput path={"user.rooms"} type="textarea" id={"rooms"} name={"Rooms"} placeholder={"Room 25, Electronics Lab 2, Main hall"} />
+          <h3 className={styles.textAreaLabel}>Subjects</h3>
+          <TextInput path={"user.subjects"} type="textarea" id={"subjects"} name={"Subjects"} placeholder={"English, Maths, History"} />
+          <h3 className={styles.textAreaLabel}>Teachers</h3>
+          <TextInput path={"user.teachers"} type="textarea" id={"teachers"} name={"Teachers"} placeholder={"Bess Ross, Jesus Byrd, Emily Schmidt"} />
+        </div>
       </div>
     </>
   );

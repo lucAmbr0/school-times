@@ -88,6 +88,21 @@
     margin-bottom: 10px;
 }
 
+.schDataLabel {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--palette-900);
+    margin-top: -5px;
+}
+
+.textAreaLabel {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-align: start;
+}
+
 .settingsGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -24,19 +24,21 @@ class Data {
 class Person {
     constructor(isUser) {
         this.isUser = isUser;
-        this.name = "";
         this.className = "";
+        this.matesNames = "";
         this.schoolName = "";
         this.schoolAddress = "";
         this.favoriteSubject = "";
+        this.name = "";
+        this.rooms = [];
+        this.subjects = [];
+        this.teachers = [];
         this.timetable = new Timetable();
     }
 }
 
 class Timetable {
     constructor() {
-        this.className = "";
-        this.matesNames = "";
         this.dayStart = 0;
         this.timeStart = 0;
         this.schedule = Array.from({ length: 7 }, () => 
