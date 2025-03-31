@@ -3,6 +3,7 @@
     grid-template-columns: 28% 72%;
     margin: 20px 20px 10px 20px;
     overflow: hidden;
+    text-align: start;
 }
 
 .userProfilePicContainer {
@@ -74,4 +75,6 @@
     font-weight: 400;
     font-size: 16px;
     color: var(--palette-800);
+    text-align: start;
+    text-overflow: ellipsis;
 }
