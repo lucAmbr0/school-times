@@ -47,7 +47,7 @@ function ProfileCard() {
         <StudentStats label={"GPA"} value={0} />
       </div>
       <h3 className={styles.sectionLabel}>Latest grades</h3>
-      <GradesList grades={["", "", "", "", ""]} />
+      <GradesList className={styles.gradesList} grades={["", "", "", "", ""]} />
     </div>
   );
 
