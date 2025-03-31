@@ -37,14 +37,14 @@ function Settings({onBack}) {
         <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>Customization</h3>
           <div className={styles.settingsGrid}>
-            <label className={styles.settingLabel}>Name</label>
-            <TextInput path={"user.name"} />
-            <label className={styles.settingLabel}>Class name</label>
-            <TextInput path={"user.className"} />
-            <label className={styles.settingLabel}>School name</label>
-            <TextInput path={"user.schoolName"} />
-            <label className={styles.settingLabel}>Favorite subject</label>
-            <TextInput path={"user.favoriteSubject"} />
+            <label htmlFor="name" className={styles.settingLabel}>Name</label>
+            <TextInput path={"user.name"} id={"name"} name={"Name"} />
+            <label htmlFor="class-name" className={styles.settingLabel}>Class name</label>
+            <TextInput path={"user.className"} id={"class-name"} name={"Class name"} />
+            <label htmlFor="school-name" className={styles.settingLabel}>School name</label>
+            <TextInput path={"user.schoolName"} id={"school-name"} name={"School name"} />
+            <label htmlFor="favorite-subject" className={styles.settingLabel}>Favorite subject</label>
+            <TextInput path={"user.favoriteSubject"} id={"favorite-subject"} name={"Favorite subject"} />
           </div>
         </div>
       </div>

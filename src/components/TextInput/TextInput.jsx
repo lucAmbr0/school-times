@@ -18,7 +18,7 @@ function getDeepValue(obj, path) {
   return path.split(".").reduce((o, key) => (o && o[key] !== undefined ? o[key] : ""), obj);
 }
 
-function TextInput({ type = "text", path }) {
+function TextInput({ type = "text", path, name, id }) {
   const [data, setData] = useData();
 
   // Load the entire "data" object from localStorage
@@ -45,6 +45,8 @@ function TextInput({ type = "text", path }) {
       type={type}
       className={styles.inputElement}
       value={value}
+      name={name}
+      id={id}
       onChange={handleTextChange}
     />
   );
