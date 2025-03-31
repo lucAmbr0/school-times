@@ -37,7 +37,7 @@ function ThemeSelector({ options = [] }) {
       >
         {optionElements}
       </select>
-      <span class={iconClasses}>arrow_drop_down</span>
+      <span className={iconClasses}>arrow_drop_down</span>
     </div>
   );
 
