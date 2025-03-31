@@ -109,7 +109,7 @@ function ProfileCard() {
       <div
         className={styles.icon360Container}
         onClick={() => {
-          vibrate(100);
+          vibrate(5);
           const swiper = document.querySelector(`.${styles.swiper}`).swiper;
           if (swiper.activeIndex === 0) {
             swiper.slideNext();

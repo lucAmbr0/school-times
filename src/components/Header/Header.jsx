@@ -11,7 +11,7 @@ function Header() {
   const vibrate = useVibration();
 
   function toggleShowMenu() {
-    vibrate(100);
+    vibrate(5);
     setShowMenu((prev) => !prev);
   }
   const verticalMenuProps = {

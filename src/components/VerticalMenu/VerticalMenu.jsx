@@ -1,9 +1,11 @@
 import Overlay from "../Overlay/Overlay";
 import styles from "./VerticalMenu.module.css"
 import Settings from "../../pages/Settings/Settings"
+import useVibration from "../../scripts/useVibration";
 import { useState, useEffect } from "react";
 
 function VerticalMenu({showMenu, setShowMenu}) {
+    const vibrate = useVibration();
     const [showSettings, setShowSettings] = useState();
     useEffect(() => {
         const handleBack = (event) => {
@@ -29,10 +31,10 @@ function VerticalMenu({showMenu, setShowMenu}) {
     <>
         <Overlay zIndex={101} blur={"0px"} color={"rgba(0,0,0,0.1)"} event={() => setShowMenu(false)} />
         <div className={styles.container}>
-            <button onClick={() => { window.location.reload(true) }} className={styles.button}>
+            <button onClick={() => {vibrate(5); window.location.reload(true) }} className={styles.button}>
                 <span className="material-symbols-outlined">refresh</span>Reload
             </button>
-            <button onClick={() => {setShowMenu(false); setShowSettings(!showSettings)}} className={styles.button}>
+            <button onClick={() => {vibrate(5);setShowMenu(false); setShowSettings(!showSettings)}} className={styles.button}>
                 <span className="material-symbols-outlined">settings</span>Settings
             </button>
             <button className={styles.button}>

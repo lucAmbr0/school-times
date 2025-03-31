@@ -12,7 +12,7 @@ function DarkModeSwitch() {
     let indicatorStyles = {transform: mode == "light" ? "translateX(-37px)" : (mode == "dark" ? "translateX(37px)" : "translateX(0%)")};
 
     const handleModeChange = (mode) => {
-        vibrate(100);
+        vibrate(5);
         setMode(mode);
         setData({...data, settings: {...data.settings, darkMode: mode}});
       };

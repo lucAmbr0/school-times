@@ -2,6 +2,7 @@ import Post from "../Post/Post";
 import { useState, useRef} from "react";
 import styles from "./TabSwitcher.module.css";
 import { useSwipeable } from "react-swipeable";
+import useVibration from "../../scripts/useVibration";
 
 class Content {
     constructor() {
@@ -15,6 +16,7 @@ class Content {
 function TabSwitcher({posts}) {
     const [tab, setTab] = useState("Events");
     const initialRender = useRef(true); // Use useRef to track initial render
+    const vibrate = useVibration();
     
     let homeworkTab = [], eventsTab = []; // Initialize as empty arrays
     
@@ -50,10 +52,12 @@ function TabSwitcher({posts}) {
         onSwipedLeft: () => {
             setTab("Homework");
             setSwipeProgress(0);
+            vibrate(5);
         },
         onSwipedRight: () => {
             setTab("Events");
             setSwipeProgress(0);
+            vibrate(5);
         },
         onSwiping: (eventData) => {
             const deltaX = eventData.deltaX;
@@ -76,8 +80,8 @@ function TabSwitcher({posts}) {
     const element =
     <div {...swipeHandlers}>
         <div className={styles.switchContainer}>
-            <button onClick={() => setTab("Events")} className={[styles.tabName, tab == "Events" ? styles.selectedTabName : ""].join(" ")} id="Events-btn">Events</button>
-            <button onClick={() => setTab("Homework")} className={[styles.tabName, tab == "Homework" ? styles.selectedTabName : ""].join(" ")} id="Homework-btn">Homework</button>
+            <button onClick={() => {vibrate(5); setTab("Events")}} className={[styles.tabName, tab == "Events" ? styles.selectedTabName : ""].join(" ")} id="Events-btn">Events</button>
+            <button onClick={() => {vibrate(5); setTab("Homework")}} className={[styles.tabName, tab == "Homework" ? styles.selectedTabName : ""].join(" ")} id="Homework-btn">Homework</button>
             <div className={[styles.pill, tab === "Homework" ? styles.pillHomework : styles.pillEvents].join(" ")} style={pillStyle}></div>
         </div>
         <div className={styles.container}>

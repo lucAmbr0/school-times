@@ -2,11 +2,14 @@ import DarkModeSwitch from "../../components/Switch/DarkModeSwitch/DarkModeSwitc
 import ThemeSelector from "../../components/Dropdown/ThemeSelector";
 import LanguageSelector from "../../components/Dropdown/LanguageSelector";
 import TextInput from "../../components/TextInput/TextInput";
+import useVibration from '../../scripts/useVibration';
 import styles from "./Settings.module.css";
 
 function Settings({onBack}) {
+  const vibrate = useVibration();
 
   const handleBack = () => {
+    vibrate(5);
     document.querySelector("#settings").classList.add(styles.exitAnimation);
     document.querySelector("#settingsHeader").classList.add(styles.exitAnimation);
     setTimeout(() => {
