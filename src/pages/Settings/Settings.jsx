@@ -38,24 +38,24 @@ function Settings({onBack}) {
           <h3 className={styles.sectionTitle}>Customization</h3>
           <div className={styles.settingsGrid}>
             <label htmlFor="name" className={styles.settingLabel}>Name</label>
-            <TextInput path={"user.name"} id={"name"} name={"Name"} />
+            <TextInput maxLength={20} path={"user.name"} id={"name"} name={"Name"} />
             <label htmlFor="class-name" className={styles.settingLabel}>Class name</label>
-            <TextInput path={"user.className"} id={"class-name"} name={"Class name"} />
+            <TextInput maxLength={5} path={"user.className"} id={"class-name"} name={"Class name"} />
             <label htmlFor="school-name" className={styles.settingLabel}>School name</label>
-            <TextInput path={"user.schoolName"} id={"school-name"} name={"School name"} />
+            <TextInput maxLength={40} path={"user.schoolName"} id={"school-name"} name={"School name"} />
             <label htmlFor="favorite-subject" className={styles.settingLabel}>Favorite subject</label>
-            <TextInput path={"user.favoriteSubject"} id={"favorite-subject"} name={"Favorite subject"} />
+            <TextInput maxLength={40} path={"user.favoriteSubject"} id={"favorite-subject"} name={"Favorite subject"} />
           </div>
         </div>
         <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>School data</h3>
           <p className={styles.schDataLabel}>Write your rooms, subjects and teachers in the boxes below separated by comma to fill classes' timetables</p>
           <h3 className={styles.textAreaLabel}>Rooms</h3>
-          <TextInput path={"user.rooms"} type="textarea" id={"rooms"} name={"Rooms"} placeholder={"Room 25, Electronics Lab 2, Main hall"} />
+          <TextInput maxLength={512} path={"user.rooms"} type="textarea" id={"rooms"} name={"Rooms"} placeholder={"Room 25, Electronics Lab 2, Main hall"} />
           <h3 className={styles.textAreaLabel}>Subjects</h3>
-          <TextInput path={"user.subjects"} type="textarea" id={"subjects"} name={"Subjects"} placeholder={"English, Maths, History"} />
+          <TextInput maxLength={512} path={"user.subjects"} type="textarea" id={"subjects"} name={"Subjects"} placeholder={"English, Maths, History"} />
           <h3 className={styles.textAreaLabel}>Teachers</h3>
-          <TextInput path={"user.teachers"} type="textarea" id={"teachers"} name={"Teachers"} placeholder={"Bess Ross, Jesus Byrd, Emily Schmidt"} />
+          <TextInput maxLength={512} path={"user.teachers"} type="textarea" id={"teachers"} name={"Teachers"} placeholder={"Bess Ross, Jesus Byrd, Emily Schmidt"} />
         </div>
       </div>
     </>

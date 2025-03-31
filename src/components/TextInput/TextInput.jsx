@@ -20,7 +20,7 @@ function getDeepValue(obj, path) {
     .reduce((o, key) => (o && o[key] !== undefined ? o[key] : ""), obj);
 }
 
-function TextInput({ type, path, name, id, placeholder }) {
+function TextInput({ type, path, name, id, placeholder, maxLength = 0 }) {
   const [data, setData] = useData();
   let eventPtr;
 
@@ -63,6 +63,7 @@ function TextInput({ type, path, name, id, placeholder }) {
         value={value}
         placeholder={placeholder + "..."}
         name={name}
+        maxLength={maxLength}
         id={id}
         rows={4}
         onChange={handleTextChange}
@@ -74,6 +75,7 @@ function TextInput({ type, path, name, id, placeholder }) {
         type={type}
         className={styles.inputElement}
         value={value}
+        maxLength={maxLength}
         name={name}
         id={id}
         onChange={handleTextChange}
