@@ -4,11 +4,19 @@ import LanguageSelector from "../../components/Dropdown/LanguageSelector";
 import styles from "./Settings.module.css";
 
 function Settings({onBack}) {
+
+  const handleBack = () => {
+    document.querySelector("#settings").classList.add(styles.exitAnimation);
+    setTimeout(() => {
+      onBack();
+    }, 300);
+  }
+  
   const element = (
     <>
-      <div className={styles.container}>
+      <div id={"settings"} className={styles.container}>
         <div className={styles.header}>
-          <button onClick={onBack}>
+          <button onClick={handleBack}>
             <span className="material-symbols-outlined">arrow_back</span>Back
           </button>
         </div>
