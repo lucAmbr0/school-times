@@ -1,6 +1,6 @@
 .container {
-    width: 100vw;
-    min-height: 100vh;
+    width: 100%;
+    min-height: 120vh;
     overflow: hidden;
     z-index: 104;
     position: absolute;
@@ -10,6 +10,11 @@
 .header {
     background-color: var(--palette-200);
     border-bottom: 1px solid var(--palette-300);
+    position: fixed;
+    width: 100%;
+    z-index: 105;
+    top: 0;
+    left: 0;
 }
 
 .header button {
@@ -35,6 +40,7 @@
     font-weight: 700;
     color: var(--palette-950);
     margin: 20px;
+    margin-top: 95px;
 }
 
 .settingsSection {
