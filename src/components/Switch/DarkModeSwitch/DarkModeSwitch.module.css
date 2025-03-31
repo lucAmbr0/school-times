@@ -1,27 +1,30 @@
 /* ThemeToggle.module.css */
 .buttonsContainer {
     position: relative;
-    padding: 4px;
+    padding: 5px;
     margin: 0;
     display: grid;
     width: fit-content;
     height: fit-content;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 4px;
+    gap: 5px;
     z-index: 5;
 }
 
 .buttonsContainer Button {
     margin: 0px !important;
-    width: 30px !important;
-    height: 30px !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 10;
 }
 
 .buttonsContainer Button span {
-    width: 20px !important;
-    height: 20px !important;
-    font-size: 20px !important;
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 22px !important;
     z-index: 10;
 }
 
@@ -36,9 +39,9 @@
 
 .indicator {
     position: absolute;
-    top: 4px;
-    left: 38px;
-    width: 30px;
+    top: 5px;
+    left: 42px;
+    width: 32px;
     aspect-ratio: 1 / 1;
     z-index: 1;
     background-color: var(--palette-300);

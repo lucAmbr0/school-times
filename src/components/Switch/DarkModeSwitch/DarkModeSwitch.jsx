@@ -7,7 +7,7 @@ import { useState } from "react";
 function DarkModeSwitch() {
     const [data, setData] = useData();
     const [mode, setMode] = useState(data.settings.darkMode || "system");
-    let indicatorStyles = {transform: mode == "light" ? "translateX(-112.5%)" : (mode == "dark" ? "translateX(112.5%)" : "translateX(0%)")};
+    let indicatorStyles = {transform: mode == "light" ? "translateX(-37px)" : (mode == "dark" ? "translateX(37px)" : "translateX(0%)")};
 
     const handleModeChange = (mode) => {
         setMode(mode);
