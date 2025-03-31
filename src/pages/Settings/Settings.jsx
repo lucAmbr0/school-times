@@ -32,6 +32,19 @@ function Settings({onBack}) {
             <LanguageSelector options={["English"]} />
           </div>
         </div>
+        {/* <div className={styles.settingsSection}>
+          <h3 className={styles.sectionTitle}>Customization</h3>
+          <div className={styles.settingsGrid}>
+            <p className={styles.settingLabel}>Name</p>
+            <p></p>
+            <p className={styles.settingLabel}>Class name</p>
+            <p></p>
+            <p className={styles.settingLabel}>School name</p>
+            <p></p>
+            <p className={styles.settingLabel}>Favorite subject</p>
+            <p></p>
+          </div>
+        </div> */}
       </div>
     </>
   );
