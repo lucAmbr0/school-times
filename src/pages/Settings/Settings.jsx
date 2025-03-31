@@ -38,13 +38,13 @@ function Settings({onBack}) {
           <h3 className={styles.sectionTitle}>Customization</h3>
           <div className={styles.settingsGrid}>
             <label className={styles.settingLabel}>Name</label>
-            <TextInput />
+            <TextInput path={"user.name"} />
             <label className={styles.settingLabel}>Class name</label>
-            <TextInput />
+            <TextInput path={"user.className"} />
             <label className={styles.settingLabel}>School name</label>
-            <TextInput />
+            <TextInput path={"user.schoolName"} />
             <label className={styles.settingLabel}>Favorite subject</label>
-            <TextInput />
+            <TextInput path={"user.favoriteSubject"} />
           </div>
         </div>
       </div>
