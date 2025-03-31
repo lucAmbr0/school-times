@@ -33,7 +33,7 @@ function Settings({onBack}) {
             <LanguageSelector options={["English"]} />
           </div>
         </div>
-        {/* <div className={styles.settingsSection}>
+        <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>Customization</h3>
           <div className={styles.settingsGrid}>
             <label className={styles.settingLabel}>Name</label>
@@ -45,7 +45,7 @@ function Settings({onBack}) {
             <label className={styles.settingLabel}>Favorite subject</label>
             <TextInput />
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );
