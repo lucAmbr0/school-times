@@ -5,6 +5,7 @@ import FavoriteSubject from "./FavoriteSubject/FavoriteSubject";
 import StudentStats from "./StudentStats/StudentStats";
 import GradesList from "./GradesList/GradesList";
 import HorizontalLine from "../Separator/HorizontalLine";
+import useVibration from '../../scripts/useVibration';
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-flip";
@@ -15,6 +16,7 @@ import { useData } from "../../scripts/useData";
 import { useState, useEffect } from "react";
 
 function ProfileCard() {
+  const vibrate = useVibration();
   const [data] = useData();
   const [daysStreak, setDaysStreak] = useState(0);
   const icon360Styles = `material-symbols-outlined ${styles.icon360}`;
@@ -107,6 +109,7 @@ function ProfileCard() {
       <div
         className={styles.icon360Container}
         onClick={() => {
+          vibrate(100);
           const swiper = document.querySelector(`.${styles.swiper}`).swiper;
           if (swiper.activeIndex === 0) {
             swiper.slideNext();

@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import Button from "../Button/Button";
 import VerticalMenu from "../VerticalMenu/VerticalMenu";
+import useVibration from '../../scripts/useVibration';
 import "material-symbols";
 import styles from "./Header.module.css";
 
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
+  const vibrate = useVibration();
 
   function toggleShowMenu() {
+    vibrate(100);
     setShowMenu((prev) => !prev);
   }
   const verticalMenuProps = {
