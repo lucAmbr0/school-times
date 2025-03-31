@@ -58,7 +58,7 @@ class Settings {
     constructor() {
         this.darkMode = "system";
         this.palette = "Cornflower";
-        this.language = "eng";
+        this.language = "English";
         this.tab = "Home";
     }
 }

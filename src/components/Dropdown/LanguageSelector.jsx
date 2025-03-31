@@ -1,17 +1,16 @@
-import styles from "./ThemeSelector.module.css";
-import useThemeColor from "../../scripts/useThemeColor";
+import styles from "./Dropdown.module.css";
 import { useData } from "../../scripts/useData";
 import { useState } from "react";
 
-function ThemeSelector({ options = [] }) {
+function LanguageSelector({ options = [] }) {
   const [data, setData] = useData();
-  const [palette, setPalette] = useState(data.settings.palette || "Cornflower");
+  const [language, setLanguage] = useState(data.settings.language || "English");
   const iconClasses = `material-symbols-outlined ${styles.dropdownIcon}`;
 
-  const handleThemeChange = (event) => {
-    const newPalette = event.target.value;
-    setPalette(newPalette);
-    setData({ ...data, settings: { ...data.settings, palette: newPalette } });
+  const handleLanguageChange = (event) => {
+    const newLanguage = event.target.value;
+    setLanguage(newLanguage);
+    setData({ ...data, settings: { ...data.settings, language: newLanguage } });
   };
 
   let optionElements = [];
@@ -20,20 +19,19 @@ function ThemeSelector({ options = [] }) {
   if (Array.isArray(options))
     for (let option of options) {
       optionElements.push(
-        <option key={option + "-i"} className={styles.option} value={option}>
+        <option key={option + "-" + i} className={styles.option} value={option}>
           {option}
         </option>
       );
     }
 
-  useThemeColor(palette);
   const element = (
     <div className={styles.selectContainer}>
       <select
         className={styles.container}
         name="select"
-        value={palette}
-        onChange={(event) => handleThemeChange(event)}
+        value={language}
+        onChange={(event) => handleLanguageChange(event)}
       >
         {optionElements}
       </select>
@@ -44,4 +42,4 @@ function ThemeSelector({ options = [] }) {
   return element;
 }
 
-export default ThemeSelector;
+export default LanguageSelector;
