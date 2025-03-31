@@ -8,6 +8,7 @@ function Settings({onBack}) {
 
   const handleBack = () => {
     document.querySelector("#settings").classList.add(styles.exitAnimation);
+    document.querySelector("#settingsHeader").classList.add(styles.exitAnimation);
     setTimeout(() => {
       onBack();
     }, 300);
@@ -15,12 +16,12 @@ function Settings({onBack}) {
   
   const element = (
     <>
-      <div id={"settings"} className={styles.container}>
-        <div className={styles.header}>
+        <div id={"settingsHeader"} className={styles.header}>
           <button onClick={handleBack}>
             <span className="material-symbols-outlined">arrow_back</span>Back
           </button>
         </div>
+      <div id={"settings"} className={styles.container}>
         <h1 className={styles.title}>Settings</h1>
         <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>Preferences</h3>
