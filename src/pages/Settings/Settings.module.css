@@ -111,4 +111,5 @@
     height: 42px;
     display: flex;
     align-items: center;
+    text-wrap: nowrap;
 }

@@ -1,6 +1,7 @@
 import DarkModeSwitch from "../../components/Switch/DarkModeSwitch/DarkModeSwitch";
 import ThemeSelector from "../../components/Dropdown/ThemeSelector";
 import LanguageSelector from "../../components/Dropdown/LanguageSelector";
+import TextInput from "../../components/TextInput/TextInput";
 import styles from "./Settings.module.css";
 
 function Settings({onBack}) {
@@ -24,25 +25,25 @@ function Settings({onBack}) {
         <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>Preferences</h3>
           <div className={styles.settingsGrid}>
-            <p className={styles.settingLabel}>Dark mode</p>
+            <label className={styles.settingLabel}>Dark mode</label>
             <DarkModeSwitch />
-            <p className={styles.settingLabel}>Color theme</p>
+            <label className={styles.settingLabel}>Color theme</label>
             <ThemeSelector options={["Cornflower", "Pine"]} />
-            <p className={styles.settingLabel}>Language</p>
+            <label className={styles.settingLabel}>Language</label>
             <LanguageSelector options={["English"]} />
           </div>
         </div>
         {/* <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>Customization</h3>
           <div className={styles.settingsGrid}>
-            <p className={styles.settingLabel}>Name</p>
-            <p></p>
-            <p className={styles.settingLabel}>Class name</p>
-            <p></p>
-            <p className={styles.settingLabel}>School name</p>
-            <p></p>
-            <p className={styles.settingLabel}>Favorite subject</p>
-            <p></p>
+            <label className={styles.settingLabel}>Name</label>
+            <TextInput />
+            <label className={styles.settingLabel}>Class name</label>
+            <TextInput />
+            <label className={styles.settingLabel}>School name</label>
+            <TextInput />
+            <label className={styles.settingLabel}>Favorite subject</label>
+            <TextInput />
           </div>
         </div> */}
       </div>

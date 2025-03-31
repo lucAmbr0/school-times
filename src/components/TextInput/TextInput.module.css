@@ -1,0 +1,10 @@
+.inputElement {
+    height: 36px;
+    font-size: 16px;
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-200);
+    border-radius: 12px;
+    color: var(--palette-900);
+    font-weight: 300;
+    width: auto;
+}
