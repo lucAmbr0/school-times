@@ -63,6 +63,7 @@ class Settings {
         this.hapticFeedback = false;
         this.language = "English";
         this.tab = "Home";
+        this.version = null;
     }
 }
 

@@ -9,6 +9,8 @@ import Explore from "./pages/Explore/Explore";
 import Events from "./pages/Events/Events";
 import Profile from "./pages/Profile/Profile";
 import Header from "./components/Header/Header";
+import checkUpdated from "./scripts/checkUpdated";
+import UpdateNotice from "./components/UpdateNotice/UpdateNotice";
 import { useData } from "./scripts/useData";
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         return <Home />;
     }
   };
+  // const [savedVersion, currVersion, updated] = checkUpdated();
+  // const [savedVersion, currVersion, updated] = ["0.10.50", "1.1.1", true];
   return (
     <>
       <SpeedInsights />
@@ -39,6 +43,7 @@ function App() {
         <Header />
       <div className="appContainer">
         {renderPage()}
+        {/* { updated ? <UpdateNotice oldVersion={savedVersion} newVersion={currVersion} /> : "" } */}
         <div className="placeholder"></div>
         <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
       </div>
