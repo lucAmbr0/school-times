@@ -6,8 +6,6 @@ const useVibration = () => {
     return (duration) => {
         if ('vibrate' in navigator && doVibrate) {
             navigator.vibrate(duration);
-            console.log("HJKHAGJKDHGAKJ");
-            
         }
     };
 };
