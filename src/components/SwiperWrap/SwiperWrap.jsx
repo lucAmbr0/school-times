@@ -8,16 +8,24 @@ import "swiper/css/pagination";
 import { useState, useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
-  const [activeSlide, setActiveSlide] = useState(Infinity);
-
-  useEffect(() => {
+  
+  const startSlide = () => {
     if (type === "time") {
-      setActiveSlide(new Date().getHours() - 7);
+      return (new Date().getHours() - 7);
     } else if (type === "days") {
-      setActiveSlide((new Date().getDay() + 6) % 7);
+      return ((new Date().getDay() + 6) % 7);
     }
-  }, []);
+  };
 
+  const [activeSlide, setActiveSlide] = useState(startSlide);
+
+  const handleSlideChange = (swiper, activeSlide) => {
+    swiper.slides.forEach((s) => {
+      s.classList.remove(`${styles.selectedSlide}`);
+    });
+    activeSlide.classList.add(styles.selectedSlide);
+  }
+  
   const generateSlides = () => {
     const slides = [];
     if (type === "time") {
@@ -51,9 +59,9 @@ function SwiperWrap({ type, start, length }) {
   };
 
   const slides = generateSlides();
-  if (activeSlide == Infinity) {
-    return null;
-  }
+  // if (activeSlide == Infinity) {
+  //   return null;
+  // }
   return (
     <Swiper
       slidesPerView={5}
@@ -97,13 +105,6 @@ function SwiperWrap({ type, start, length }) {
       {slides}
     </Swiper>
   );
-}
-
-function handleSlideChange(swiper, activeSlide) {
-  swiper.slides.forEach((s) => {
-    s.classList.remove(`${styles.selectedSlide}`);
-  });
-  activeSlide.classList.add(styles.selectedSlide);
 }
 
 export default SwiperWrap;
