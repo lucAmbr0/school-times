@@ -1,4 +1,3 @@
-import useVibration from "../../scripts/useVibration";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Pagination, FreeMode } from "swiper/modules";
@@ -10,13 +9,12 @@ import { useState, useEffect } from "react";
 
 function SwiperWrap({ type, start, length }) {
   const [activeSlide, setActiveSlide] = useState(Infinity);
-  const vibrate = useVibration();
 
   useEffect(() => {
     if (type === "time") {
       setActiveSlide(new Date().getHours() - 7);
     } else if (type === "days") {
-      setActiveSlide(new Date().getDay() - 1);
+      setActiveSlide((new Date().getDay() + 6) % 7);
     }
   }, []);
 
@@ -84,7 +82,6 @@ function SwiperWrap({ type, start, length }) {
       onSlideChange={(swiper) => {
         if (swiper.params.slideActiveClass) {
           swiper.params.slideActiveClass = null;
-          vibrate(5);
         }
       }}
       onSlideChangeTransitionStart={(swiper) => {
