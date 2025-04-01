@@ -60,6 +60,7 @@ class Settings {
     constructor() {
         this.darkMode = "system";
         this.palette = "Cornflower";
+        this.hapticFeedback = false;
         this.language = "English";
         this.tab = "Home";
     }
