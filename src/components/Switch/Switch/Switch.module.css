@@ -1,0 +1,68 @@
+.switch {
+    width: 74px;
+    height: 42px;
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-200);
+    border-radius: 22px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out scale .2s ease;
+    outline-color: var(--palette-700);
+}
+
+.switch[data-on="true"] {
+    background-color: var(--palette-200);
+}
+
+.slider {
+    width: 32px;
+    height: 32px;
+    background-color: var(--palette-200);
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    animation: off 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.switch:active {
+    .slider {
+        scale: 0.90 !important;
+    }
+}
+
+@keyframes on {
+    0% {
+        transform: translateX(0);
+        background-color: var(--palette-200);
+        scale: 0.9;
+    }
+    70% {
+        scale: 0.95;
+    }
+    100% {
+        transform: translateX(32px);
+        background-color: var(--palette-400);
+        scale: 1;
+    }
+}
+
+@keyframes off {
+    0% {
+        transform: translateX(32px);
+        background-color: var(--palette-400);
+        scale: 0.9;
+    }
+    70% {
+        scale: 0.95;
+    }
+    100% {
+        transform: translateX(0);
+        background-color: var(--palette-200);
+        scale: 1;
+    }
+}
+
+.switch[data-on="true"] .slider {
+    animation: on 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}

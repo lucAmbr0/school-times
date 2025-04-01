@@ -3,6 +3,7 @@ import ThemeSelector from "../../components/Dropdown/ThemeSelector";
 import LanguageSelector from "../../components/Dropdown/LanguageSelector";
 import TextInput from "../../components/TextInput/TextInput";
 import useVibration from '../../scripts/useVibration';
+import Switch from "../../components/Switch/Switch/Switch";
 import styles from "./Settings.module.css";
 
 function Settings({onBack}) {
@@ -33,7 +34,7 @@ function Settings({onBack}) {
             <DarkModeSwitch />
             <label className={styles.settingLabel}>Color theme</label>
             <ThemeSelector options={["Cornflower", "Pine"]} />
-            <label className={styles.settingLabel}>Language</label>
+            <label className={styles.settingLabel}>Haptic feedback</label>
             <LanguageSelector options={["English"]} />
           </div>
         </div>
