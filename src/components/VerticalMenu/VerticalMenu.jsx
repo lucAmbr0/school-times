@@ -12,12 +12,12 @@ function VerticalMenu({showMenu, setShowMenu}) {
             if (showSettings) {
                 event.preventDefault();
                 setShowSettings(false);
-                window.history.pushState(null, ""); // Recreate state to prevent exit
+                window.history.pushState(null, "");
             }
         };
 
         if (showSettings) {
-            window.history.pushState(null, ""); // Add a dummy state
+            window.history.pushState(null, "");
             window.addEventListener("popstate", handleBack);
         } else {
             window.removeEventListener("popstate", handleBack);
@@ -29,8 +29,8 @@ function VerticalMenu({showMenu, setShowMenu}) {
     }, [showSettings]);
     const menu = showMenu ? (
     <>
-        <Overlay zIndex={101} blur={"0px"} color={"rgba(0,0,0,0.1)"} event={() => setShowMenu(false)} />
-        <div className={styles.container}>
+        <Overlay zIndex={101} blur={"0px"} color={"rgba(0,0,0,0.1)"} event={() => { document.querySelector("#settingsContainer").classList.add(styles.menuOut); setTimeout(() => {setShowMenu(false)}, 250)}} />
+        <div id="settingsContainer" className={styles.container}>
             <button onClick={() => {vibrate(5); window.location.reload(true) }} className={styles.button}>
                 <span className="material-symbols-outlined">refresh</span>Reload
             </button>

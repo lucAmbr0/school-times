@@ -4,7 +4,7 @@
         clip-path: inset(0 0 100% 0 round 15px);
         opacity: 0;
     }
-    50% {
+    70% {
         opacity: 1;
     }
     100% {
@@ -12,6 +12,23 @@
         clip-path: inset(0 0 0 0 round 15px);
         opacity: 1;
     }
+}
+
+@keyframes menuOut {
+    100% {
+        transform: translateY(-5%);
+        clip-path: inset(0 0 100% 0 round 15px);
+        opacity: 0;
+    }
+    0% {
+        transform: translateY(0%);
+        clip-path: inset(0 0 0 0 round 15px);
+        opacity: 1;
+    }
+}
+
+.menuOut {
+    animation: menuOut 0.25s ease forwards !important;
 }
 
 .container {
@@ -27,7 +44,7 @@
     border-radius: 15px;
     padding: 5px 0;
     /* box-shadow: 0 0 15px rgba(0,0,0,0.25); */
-    animation: menuIn 0.25s;
+    animation: menuIn 0.25s ease;
 }
 
 .button {
