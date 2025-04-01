@@ -35,6 +35,8 @@ function Settings({onBack}) {
             <label className={styles.settingLabel}>Color theme</label>
             <ThemeSelector options={["Cornflower", "Pine"]} />
             <label className={styles.settingLabel}>Haptic feedback</label>
+            <Switch path={"settings.hapticFeedback"} />
+            <label className={styles.settingLabel}>Language</label>
             <LanguageSelector options={["English"]} />
           </div>
         </div>
