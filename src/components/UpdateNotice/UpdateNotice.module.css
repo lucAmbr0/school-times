@@ -1,0 +1,86 @@
+@keyframes animationOpen {
+    from {
+        opacity: 0;
+        scale: 1.2;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes animationClose {
+    from {
+        opacity: 1;
+        scale: 1;
+    }
+    to {
+        opacity: 0;
+        scale: 1.1;
+    }
+}
+
+.animationClose {
+    animation: animationClose 0.20s ease !important;
+}
+
+.container {
+    z-index: 111;
+    position: fixed;
+    left: 10%;
+    top: 30%;
+    transform: translateY(-30%);
+    width: calc(80% - 40px);
+    min-height: 150px;
+    height: fit-content;
+    background-color: var(--palette-50);
+    border: solid 1px var(--palette-200);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    animation: animationOpen 0.3s ease forwards;
+}
+
+.title {
+    text-align: center;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.versionsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.version {
+    padding: 5px 10px;
+    border-radius: 12px;
+}
+
+.version:first-child {
+    opacity: 0.9;
+    font-weight: 300;
+    background-color: var(--palette-100);
+}
+
+.version:last-child {
+    font-weight: 400;
+    background-color: var(--palette-200);
+    margin-left: 3px;
+}
+
+.actionsContainer {
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 10px;
+    Button {
+        margin: 0;
+    }
+}

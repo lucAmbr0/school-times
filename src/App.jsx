@@ -17,25 +17,25 @@ function App() {
   const [data, setData] = useData();
   const [currentPage, setCurrentPage] = useState(data.settings.tab);
   useThemeColor();
-
+  
   const renderPage = () => {
     data.settings.tab = currentPage
     setData(data);
     switch (currentPage) {
       case "Home":
         return <Home />;
-      case "Explore":
-        return <Explore />;
-      case "Events":
-        return <Events />;
+        case "Explore":
+          return <Explore />;
+          case "Events":
+            return <Events />;
       case "Profile":
         return <Profile />;
-      default:
-        return <Home />;
+        default:
+          return <Home />;
     }
   };
-  // const [savedVersion, currVersion, updated] = checkUpdated();
-  // const [savedVersion, currVersion, updated] = ["0.10.50", "1.1.1", true];
+  const [savedVersion, currVersion, updated] = checkUpdated();
+  const [showUpdateNotice, setShowUpdateNotice] = useState(updated);
   return (
     <>
       <SpeedInsights />
@@ -43,7 +43,8 @@ function App() {
         <Header />
       <div className="appContainer">
         {renderPage()}
-        {/* { updated ? <UpdateNotice oldVersion={savedVersion} newVersion={currVersion} /> : "" } */}
+        { showUpdateNotice ? <UpdateNotice oldVersion={savedVersion} newVersion={currVersion} closeAction={() => {setShowUpdateNotice(false); console.log("Bpbbp")}
+        } /> : "" }
         <div className="placeholder"></div>
         <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
       </div>
