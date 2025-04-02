@@ -6,7 +6,7 @@ import { useData } from "../../scripts/useData";
 import { useState } from "react";
 import { palettes } from "../../scripts/useThemeColor";
 
-function ThemeSelectorBox({onBack}) {
+function ThemeSelectorBox({ backAction }) {
   const vibrate = useVibration();
   const [data, setData] = useData();
   const [palette, setPalette] = useState(data.settings.palette || "Cornflower");
@@ -20,33 +20,35 @@ function ThemeSelectorBox({onBack}) {
 
   const handleCloseThemeSelector = () => {
     vibrate(5);
-    
-    document
-    .querySelector("#themeSelector")
-    .classList.add(styles.exitAnimation);
+    document.getElementById("themeSelector").classList.add(styles.exitAnimation);
     setTimeout(() => {
-      onBack();
-    }, 200);
+      backAction();
+    }, 180);
   };
 
   useThemeColor(palette);
 
   const generatePaletteElements = () => {
-    const isDarkMode = darkMode == "dark" || 
-    (darkMode == "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const isDarkMode =
+      darkMode == "dark" ||
+      (darkMode == "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
 
-  return Object.entries(palettes).map(([themeName, themeValues]) => {
-    const theme = isDarkMode ? themeValues.dark : themeValues.light;
-    
-    if (!theme) return null;
+    let i = 0;
+    return Object.entries(palettes)
+      .map(([themeName, themeValues]) => {
+        const theme = isDarkMode ? themeValues.dark : themeValues.light;
+
+        if (!theme) return null;
 
         const colors = Object.entries(theme)
           .filter(([key]) => !key.includes("-rgb"))
           .slice(0, 10)
           .map(([_, value]) => value);
-
+        i++;
         return (
           <button
+            key={i}
             onClick={() => handleThemeChange(themeName)}
             className={styles.paletteBtn}
             style={{ borderColor: colors[2], backgroundColor: colors[1] }}
@@ -72,13 +74,18 @@ function ThemeSelectorBox({onBack}) {
   const paletteElements = generatePaletteElements();
 
   const element = (
-    <div id="themeSelector">
-      <Overlay event={handleCloseThemeSelector} blur={"10px"} color="rgba(0,0,0, 0.2)" zIndex={110} />
-      <div className={styles.container}>
+    <>
+      <Overlay
+        event={() => handleCloseThemeSelector()}
+        blur={"10px"}
+        color="rgba(0,0,0, 0.2)"
+        zIndex={110}
+      />
+      <div id="themeSelector" className={styles.container}>
         <h2 className={styles.boxLabel}>Choose your palette</h2>
         <div className={styles.palettesContainer}>{paletteElements}</div>
       </div>
-    </div>
+    </>
   );
 
   return element;

@@ -25,7 +25,7 @@ function Settings({onBack}) {
 
   const element = (
     <>
-      {showThemeSelector ? <ThemeSelectorBox onBack={() => setShowThemeSelector(false)} /> : ""}
+      {showThemeSelector ? <ThemeSelectorBox backAction={() => setShowThemeSelector(false)} /> : ""}
         <div id={"settingsHeader"} className={styles.header}>
           <button onClick={handleBack}>
             <span className="material-symbols-outlined">arrow_back</span>Back
