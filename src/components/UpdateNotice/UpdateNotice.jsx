@@ -27,9 +27,9 @@ function UpdateNotice({ oldVersion, newVersion, closeAction }) {
           margin={"20px 0"}
         />
         <div className={styles.versionsContainer}>
-          <h3 className={styles.version} id="oldVersion">v{oldVersion}</h3>
+          <h3 className={styles.version} id="oldVersion">v{oldVersion ? oldVersion : "x.y.z"}</h3>
           <span className="material-symbols-outlined">arrow_right_alt</span>
-          <h3 className={styles.version} id="newVersion">v{newVersion}</h3>
+          <h3 className={styles.version} id="newVersion">v{newVersion ? newVersion : "x.y.z"}</h3>
         </div>
         <div className={styles.actionsContainer}>
           <Button onClick={handleSeeChangelog} border="soft" variant="clear" text="See changelog" />
