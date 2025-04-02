@@ -30,6 +30,7 @@
     left: 5%;
     top: 50%;
     transform: translateY(-50%);
+    color: hsl(0, 100%, 50%);
     width: calc(90% - 40px);
     min-height: 150px;
     height: fit-content;
