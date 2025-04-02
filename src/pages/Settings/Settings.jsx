@@ -1,13 +1,18 @@
 import DarkModeSwitch from "../../components/Switch/DarkModeSwitch/DarkModeSwitch";
-import ThemeSelector from "../../components/Dropdown/ThemeSelector";
+import ThemeSelectorBox from "../../components/Dropdown/ThemeSelectorBox";
+import Button from "../../components/Button/Button";
 import LanguageSelector from "../../components/Dropdown/LanguageSelector";
 import TextInput from "../../components/TextInput/TextInput";
 import useVibration from '../../scripts/useVibration';
 import Switch from "../../components/Switch/Switch/Switch";
 import styles from "./Settings.module.css";
+import { useState } from "react";
+import { useData } from "../../scripts/useData";
 
 function Settings({onBack}) {
   const vibrate = useVibration();
+  const [data, setData] = useData();
+  const [showThemeSelector, setShowThemeSelector] = useState(false);
 
   const handleBack = () => {
     vibrate(5);
@@ -17,9 +22,10 @@ function Settings({onBack}) {
       onBack();
     }, 300);
   }
-  
+
   const element = (
     <>
+      {showThemeSelector ? <ThemeSelectorBox onBack={() => setShowThemeSelector(false)} /> : ""}
         <div id={"settingsHeader"} className={styles.header}>
           <button onClick={handleBack}>
             <span className="material-symbols-outlined">arrow_back</span>Back
@@ -33,7 +39,9 @@ function Settings({onBack}) {
             <label className={styles.settingLabel}>Dark mode</label>
             <DarkModeSwitch />
             <label className={styles.settingLabel}>Color theme</label>
-            <ThemeSelector options={["Cornflower", "Pine"]} />
+            <div className={styles.themeSelectorBtnContainer}>
+            <Button onClick={() => setShowThemeSelector(true)} border="soft" variant="filled" iconName="edit" text={data.settings.palette} />
+            </div>
             <label className={styles.settingLabel}>Haptic feedback</label>
             <Switch path={"settings.hapticFeedback"} />
             <label className={styles.settingLabel}>Language</label>

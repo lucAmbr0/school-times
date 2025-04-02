@@ -129,3 +129,21 @@
     align-items: center;
     text-wrap: nowrap;
 }
+
+.themeSelectorBtnContainer {
+    margin: 0;
+    Button {
+        background-color: var(--palette-100);
+        border: solid 1px var(--palette-200);
+        margin: 0;
+        flex-direction: row-reverse;
+        transition: scale .15s ease;
+        span {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+    }
+    Button:active {
+        background-color: var(--palette-100);
+    }
+}

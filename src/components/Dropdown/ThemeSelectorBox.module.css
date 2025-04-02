@@ -1,0 +1,93 @@
+@keyframes animationOpen {
+    from {
+        opacity: 0;
+        scale: 1.2;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes animationClose {
+    from {
+        opacity: 1;
+        scale: 1;
+    }
+    to {
+        opacity: 0;
+        scale: 1.1;
+    }
+}
+
+.exitAnimation {
+    animation: animationClose 0.2s forwards cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.container {
+    z-index: 111;
+    position: fixed;
+    left: 5%;
+    top: 30%;
+    transform: translateY(-30%);
+    width: calc(90% - 40px);
+    min-height: 150px;
+    height: fit-content;
+    background-color: var(--palette-50);
+    border: solid 1px var(--palette-200);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    animation: animationOpen 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.palettesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.boxLabel {
+    font-weight: 600;
+    font-size: 28px;
+    text-align: center;
+    margin: 0 0 20px 0;
+    color: var(--palette-950);
+}
+
+.paletteBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    border: solid 1px;
+    border-radius: 14px;
+    padding: 15px;
+}
+
+.themeName {
+    font-size: 24px;
+    text-align: start;
+    font-weight: 400;
+    color: var(--palette-950);
+}
+
+.sampleContainer {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sample {
+    width: 12.5%;
+    aspect-ratio: 1 / 1;
+}

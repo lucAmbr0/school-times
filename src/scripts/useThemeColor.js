@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useData } from "./useData";
 
-const palettes = {
+export const palettes = {
   Cornflower: {
     light: {
       "--palette-50": "#F2F9FD",

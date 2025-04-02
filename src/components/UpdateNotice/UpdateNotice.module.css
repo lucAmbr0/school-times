@@ -41,6 +41,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
     animation: animationOpen 0.3s ease forwards;
 }
 
