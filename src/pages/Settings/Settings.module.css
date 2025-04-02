@@ -30,10 +30,11 @@
 
 .container {
     width: 100%;
-    min-height: 120vh;
-    overflow: hidden;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
     z-index: 104;
-    position: absolute;
+    position: fixed;
     background-color: var(--palette-50);
     animation: settingsIn 0.3s forwards ease;
 }
