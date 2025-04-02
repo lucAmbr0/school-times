@@ -28,8 +28,8 @@
     z-index: 111;
     position: fixed;
     left: 5%;
-    top: 30%;
-    transform: translateY(-30%);
+    top: 50%;
+    transform: translateY(-50%);
     width: calc(90% - 40px);
     min-height: 150px;
     height: fit-content;
