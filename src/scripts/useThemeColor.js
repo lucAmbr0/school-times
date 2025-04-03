@@ -4,7 +4,7 @@ import { useData } from "./useData";
 export const palettes = {
   "Polo Blue": {
     light: {
-      "--palette-50":  "hsl(200, 28%, 97%)",
+      "--palette-50": "hsl(200, 28%, 97%)",
       "--palette-100": "hsl(211, 44%, 89%)",
       "--palette-200": "hsl(211, 44%, 78%)",
       "--palette-300": "hsl(211, 43%, 64%)",
@@ -16,19 +16,19 @@ export const palettes = {
       "--palette-900": "hsl(216, 38%, 19%)",
       "--palette-950": "hsl(200, 45%, 3%)",
       "--palette-50-rgb": "245, 248, 249",
-      "--palette-100-rgb":"215, 227, 239",
-      "--palette-200-rgb":"174, 198, 224",
-      "--palette-300-rgb":"124, 162, 203",
-      "--palette-400-rgb":"78, 121, 177",
-      "--palette-500-rgb":"57, 95, 147",
-      "--palette-600-rgb":"45, 74, 118",
-      "--palette-700-rgb":"38, 61, 95",
-      "--palette-800-rgb":"33, 51, 79",
-      "--palette-900-rgb":"30, 45, 67",
+      "--palette-100-rgb": "215, 227, 239",
+      "--palette-200-rgb": "174, 198, 224",
+      "--palette-300-rgb": "124, 162, 203",
+      "--palette-400-rgb": "78, 121, 177",
+      "--palette-500-rgb": "57, 95, 147",
+      "--palette-600-rgb": "45, 74, 118",
+      "--palette-700-rgb": "38, 61, 95",
+      "--palette-800-rgb": "33, 51, 79",
+      "--palette-900-rgb": "30, 45, 67",
       "--palette-950-rgb": "4, 9, 11"
     },
     dark: {
-      "--palette-50":  "hsl(200, 45%, 3%)",
+      "--palette-50": "hsl(200, 45%, 3%)",
       "--palette-100": "hsl(216, 38%, 9%)",
       "--palette-200": "hsl(217, 41%, 12%)",
       "--palette-300": "hsl(216, 43%, 16%)",
@@ -39,7 +39,7 @@ export const palettes = {
       "--palette-800": "hsl(211, 44%, 68%)",
       "--palette-900": "hsl(211, 44%, 79%)",
       "--palette-950": "hsl(200, 28%, 87%)",
-      "--palette-50-rgb":  "4, 9, 11",
+      "--palette-50-rgb": "4, 9, 11",
       "--palette-100-rgb": "14, 21, 32",
       "--palette-200-rgb": "18, 28, 43",
       "--palette-300-rgb": "23, 37, 58",
@@ -54,7 +54,7 @@ export const palettes = {
   },
   "Liliac Bush": {
     light: {
-      "--palette-50":  "hsl(264, 28%, 97%)",
+      "--palette-50": "hsl(264, 28%, 97%)",
       "--palette-100": "hsl(263, 34%, 89%)",
       "--palette-200": "hsl(264, 34%, 78%)",
       "--palette-300": "hsl(265, 43%, 64%)",
@@ -65,7 +65,7 @@ export const palettes = {
       "--palette-800": "hsl(268, 41%, 22%)",
       "--palette-900": "hsl(268, 38%, 19%)",
       "--palette-950": "hsl(269, 45%, 3%)",
-      "--palette-50-rgb":  "247, 245, 249",
+      "--palette-50-rgb": "247, 245, 249",
       "--palette-100-rgb": "225, 217, 236",
       "--palette-200-rgb": "195, 180, 218",
       "--palette-300-rgb": "157, 124, 203",
@@ -78,7 +78,7 @@ export const palettes = {
       "--palette-950-rgb": "8, 4, 11",
     },
     dark: {
-      "--palette-50":  "hsl(269, 45%, 3%)",
+      "--palette-50": "hsl(269, 45%, 3%)",
       "--palette-100": "hsl(268, 38%, 14%)",
       "--palette-200": "hsl(268, 41%, 18%)",
       "--palette-300": "hsl(267, 43%, 23%)",
@@ -89,7 +89,7 @@ export const palettes = {
       "--palette-800": "hsl(264, 34%, 78%)",
       "--palette-900": "hsl(263, 34%, 89%)",
       "--palette-950": "hsl(264, 28%, 97%)",
-      "--palette-50-rgb":  "8, 4, 11",
+      "--palette-50-rgb": "8, 4, 11",
       "--palette-100-rgb": "35, 22, 49",
       "--palette-200-rgb": "45, 27, 65",
       "--palette-300-rgb": "56, 33, 84",
@@ -104,7 +104,7 @@ export const palettes = {
   },
   Pine: {
     light: {
-      "--palette-50":  "hsl(120, 18%, 97%)",
+      "--palette-50": "hsl(120, 18%, 97%)",
       "--palette-100": "hsl(111, 24%, 89%)",
       "--palette-200": "hsl(111, 24%, 78%)",
       "--palette-300": "hsl(111, 23%, 64%)",
@@ -128,7 +128,7 @@ export const palettes = {
       "--palette-950-rgb": "6, 10, 6",
     },
     dark: {
-      "--palette-50":  "hsl(120, 25%, 3%)",
+      "--palette-50": "hsl(120, 25%, 3%)",
       "--palette-100": "hsl(120, 17%, 9%)",
       "--palette-200": "hsl(115, 21%, 12%)",
       "--palette-300": "hsl(114, 23%, 16%)",
@@ -152,6 +152,56 @@ export const palettes = {
       "--palette-950-rgb": "6, 10, 6",
     }
   },
+  Frappe: {
+    light: {
+      "--palette-50": "hsl(45, 50%, 97%)",
+      "--palette-100": "hsl(46, 51%, 94%)",
+      "--palette-200": "hsl(45, 53%, 87%)",
+      "--palette-300": "hsl(43, 60%, 75%)",
+      "--palette-400": "hsl(40, 51%, 60%)",
+      "--palette-500": "hsl(38, 50%, 55%)",
+      "--palette-600": "hsl(33, 51%, 45%)",
+      "--palette-700": "hsl(27, 49%, 33%)",
+      "--palette-800": "hsl(24, 43%, 29%)",
+      "--palette-900": "hsl(20, 39%, 26%)",
+      "--palette-950": "hsl(19, 44%, 14%)",
+      "--palette-50-rgb": "251, 249, 244",
+      "--palette-100-rgb": "248, 244, 232",
+      "--palette-200-rgb": "239, 231, 204",
+      "--palette-300-rgb": "230, 208, 153",
+      "--palette-400-rgb": "205, 170, 101",
+      "--palette-500-rgb": "198, 156, 83",
+      "--palette-600-rgb": "173, 121, 56",
+      "--palette-700-rgb": "125, 80, 43",
+      "--palette-800-rgb": "106, 68, 42",
+      "--palette-900-rgb": "92, 58, 40",
+      "--palette-950-rgb": "51, 30, 20",
+    },
+    dark: {
+      "--palette-50": "hsl(19, 44%, 4%)",
+      "--palette-100": "hsl(20, 35%, 12%)",
+      "--palette-200": "hsl(24, 28%, 23%)",
+      "--palette-300": "hsl(27, 34%, 27%)",
+      "--palette-400": "hsl(33, 45%, 35%)",
+      "--palette-500": "hsl(38, 40%, 35%)",
+      "--palette-600": "hsl(40, 51%, 50%)",
+      "--palette-700": "hsl(43, 60%, 65%)",
+      "--palette-800": "hsl(45, 53%, 77%)",
+      "--palette-900": "hsl(46, 51%, 84%)",
+      "--palette-950": "hsl(45, 50%, 87%)",
+      "--palette-50-rgb": "251, 249, 244",
+      "--palette-100-rgb": "248, 244, 232",
+      "--palette-200-rgb": "239, 231, 204",
+      "--palette-300-rgb": "230, 208, 153",
+      "--palette-400-rgb": "205, 170, 101",
+      "--palette-500-rgb": "198, 156, 83",
+      "--palette-600-rgb": "173, 121, 56",
+      "--palette-700-rgb": "125, 80, 43",
+      "--palette-800-rgb": "106, 68, 42",
+      "--palette-900-rgb": "92, 58, 40",
+      "--palette-950-rgb": "51, 30, 20",
+    }
+  }
   // more palettes soon!
 };
 
@@ -165,7 +215,7 @@ const useThemeColor = (mode = "system", palette = "Polo Blue") => {
         palette = "Polo Blue";
         data.settings.palette = "Polo Blue";
       }
-      
+
       let themeMode = mode;
 
       // If the mode is 'system', use the system preference
