@@ -41,17 +41,3 @@
 .buttonsContainer Button:hover {
     background-color: var(--palette-300);
 }
-
-.bobbo {
- color: rgb(201, 230, 243);
- color: rgb(186, 219, 242);
- color: rgb(153, 205, 234);
- color: rgb(114, 188, 228);
- color: rgb(43, 156, 212);
- color: rgb(36, 117, 158);
- color: rgb(23, 88, 125);
- color: rgb(18, 65, 94);
- color: rgb(16, 50, 71);
- color: rgb(15, 40, 56);
- color: rgb(7, 17, 24);
-}
