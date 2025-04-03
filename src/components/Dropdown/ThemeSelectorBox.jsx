@@ -9,7 +9,7 @@ import { palettes } from "../../scripts/useThemeColor";
 function ThemeSelectorBox({ backAction }) {
   const vibrate = useVibration();
   const [data, setData] = useData();
-  const [palette, setPalette] = useState(data.settings.palette || "Cornflower");
+  const [palette, setPalette] = useState(data.settings.palette || "Polo Blue");
   const [darkMode] = useState(data.settings.darkMode || "system");
 
   const handleThemeChange = (newPalette) => {

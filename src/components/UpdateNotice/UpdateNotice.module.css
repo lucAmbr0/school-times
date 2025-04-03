@@ -85,3 +85,69 @@
         margin: 0;
     }
 }
+
+.bobbo {
+    color:  hsl(120, 18%, 97%);
+    color:  hsl(111, 24%, 89%);
+    color:  hsl(111, 24%, 78%);
+    color:  hsl(111, 23%, 64%);
+    color:  hsl(114, 19%, 50%);
+    color:  hsl(115, 24%, 40%);
+    color:  hsl(116, 25%, 32%);
+    color:  hsl(116, 23%, 26%);
+    color:  hsl(117, 21%, 22%);
+    color:  hsl(116, 18%, 19%);
+    color:  hsl(120, 25%, 3%);
+    
+    color: hsl(120, 25%, 3%);
+    color: hsl(120, 17%, 9%);
+    color: hsl(115, 21%, 12%);
+    color: hsl(114, 23%, 16%);
+    color: hsl(116, 25%, 22%);
+    color: hsl(115, 24%, 30%);
+    color: hsl(115, 19%, 40%);
+    color: hsl(111, 23%, 54%);
+    color: hsl(111, 24%, 68%);
+    color: hsl(113, 23%, 79%);
+    color: hsl(120, 18%, 87%);
+}
+
+.bobbo {
+    color:  hsl(220, 18%, 97%);
+    color:  hsl(201, 24%, 89%);
+    color:  hsl(201, 24%, 78%);
+    color:  hsl(201, 23%, 64%);
+    color:  hsl(204, 19%, 50%);
+    color:  hsl(205, 24%, 40%);
+    color:  hsl(206, 25%, 32%);
+    color:  hsl(206, 23%, 26%);
+    color:  hsl(207, 21%, 22%);
+    color:  hsl(206, 18%, 19%);
+    color:  hsl(220, 25%, 3%);
+
+    color: #7ca2cb;
+    
+    color: hsl(120, 25%, 3%);
+    color: hsl(120, 17%, 9%);
+    color: hsl(115, 21%, 12%);
+    color: hsl(114, 23%, 16%);
+    color: hsl(116, 25%, 22%);
+    color: hsl(115, 24%, 30%);
+    color: hsl(115, 19%, 40%);
+    color: hsl(111, 23%, 54%);
+    color: hsl(111, 24%, 68%);
+    color: hsl(113, 23%, 79%);
+    color: hsl(120, 18%, 87%);
+
+    /* '50': '#f7f6fc',
+    '100': '#f0eef9',
+    '200': '#e4e0f4',
+    '300': '#cfc8ea',
+    '400': '#b4a8dd',
+    '500': '#937ccb',
+    '600': '#8768bf',
+    '700': '#7656ab',
+    '800': '#63488f',
+    '900': '#523c76',
+    '950': '#33264f', */
+}
