@@ -20,15 +20,15 @@ function Timetables({onBack}) {
       <PageHeader handleBack={handleBack} />
       <div id="timetablesPage" className={styles.container}>
         <h1 className={styles.title}>Timetables</h1>
-        <div className={styles.timetableSettingsContainer}>
+        {/* <div className={styles.timetableSettingsContainer}>
             <div className={styles.classSelectorContainer}>
                 <p>Class</p>
-                {/* <Dropdown /> */}
+                <Dropdown />
             </div>
             <div className={styles.classInfoContainer}>
 
             </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
