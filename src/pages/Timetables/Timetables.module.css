@@ -47,3 +47,9 @@
     margin-top: 95px;
     margin-bottom: 20px;
 }
+
+.timetableSettingsContainer {
+    display: flex;
+    width: 100%;
+    padding: 0px 20px;
+}
