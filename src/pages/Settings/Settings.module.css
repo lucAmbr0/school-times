@@ -110,6 +110,7 @@
         margin: 0;
         flex-direction: row-reverse;
         transition: scale .15s ease;
+        font-weight: 300;
         span {
             margin-left: 10px;
             margin-right: 0;

@@ -1,7 +1,7 @@
 import DarkModeSwitch from "../../components/Switch/DarkModeSwitch/DarkModeSwitch";
-import ThemeSelectorBox from "../../components/Dropdown/ThemeSelectorBox";
+import ThemeSelectorBox from "../../components/ThemeSelectorBox/ThemeSelectorBox";
 import Button from "../../components/Button/Button";
-import LanguageSelector from "../../components/Dropdown/LanguageSelector";
+import Dropdown from "../../components/Dropdown/Dropdown";
 import TextInput from "../../components/TextInput/TextInput";
 import useVibration from '../../scripts/useVibration';
 import Switch from "../../components/Switch/Switch/Switch";
@@ -42,7 +42,7 @@ function Settings({onBack}) {
             <label className={styles.settingLabel}>Haptic feedback</label>
             <Switch path={"settings.hapticFeedback"} />
             <label className={styles.settingLabel}>Language</label>
-            <LanguageSelector options={["English"]} />
+            <Dropdown path={"settings.language"} options={["English"]} />
           </div>
         </div>
         <div className={styles.settingsSection}>

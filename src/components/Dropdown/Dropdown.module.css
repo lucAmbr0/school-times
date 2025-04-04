@@ -25,6 +25,8 @@
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+    color: var(--palette-950);
+    z-index: 1;
 }
 
 .option {
