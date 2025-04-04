@@ -18,7 +18,7 @@ function getDeepValue(obj, path) {
     .reduce((o, key) => (o && o[key] !== undefined ? o[key] : ""), obj);
 }
 
-function Dropdown({ path, name, id, options }) {
+function Dropdown({ path = "settings.buffer", name, id, options = ["N/A"] }) {
   const [data, setData] = useData();
   const storedData = JSON.parse(localStorage.getItem("data")) || {};
   const storedValue =

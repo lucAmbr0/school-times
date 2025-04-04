@@ -50,6 +50,55 @@
 
 .timetableSettingsContainer {
     display: flex;
-    width: 100%;
-    padding: 0px 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 60px);
+    margin: 0 20px;
+    padding: 20px 10px;
+    border-radius: 22px;
+    background-color: rgba(var(--palette-100-rgb), 0.3);
+    border: solid 1px var(--palette-200);
+}
+
+.classSelectorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 0 auto;
+    h4 {
+        font-weight: 400;
+        font-size: 22px;
+    }
+}
+
+.settingsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin: 10px 5px;
+    input {
+        background-color: var(--palette-100);
+    }
+}
+
+.settingsGrid > *:nth-child(odd) {
+    justify-self: start;
+}
+
+.settingsGrid > *:nth-child(even) {
+    justify-self: end;
+    margin: 5px 0;
+}
+
+.settingLabel {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--palette-950);
+    margin: 0;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
 }
