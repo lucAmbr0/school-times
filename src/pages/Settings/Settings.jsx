@@ -6,6 +6,7 @@ import TextInput from "../../components/TextInput/TextInput";
 import useVibration from '../../scripts/useVibration';
 import Switch from "../../components/Switch/Switch/Switch";
 import styles from "./Settings.module.css";
+import PageHeader from "../../components/PageHeader/PageHeader";
 import { useState } from "react";
 import { useData } from "../../scripts/useData";
 
@@ -17,7 +18,7 @@ function Settings({onBack}) {
   const handleBack = () => {
     vibrate(5);
     document.querySelector("#settings").classList.add(styles.exitAnimation);
-    document.querySelector("#settingsHeader").classList.add(styles.exitAnimation);
+    document.querySelector("#pageHeader").classList.add(styles.exitAnimation);
     setTimeout(() => {
       onBack();
     }, 300);
@@ -26,11 +27,7 @@ function Settings({onBack}) {
   const element = (
     <>
       {showThemeSelector ? <ThemeSelectorBox backAction={() => setShowThemeSelector(false)} /> : ""}
-        <div id={"settingsHeader"} className={styles.header}>
-          <button onClick={handleBack}>
-            <span className="material-symbols-outlined">arrow_back</span>Back
-          </button>
-        </div>
+      <PageHeader handleBack={handleBack} />
       <div id={"settings"} className={styles.container}>
         <h1 className={styles.title}>Settings</h1>
         <div className={styles.settingsSection}>

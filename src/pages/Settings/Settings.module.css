@@ -39,35 +39,6 @@
     animation: settingsIn 0.3s forwards ease;
 }
 
-.header {
-    background-color: var(--palette-200);
-    border-bottom: 1px solid var(--palette-300);
-    position: fixed;
-    width: 100%;
-    z-index: 105;
-    top: 0;
-    left: 0;
-    animation: settingsIn 0.3s forwards ease;
-}
-
-.header button {
-    display: flex;
-    flex-direction: row;
-    color: var(--palette-950);
-    align-items: center;
-    width: fit-content;
-    gap: 10px;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: 500;
-    margin: 0;
-}
-
-.header span {
-    font-size: 32px;
-    font-weight: 500;
-}
-
 .title {
     font-size: 32px;
     font-weight: 700;
