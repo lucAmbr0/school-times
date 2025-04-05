@@ -34,7 +34,7 @@ function App() {
           return <Home />;
     }
   };
-  const [savedVersion, currVersion, updated, cleared] = checkUpdated("0.11.1");
+  const [savedVersion, currVersion, updated, cleared] = checkUpdated();
   const [showUpdateNotice, setShowUpdateNotice] = useState(updated);
   return (
     <>
