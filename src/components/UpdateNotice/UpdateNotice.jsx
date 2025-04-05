@@ -3,7 +3,7 @@ import Overlay from "../Overlay/Overlay";
 import styles from "./UpdateNotice.module.css";
 import Button from "../Button/Button";
 
-function UpdateNotice({ oldVersion, newVersion, closeAction }) {
+function UpdateNotice({ oldVersion, newVersion, cleared, closeAction }) {
 
   const handleSeeChangelog = () => {
     window.open("https://github.com/lucAmbr0/school-times/commits/main", "_blank");    
@@ -15,12 +15,14 @@ function UpdateNotice({ oldVersion, newVersion, closeAction }) {
       closeAction();
     }, 200);
   }
+
+  const updateMessage = "The app just got updated!" + (cleared ? "Uncompatible versions: App data cleared." : "");
   
   const element = (
     <>
     <Overlay blur={"10px"} color="rgba(0,0,0, 0.2)" zIndex={110} />
       <div id="updateNoticeContainer" className={styles.container}>
-        <h2 className={styles.title}>The app just got updated!</h2>
+        <h2 className={styles.title}>{updateMessage}</h2>
         <HorizontalLine
           color={"var(--palette-900)"}
           length={"100%"}

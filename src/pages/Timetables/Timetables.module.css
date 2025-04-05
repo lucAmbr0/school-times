@@ -48,6 +48,12 @@
     margin-bottom: 20px;
 }
 
+.newTimetableBtnContainer {
+    Button {
+        margin: 10px 20px;
+    }
+}
+
 .timetableSettingsContainer {
     display: flex;
     flex-direction: column;

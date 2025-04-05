@@ -1,6 +1,7 @@
 import styles from "./Dropdown.module.css";
 import { useState, useEffect } from "react";
 import { useData } from "../../scripts/useData";
+import { Icon } from "lucide-react";
 
 function setDeepValue(obj, path, value) {
   const keys = path.split(".");
@@ -18,12 +19,19 @@ function getDeepValue(obj, path) {
     .reduce((o, key) => (o && o[key] !== undefined ? o[key] : ""), obj);
 }
 
-function Dropdown({ path = "settings.buffer", name, id, options = ["N/A"] }) {
+function Dropdown({
+  path = "settings.buffer",
+  name,
+  id,
+  options,
+  value: externalValue,
+  onChange,
+}) {
   const [data, setData] = useData();
   const storedData = JSON.parse(localStorage.getItem("data")) || {};
-  const storedValue =
+  const defaultValue =
     getDeepValue(storedData, path) || getDeepValue(data, path);
-  const [value, setValue] = useState(storedValue);
+  const [value, setValue] = useState(externalValue ?? defaultValue);
   const iconClasses = `material-symbols-outlined ${styles.dropdownIcon}`;
 
   useEffect(() => {
@@ -33,8 +41,16 @@ function Dropdown({ path = "settings.buffer", name, id, options = ["N/A"] }) {
     setData(newData);
   }, [value, path]);
 
+  useEffect(() => {
+    if (externalValue !== undefined) {
+      setValue(externalValue);
+    }
+  }, [externalValue]);
+
   const handleSelectChange = (event) => {
-    setValue(event.target.value);
+    const newValue = event.target.value;
+    setValue(newValue);
+    if (onChange) onChange(newValue);
   };
 
   return (
@@ -48,7 +64,7 @@ function Dropdown({ path = "settings.buffer", name, id, options = ["N/A"] }) {
         onChange={handleSelectChange}
       >
         {options.map((option, index) => (
-          <option key={index} value={option.value}>
+          <option className={styles.option} key={index} value={option}>
             {option}
           </option>
         ))}

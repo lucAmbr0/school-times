@@ -1,7 +1,7 @@
 class Data {
     constructor() {
         this.user = new Person(true);
-        this.mates = [];
+        this.timetables = [new Timetable(true, "you")];
         this.settings = new Settings();
     }
 
@@ -24,21 +24,22 @@ class Data {
 class Person {
     constructor(isUser) {
         this.isUser = isUser;
+        this.name = "";
         this.className = "";
-        this.matesNames = "";
         this.schoolName = "";
         this.schoolAddress = "";
         this.favoriteSubject = "";
-        this.name = "";
         this.rooms = [];
         this.subjects = [];
         this.teachers = [];
-        this.timetable = new Timetable();
     }
 }
 
 class Timetable {
-    constructor() {
+    constructor(isUser = false, className = "") {
+        this.isUser = isUser;
+        this.matesNames = "";
+        this.className = className;
         this.dayStart = 0;
         this.timeStart = 0;
         this.schedule = Array.from({ length: 7 }, () => 
@@ -47,7 +48,7 @@ class Timetable {
     }
 }
 
-class Cell {
+export class Cell {
     constructor() {
         this.off = false;
         this.room = "";

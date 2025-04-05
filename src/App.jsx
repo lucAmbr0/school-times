@@ -34,7 +34,7 @@ function App() {
           return <Home />;
     }
   };
-  const [savedVersion, currVersion, updated] = checkUpdated();
+  const [savedVersion, currVersion, updated, cleared] = checkUpdated("0.11.1");
   const [showUpdateNotice, setShowUpdateNotice] = useState(updated);
   return (
     <>
@@ -43,7 +43,7 @@ function App() {
         <Header />
       <div className="appContainer">
         {renderPage()}
-        { showUpdateNotice ? <UpdateNotice oldVersion={savedVersion} newVersion={currVersion} closeAction={() => {setShowUpdateNotice(false); console.log("Bpbbp")}
+        { showUpdateNotice ? <UpdateNotice oldVersion={savedVersion} newVersion={currVersion} cleared={cleared} closeAction={() => {setShowUpdateNotice(false);}
         } /> : "" }
         <div className="placeholder"></div>
         <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />

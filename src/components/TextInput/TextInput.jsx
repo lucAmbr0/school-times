@@ -3,24 +3,30 @@ import { useState, useEffect } from "react";
 import { useData } from "../../scripts/useData";
 
 function setDeepValue(obj, path, value) {
-  const keys = path.split(".");
+  const keys = path.split(/[\.\[\]]/).filter(Boolean);
   let temp = obj;
 
   for (let i = 0; i < keys.length - 1; i++) {
-    if (!temp[keys[i]]) temp[keys[i]] = {};
-    temp = temp[keys[i]];
+    const key = isNaN(keys[i]) ? keys[i] : parseInt(keys[i]);
+    if (temp[key] === undefined) {
+      temp[key] = isNaN(keys[i + 1]) ? {} : [];
+    }
+    temp = temp[key];
   }
 
-  temp[keys[keys.length - 1]] = value;
+  const lastKey = isNaN(keys[keys.length - 1]) ? keys[keys.length - 1] : parseInt(keys[keys.length - 1]);
+  temp[lastKey] = value;
 }
 
 function getDeepValue(obj, path) {
-  return path
-    .split(".")
-    .reduce((o, key) => (o && o[key] !== undefined ? o[key] : ""), obj);
+  const keys = path.split(/[\.\[\]]/).filter(Boolean);
+  return keys.reduce((acc, key) => {
+    const k = isNaN(key) ? key : parseInt(key);
+    return acc && acc[k] !== undefined ? acc[k] : "";
+  }, obj);
 }
 
-function TextInput({ type, path, name, id, placeholder, maxLength = 0 }) {
+function TextInput({type, path, name, id, placeholder, maxLength = 0, onChangeAction = () => {} }) {
   const [data, setData] = useData();
   let eventPtr;
 
@@ -31,10 +37,12 @@ function TextInput({ type, path, name, id, placeholder, maxLength = 0 }) {
   const [value, setValue] = useState(storedValue);
 
   useEffect(() => {
-    const newData = { ...data };
-    setDeepValue(newData, path, value);
-    localStorage.setItem("data", JSON.stringify(newData));
-    setData(newData);
+    setTimeout(() => {
+      const newData = { ...data };
+      setDeepValue(newData, path, value);
+      localStorage.setItem("data", JSON.stringify(newData));
+      setData(newData);
+    }, 100);
   }, [value, path]);
 
   useEffect(() => {
@@ -52,8 +60,11 @@ function TextInput({ type, path, name, id, placeholder, maxLength = 0 }) {
 
   const handleTextChange = (event) => {
     let newValue = event.target.value;
-    if (event.target.localName == "textarea") newValue = newValue.split(",");
-    setValue(newValue);
+    if (newValue != value) {
+      if (event.target.localName == "textarea") newValue = newValue.split(",");
+      setValue(newValue);
+      onChangeAction(event);
+    }
   };
 
   if (type == "textarea") {
