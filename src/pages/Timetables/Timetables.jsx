@@ -4,6 +4,7 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import HorizontalLine from "../../components/Separator/HorizontalLine";
 import useVibration from "../../scripts/useVibration";
 import Button from "../../components/Button/Button";
+import { Cell } from "../../scripts/Data";
 import { useData } from "../../scripts/useData";
 import { useState, useEffect } from "react";
 import styles from "./Timetables.module.css";
@@ -105,9 +106,38 @@ function Timetables({ onBack }) {
     setData(newData);
   };
 
+  const createNewTimetable = () => ({
+    isUser: false,
+    matesNames: "",
+    className: "new",
+    dayStart: 0,
+    timeStart: 0,
+    schedule: Array.from({ length: 7 }, () =>
+      Array.from({ length: 10 }, () => new Cell(true))
+    ),
+  });
+
+  const handleNewTimetable = () => {
+    const alreadyExists = timetables.some((t) => t.className === "new");
+    if (!alreadyExists) {
+      if (timetables.length < 9) {
+        const newTimetable = createNewTimetable();
+
+        setTimetables([...timetables, newTimetable]);
+      } else {
+        alert("The maximum amount of timetables is 10.");
+      }
+    } else {
+      const index = timetables.findIndex((t) => t.className === "new");
+      if (index !== -1) setActiveTimetable(index);
+    }
+  };
+
   const handleClassSlotChange = (val) => {
-    const selectedTimetable = timetables.find((t) => t.className === val);
-    setActiveTimetable(selectedTimetable);
+    const selectedIndex = timetables.findIndex((t) => t.className === val);
+    if (selectedIndex !== -1) {
+      setActiveTimetable(selectedIndex);
+    }
   };
 
   const handleDaySlotChange = (val) => {
@@ -126,18 +156,21 @@ function Timetables({ onBack }) {
   };
 
   const handleRoomChange = (val = "N/A") => {
-    data.timetables[activeTimetable].schedule[activeDay][activeHour].room = val;
-    setTimetables([...timetables]);
+    const updated = [...timetables];
+    updated[activeTimetable].schedule[activeDay][activeHour].room = val;
+    setTimetables(updated);
   };
 
   const handleSubjectChange = (val = "N/A") => {
-    data.timetables[activeTimetable].schedule[activeDay][activeHour].subject = val;
-    setTimetables([...timetables]);
+    const updated = [...timetables];
+    updated[activeTimetable].schedule[activeDay][activeHour].subject = val;
+    setTimetables(updated);
   };
 
   const handleTeacherChange = (val = "N/A") => {
-    data.timetables[activeTimetable].schedule[activeDay][activeHour].teacher = val;
-    setTimetables([...timetables]);
+    const updated = [...timetables];
+    updated[activeTimetable].schedule[activeDay][activeHour].teacher = val;
+    setTimetables(updated);
   };
 
   useEffect(() => {
@@ -145,7 +178,7 @@ function Timetables({ onBack }) {
     setDeepValue(newData, "timetables", timetables);
     localStorage.setItem("data", JSON.stringify(newData));
     setData(newData);
-  }, [timetables, activeTimetable]);
+  }, [timetables]);  
 
   const handleBack = () => {
     vibrate(5);
@@ -165,7 +198,7 @@ function Timetables({ onBack }) {
         <h1 className={styles.title}>Timetables</h1>
         <div className={styles.newTimetableBtnContainer}>
           <Button
-            onClick={handleClassSlotChange}
+            onClick={handleNewTimetable}
             text="New timetable"
             iconName="add"
             border="rounded"
