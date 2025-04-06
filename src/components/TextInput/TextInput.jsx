@@ -14,7 +14,9 @@ function setDeepValue(obj, path, value) {
     temp = temp[key];
   }
 
-  const lastKey = isNaN(keys[keys.length - 1]) ? keys[keys.length - 1] : parseInt(keys[keys.length - 1]);
+  const lastKey = isNaN(keys[keys.length - 1])
+    ? keys[keys.length - 1]
+    : parseInt(keys[keys.length - 1]);
   temp[lastKey] = value;
 }
 
@@ -26,7 +28,15 @@ function getDeepValue(obj, path) {
   }, obj);
 }
 
-function TextInput({type, path, name, id, placeholder, maxLength = 0, onChangeAction = () => {} }) {
+function TextInput({
+  type,
+  path,
+  name,
+  id,
+  placeholder,
+  maxLength = 0,
+  onChangeAction = () => {},
+}) {
   const [data, setData] = useData();
   let eventPtr;
 
@@ -38,19 +48,23 @@ function TextInput({type, path, name, id, placeholder, maxLength = 0, onChangeAc
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("data")) || {};
-    const storedValue = getDeepValue(storedData, path) || getDeepValue(data, path);
+    const storedValue =
+      getDeepValue(storedData, path) || getDeepValue(data, path);
     setValue(storedValue);
   }, [path, data]);
 
   useEffect(() => {
     if (type == "textarea") {
       setValue(
-        value.toString()
+        value
+          .toString()
           .split(",")
           .map(
             (v) =>
               " " + v.trim().charAt(0).toUpperCase() + v.trim().substring(1)
-          ).toString().trim()
+          )
+          .toString()
+          .trim()
       );
     }
   }, []);

@@ -1,22 +1,31 @@
 import styles from "./Dropdown.module.css";
 import { useState, useEffect } from "react";
 import { useData } from "../../scripts/useData";
-import { Icon } from "lucide-react";
 
 function setDeepValue(obj, path, value) {
-  const keys = path.split(".");
+  const keys = path.split(/[\.\[\]]/).filter(Boolean);
   let temp = obj;
+
   for (let i = 0; i < keys.length - 1; i++) {
-    if (!temp[keys[i]]) temp[keys[i]] = {};
-    temp = temp[keys[i]];
+    const key = isNaN(keys[i]) ? keys[i] : parseInt(keys[i]);
+    if (temp[key] === undefined) {
+      temp[key] = isNaN(keys[i + 1]) ? {} : [];
+    }
+    temp = temp[key];
   }
-  temp[keys[keys.length - 1]] = value;
+
+  const lastKey = isNaN(keys[keys.length - 1])
+    ? keys[keys.length - 1]
+    : parseInt(keys[keys.length - 1]);
+  temp[lastKey] = value;
 }
 
 function getDeepValue(obj, path) {
-  return path
-    .split(".")
-    .reduce((o, key) => (o && o[key] !== undefined ? o[key] : ""), obj);
+  const keys = path.split(/[\.\[\]]/).filter(Boolean);
+  return keys.reduce((acc, key) => {
+    const k = isNaN(key) ? key : parseInt(key);
+    return acc && acc[k] !== undefined ? acc[k] : "";
+  }, obj);
 }
 
 function Dropdown({

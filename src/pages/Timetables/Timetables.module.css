@@ -108,3 +108,16 @@
     align-items: center;
     text-wrap: nowrap;
 }
+
+.dayTimeSelectorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+    span {
+        font-weight: 400;
+        font-size: 20px;
+        color: var(--palette-900);
+    }
+}

@@ -43,17 +43,17 @@ class Timetable {
         this.dayStart = 0;
         this.timeStart = 0;
         this.schedule = Array.from({ length: 7 }, () => 
-            Array.from({ length: 24 }, () => new Cell())
+            Array.from({ length: 10 }, () => new Cell(true))
         );
     }
 }
 
 export class Cell {
-    constructor() {
-        this.off = false;
-        this.room = "";
-        this.subject = "";
-        this.teacher = "";
+    constructor(off) {
+        this.off = off;
+        this.room = off ? "N/A" : "";
+        this.subject = off ? "N/A" : ""
+        this.teacher = off ? "N/A" : ""
     }
 }
 
