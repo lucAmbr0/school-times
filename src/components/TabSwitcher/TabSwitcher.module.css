@@ -51,15 +51,14 @@
     margin: 0 0;
     min-height: 50px;
     overflow: hidden;
-    opacity: 0;
 }
 
 .appearLeft {
-    animation: appearLeft 5.3s ease forwards;
+    animation: appearLeft 0.3s ease forwards;
 }
 
 .appearRight {
-    animation: appearRight 5.3s ease forwards;
+    animation: appearRight 0.3s ease forwards;
 }
 
 .disappear {
@@ -77,7 +76,7 @@
 
 @keyframes appearLeft {
     0% {
-        transform: translateX(-50%);
+        transform: translateX(-10%);
         opacity: 0;
     }
     90% {
@@ -91,7 +90,7 @@
 
 @keyframes appearRight {
     0% {
-        transform: translateX(50%);
+        transform: translateX(10%);
         opacity: 0;
     }
     90% {

@@ -72,9 +72,9 @@ function TabSwitcher({posts}) {
     };
 
     containerStyle = {
-        transform: `translateX(${-swipeProgress/10}%)`,
+        transform: `translateX(${-swipeProgress/12}%)`,
         transition: swipeProgress === 0 ? "transform 0.2s ease" : "none",
-        opacity: tab === "Events" ? 1-(swipeProgress/120) : 1+(swipeProgress/120)
+        opacity: tab === "Events" ? 1-(swipeProgress/100) : 1+(swipeProgress/100)
     };
 
     const element =
