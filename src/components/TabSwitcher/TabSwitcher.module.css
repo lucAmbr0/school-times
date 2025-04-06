@@ -52,32 +52,33 @@
     min-height: 50px;
     overflow: hidden;
     opacity: 0;
-    animation: appearOpacity 0.3s ease forwards;
 }
 
 .appearLeft {
-    animation: appearLeft 0.3s ease forwards;
+    animation: appearLeft 5.3s ease forwards;
 }
 
 .appearRight {
-    animation: appearRight 0.3s ease forwards;
+    animation: appearRight 5.3s ease forwards;
 }
 
-@keyframes appearOpacity {
-    from {
+.disappear {
+    animation: disappear 0.3s ease forwards;
+}
+
+@keyframes disappear {
+    0% {
         opacity: 1;
-        transform: translateX(10%);
     }
-    to {
-        opacity: 1;
-        transform: translateX(0);
+    100% {
+        opacity: 0;
     }
 }
 
 @keyframes appearLeft {
     0% {
-        transform: translateX(-10%);
-        opacity: 0.25;
+        transform: translateX(-50%);
+        opacity: 0;
     }
     90% {
         opacity: 1;
@@ -90,8 +91,8 @@
 
 @keyframes appearRight {
     0% {
-        transform: translateX(10%);
-        opacity: 0.25;
+        transform: translateX(50%);
+        opacity: 0;
     }
     90% {
         opacity: 1;

@@ -1,7 +1,52 @@
-h3,h4,h5 {
+h3,
+h4,
+h5 {
     margin: 0;
     padding: 0;
     text-align: center;
+}
+
+@keyframes appearUp {
+    0% {
+        transform: translateY(-10%);
+        opacity: 0.25;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes appearDown {
+    0% {
+        transform: translateY(10%);
+        opacity: 0.25;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.appearUp {
+    animation: appearUp 0.3s ease forwards;
+}
+
+.appearDown {
+    animation: appearDown 0.3s ease forwards;
+}
+
+.timetablePage {
+    will-change: transform;
+    backface-visibility: hidden;
+    position: relative;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .room {
