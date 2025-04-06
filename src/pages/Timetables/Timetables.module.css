@@ -137,3 +137,56 @@
         gap: 5px;
     }
 }
+
+@keyframes animationOpen {
+    from {
+        opacity: 0;
+        scale: .9;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes animationClose {
+    from {
+        opacity: 1;
+        scale: 1;
+    }
+    to {
+        opacity: 0;
+        scale: .9;
+    }
+}
+
+.exitAnimation {
+    animation: animationClose 0.2s forwards ease !important;
+}
+
+.eraseContainer {
+    z-index: 120;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    width: calc(90% - 40px);
+    transform: translateX(-50%) translateY(-45%);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--palette-100);
+    border: solid 1px var(--palette-300);
+    border-radius: 22px;
+    gap: 20px;
+    animation: animationOpen 0.2s ease forwards;
+
+    Button {
+        margin: 0 0;
+    }
+}
+
+.eraseLabel {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 10px 0;
+}

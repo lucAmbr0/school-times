@@ -4,6 +4,7 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import HorizontalLine from "../../components/Separator/HorizontalLine";
 import useVibration from "../../scripts/useVibration";
 import Button from "../../components/Button/Button";
+import Overlay from "../../components/Overlay/Overlay";
 import { Cell } from "../../scripts/Data";
 import { useData } from "../../scripts/useData";
 import { useState, useEffect } from "react";
@@ -12,6 +13,7 @@ import styles from "./Timetables.module.css";
 function Timetables({ onBack }) {
   const vibrate = useVibration();
   const [data, setData] = useData();
+  const [showErase, setShowErase] = useState(false);
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const hours = [
     "7:00",
@@ -222,9 +224,90 @@ function Timetables({ onBack }) {
     }, 300);
   };
 
+  const handleCloseErase = () => {
+    document
+      .querySelector("#eraseContainer")
+      .classList.add(styles.exitAnimation);
+    setTimeout(() => {
+      document
+        .querySelector("#eraseContainer")
+        .classList.remove("exitAnimation");
+      setShowErase(false);
+    }, 200);
+  };
+
+  const erase = (idx) => {
+    const updated = [...timetables];
+
+    switch (idx) {
+      case 0: {
+        const cell = updated[activeTimetable].schedule[activeDay][activeHour];
+        cell.room = "N/A";
+        cell.subject = "N/A";
+        cell.teacher = "N/A";
+        cell.off = true;
+        break;
+      }
+
+      case 1: {
+        for (let hour = 0; hour < 10; hour++) {
+          const cell = updated[activeTimetable].schedule[activeDay][hour];
+          cell.room = "N/A";
+          cell.subject = "N/A";
+          cell.teacher = "N/A";
+          cell.off = true;
+        }
+        break;
+      }
+
+      case 2: {
+        for (let day = 0; day < 7; day++) {
+          for (let hour = 0; hour < 10; hour++) {
+            const cell = updated[activeTimetable].schedule[day][hour];
+            cell.room = "N/A";
+            cell.subject = "N/A";
+            cell.teacher = "N/A";
+            cell.off = true;
+          }
+        }
+        break;
+      }
+    }
+
+    setTimetables(updated);
+  };
+
   return (
     <>
       <PageHeader handleBack={handleBack} />
+      {showErase ? (
+        <>
+          <Overlay blur={"5px"} zIndex={110} event={handleCloseErase}></Overlay>
+          <div id="eraseContainer" className={styles.eraseContainer}>
+            <h3 className={styles.eraseLabel}>Select what fields to erase</h3>
+            <Button
+              onClick={() => {
+                erase(0), handleCloseErase();
+              }}
+              text={`This cell (${days[activeDay]} at ${hours[activeHour]})`}
+            />
+            <Button
+              onClick={() => {
+                erase(1), handleCloseErase();
+              }}
+              text={`This day (${days[activeDay]})`}
+            />
+            <Button
+              onClick={() => {
+                erase(2), handleCloseErase();
+              }}
+              text={`Entire timetable (${timetables[activeTimetable].className})`}
+            />
+          </div>
+        </>
+      ) : (
+        ""
+      )}
       <div id="timetablesPage" className={styles.container}>
         <h1 className={styles.title}>Timetables</h1>
         <div className={styles.newTimetableBtnContainer}>
@@ -339,6 +422,7 @@ function Timetables({ onBack }) {
                 iconName="delete"
               ></Button>
               <Button
+                onClick={() => setShowErase(true)}
                 variant="outlined"
                 border="rounded"
                 iconName="ink_eraser"
