@@ -63,6 +63,7 @@ function TextInput({type, path, name, id, placeholder, maxLength = 0, onChangeAc
       localStorage.setItem("data", JSON.stringify(updatedData));
       setData(updatedData);
     }
+    onChangeAction();
   };
 
   if (type == "textarea") {

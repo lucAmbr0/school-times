@@ -35,6 +35,13 @@ function Timetables({ onBack }) {
       .reduce((o, key) => (o && o[key] !== undefined ? o[key] : ""), obj);
   }
 
+  const syncUserInfo = () =>  {
+    const newData = { ...data };
+    newData.user.name = timetables.find(t => t.isUser).matesNames;
+    newData.user.className = timetables.find(t => t.isUser).className;
+    setData(newData);
+  };
+
   const createNewTimetable = () => ({
     isUser: false,
     matesNames: "",
@@ -123,6 +130,7 @@ function Timetables({ onBack }) {
               path={`timetables[${timetables.indexOf(
                 activeTimetable
               )}].className`}
+              onChangeAction={syncUserInfo}
             />
             <label className={styles.settingLabel} htmlFor="matesNames">
               Mates names
@@ -134,6 +142,7 @@ function Timetables({ onBack }) {
               path={`timetables[${timetables.indexOf(
                 activeTimetable
               )}].matesNames`}
+              onChangeAction={syncUserInfo}
             />
           </div>
           <HorizontalLine

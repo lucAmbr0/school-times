@@ -7,13 +7,14 @@ import useVibration from '../../scripts/useVibration';
 import Switch from "../../components/Switch/Switch/Switch";
 import styles from "./Settings.module.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useData } from "../../scripts/useData";
 
 function Settings({onBack}) {
   const vibrate = useVibration();
   const [data, setData] = useData();
   const [showThemeSelector, setShowThemeSelector] = useState(false);
+  const [timetables, setTimetables] = useState(data.timetables);
 
   const handleBack = () => {
     vibrate(5);
@@ -23,6 +24,13 @@ function Settings({onBack}) {
       onBack();
     }, 300);
   }
+
+  const syncUserInfo = () =>  {
+    const newData = { ...data };
+    newData.user.name = timetables.find(t => t.isUser).matesNames;
+    newData.user.className = timetables.find(t => t.isUser).className;
+    setData(newData);
+  };
 
   const element = (
     <>
@@ -49,9 +57,9 @@ function Settings({onBack}) {
           <h3 className={styles.sectionTitle}>Customization</h3>
           <div className={styles.settingsGrid}>
             <label htmlFor="name" className={styles.settingLabel}>Name</label>
-            <TextInput maxLength={20} path={"user.name"} id={"name"} name={"Name"} />
+            <TextInput onChangeAction={syncUserInfo} maxLength={20} path={`timetables[${timetables.indexOf(timetables.find(t => t.isUser))}].matesNames`} id={"name"} name={"Name"} />
             <label htmlFor="class-name" className={styles.settingLabel}>Class name</label>
-            <TextInput maxLength={5} path={"user.className"} id={"class-name"} name={"Class name"} />
+            <TextInput onChangeAction={syncUserInfo} maxLength={5} path={`timetables[${timetables.indexOf(timetables.find(t => t.isUser))}].className`} id={"class-name"} name={"Class name"} />
             <label htmlFor="school-name" className={styles.settingLabel}>School name</label>
             <TextInput maxLength={40} path={"user.schoolName"} id={"school-name"} name={"School name"} />
             <label htmlFor="favorite-subject" className={styles.settingLabel}>Favorite subject</label>
