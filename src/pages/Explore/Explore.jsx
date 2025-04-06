@@ -20,6 +20,7 @@ function Explore() {
         matesNames={timetable.matesNames}
         subject={timetable.subject}
         teacher={timetable.teacher}
+        key={"matesTimetable-" + timetable.index}
         />);
       }
     }
