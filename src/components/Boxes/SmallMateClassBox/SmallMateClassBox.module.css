@@ -1,7 +1,7 @@
 h3,
 h4,
 h5 {
-    margin: 0 10px;
+    margin: 0 0;
     padding: 0;
     text-align: center;
 }
@@ -52,10 +52,12 @@ h5 {
 .room {
     font-size: 20px;
     font-weight: 500;
+    margin: 0 10px;
 }
 
 .subjectAndTeacher {
     font-size: 16px;
     font-weight: 300;
     line-height: 1.4;
+    margin: 0 10px;
 }
