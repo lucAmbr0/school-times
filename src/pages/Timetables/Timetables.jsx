@@ -13,21 +13,64 @@ function Timetables({ onBack }) {
   const [data, setData] = useData();
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const hours = [
-    "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00",
+    "7:00",
+    "8:00",
+    "9:00",
+    "10:00",
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
   ];
-  let roomsTxts = data.user.rooms
-  .split(",")
-  .map((r) => r.trim().charAt(0).toUpperCase() + r.trim().slice(1).toLowerCase());
+  let roomsTxts = [];
+  if (data.user.rooms !== "") {
+    roomsTxts = data.user.rooms
+      .split(",")
+      .map(
+        (r) =>
+          r.trim().charAt(0).toUpperCase() + r.trim().slice(1).toLowerCase()
+      );
+  }
   let rooms = [];
   rooms.push("N/A");
-  roomsTxts.forEach(r => rooms.push(r));
-    const [activeDay, setActiveDay] = useState((new Date().getDay() + 6) % 7);
-    let x = new Date().getHours() - 7;
-    if (x < 0) x = 0;
-    else if (x > hours.length - 1) x = hours.length - 1;
-    const [activeHour, setActiveHour] = useState(x);
-    const [timetables, setTimetables] = useState(data.timetables);
-    const [activeTimetable, setActiveTimetable] = useState(timetables.indexOf(data.timetables.find((t) => t.isUser)) || 0);
+  roomsTxts.forEach((r) => rooms.push(r));
+
+  let subjectsTxts = [];
+  if (data.user.subjects !== "") {
+    subjectsTxts = data.user.subjects
+      .split(",")
+      .map(
+        (r) =>
+          r.trim().charAt(0).toUpperCase() + r.trim().slice(1).toLowerCase()
+      );
+  }
+  let subjects = [];
+  subjects.push("N/A");
+  subjectsTxts.forEach((r) => subjects.push(r));
+
+  let teachersTxts = [];
+  if (data.user.teachers !== "") {
+    teachersTxts = data.user.teachers
+      .split(",")
+      .map(
+        (r) =>
+          r.trim().charAt(0).toUpperCase() + r.trim().slice(1).toLowerCase()
+      );
+  }
+  let teachers = [];
+  teachers.push("N/A");
+  teachersTxts.forEach((r) => teachers.push(r));
+  let x = new Date().getHours() - 7;
+  if (x < 0) x = 0;
+  else if (x > hours.length - 1) x = hours.length - 1;
+  const [activeDay, setActiveDay] = useState((new Date().getDay() + 6) % 7);
+  const [activeHour, setActiveHour] = useState(x);
+  const [timetables, setTimetables] = useState(data.timetables);
+  const [activeTimetable, setActiveTimetable] = useState(
+    timetables.indexOf(data.timetables.find((t) => t.isUser)) || 0
+  );
 
   function setDeepValue(obj, path, value) {
     const keys = path.split(/[\.\[\]]/).filter(Boolean);
@@ -72,7 +115,6 @@ function Timetables({ onBack }) {
     if (k < 0) k = 0;
     else if (k > days.length - 1) k = days.length - 1;
     setActiveDay(k);
-    
   };
 
   const handleHoursSlotChange = (val) => {
@@ -86,7 +128,17 @@ function Timetables({ onBack }) {
   const handleRoomChange = (val = "N/A") => {
     data.timetables[activeTimetable].schedule[activeDay][activeHour].room = val;
     setTimetables([...timetables]);
-  }
+  };
+
+  const handleSubjectChange = (val = "N/A") => {
+    data.timetables[activeTimetable].schedule[activeDay][activeHour].subject = val;
+    setTimetables([...timetables]);
+  };
+
+  const handleTeacherChange = (val = "N/A") => {
+    data.timetables[activeTimetable].schedule[activeDay][activeHour].teacher = val;
+    setTimetables([...timetables]);
+  };
 
   useEffect(() => {
     const newData = { ...data };
@@ -178,11 +230,40 @@ function Timetables({ onBack }) {
               Room
             </label>
             <Dropdown
-              value={data.timetables[activeTimetable].schedule[activeDay][activeHour].room}
+              value={
+                data.timetables[activeTimetable].schedule[activeDay][activeHour]
+                  .room
+              }
               onChange={handleRoomChange}
               options={rooms}
               name={"Room"}
               id={"room"}
+            />
+            <label className={styles.settingLabel} htmlFor="room">
+              Subject
+            </label>
+            <Dropdown
+              value={
+                data.timetables[activeTimetable].schedule[activeDay][activeHour]
+                  .subject
+              }
+              onChange={handleSubjectChange}
+              options={subjects}
+              name={"Subject"}
+              id={"subjects"}
+            />
+            <label className={styles.settingLabel} htmlFor="room">
+              Teacher
+            </label>
+            <Dropdown
+              value={
+                data.timetables[activeTimetable].schedule[activeDay][activeHour]
+                  .teacher
+              }
+              onChange={handleTeacherChange}
+              options={teachers}
+              name={"teacher"}
+              id={"teachers"}
             />
           </div>
         </div>

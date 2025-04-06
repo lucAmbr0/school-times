@@ -29,9 +29,9 @@ class Person {
         this.schoolName = "";
         this.schoolAddress = "";
         this.favoriteSubject = "";
-        this.rooms = [];
-        this.subjects = [];
-        this.teachers = [];
+        this.rooms = "";
+        this.subjects = "";
+        this.teachers = "";
     }
 }
 
