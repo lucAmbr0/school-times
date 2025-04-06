@@ -2,9 +2,30 @@ import SwiperWrap from "../../components/SwiperWrap/SwiperWrap";
 import HorizontalLine from "../../components/Separator/HorizontalLine";
 import UserClassBox from "../../components/Boxes/UserClassBox/UserClassBox";
 import LargeMateClassBox from "../../components/Boxes/LargeMateClassBox/LargeMateClassBox";
+import { useData } from "../../scripts/useData";
 import styles from "./Explore.module.css";
 
 function Explore() {
+  const [data] = useData();
+  const timetables = data.timetables;
+  
+  const generateMatesTimetables = () => {
+    let timetableElements = [];
+    for (let timetable of timetables) {
+      if (!timetable.isUser && timetable.className !== "new") {
+        timetableElements.push(
+        <LargeMateClassBox
+        className={timetable.className}
+        room={timetable.room}
+        matesNames={timetable.matesNames}
+        subject={timetable.subject}
+        teacher={timetable.teacher}
+        />);
+      }
+    }
+    return timetableElements;
+  }
+  
   const element = (
     <>
     {/* <h2 className={styles.setTimeAndDayLabel}>Set time and day</h2> */}
@@ -23,10 +44,7 @@ function Explore() {
         alpha={1}
       />
     <h4 className={styles.matesLabel}>Mates</h4>
-    <LargeMateClassBox />
-    <LargeMateClassBox />
-    <LargeMateClassBox />
-    <LargeMateClassBox />
+    {generateMatesTimetables()}
     </>
   );
 
