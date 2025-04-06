@@ -61,7 +61,7 @@
     align-items: center;
     width: calc(100% - 60px);
     margin: 0 20px;
-    padding: 20px 10px;
+    padding: 20px 10px 10px 10px;
     border-radius: 22px;
     background-color: rgba(var(--palette-100-rgb), 0.3);
     border: solid 1px var(--palette-200);
@@ -120,5 +120,20 @@
         font-weight: 400;
         font-size: 20px;
         color: var(--palette-900);
+    }
+}
+
+.bottomButtons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    gap: 5px;
+    Button {
+        margin: 0;
+    }
+    .destructiveBtns {
+        display: flex;
+        gap: 5px;
     }
 }

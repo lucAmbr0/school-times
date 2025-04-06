@@ -1,10 +1,10 @@
 @keyframes menuIn {
     0% {
-        transform: translateY(-5%);
-        clip-path: inset(0 0 100% 0 round 15px);
+        transform: translateY(-10%);
+        clip-path: inset(0 0 40% 0 round 15px);
         opacity: 0;
     }
-    70% {
+    80% {
         opacity: 1;
     }
     100% {
@@ -16,8 +16,8 @@
 
 @keyframes menuOut {
     100% {
-        transform: translateY(-5%);
-        clip-path: inset(0 0 100% 0 round 15px);
+        transform: translateY(-10%);
+        clip-path: inset(0 0 40% 0 round 15px);
         opacity: 0;
     }
     0% {

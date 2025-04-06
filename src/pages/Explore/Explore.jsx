@@ -17,7 +17,7 @@ function Explore() {
       .filter(t => !t.isUser && t.className !== "new")
       .map(t => (
         <LargeMateClassBox
-          key={"matesTimetable-" + t.index}
+          key={"matesTimetable-" + t.className + "-" + t.matesNames}
           timetable={t}
           day={activeDay}
           hour={activeHour}

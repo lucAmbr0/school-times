@@ -120,7 +120,7 @@ function Timetables({ onBack }) {
   const handleNewTimetable = () => {
     const alreadyExists = timetables.some((t) => t.className === "new");
     if (!alreadyExists) {
-      if (timetables.length < 9) {
+      if (timetables.length < 10) {
         const newTimetable = createNewTimetable();
 
         setTimetables([...timetables, newTimetable]);
@@ -130,6 +130,25 @@ function Timetables({ onBack }) {
     } else {
       const index = timetables.findIndex((t) => t.className === "new");
       if (index !== -1) setActiveTimetable(index);
+    }
+  };
+
+  const handleDeleteTimetable = () => {
+    const timetable = timetables[activeTimetable];
+    if (timetable.isUser) {
+      alert("You can't delete your own timetable.");
+      return;
+    }
+
+    const confirmed = confirm(
+      `Are you sure you want to delete "${timetable.className}" times? This action can't be undone.`
+    );
+    if (confirmed) {
+      const updatedTimetables = timetables.filter(
+        (t, index) => index !== activeTimetable
+      );
+      setTimetables(updatedTimetables);
+      setActiveTimetable(0);
     }
   };
 
@@ -183,14 +202,14 @@ function Timetables({ onBack }) {
     } else {
       cell.off = true;
     }
-  }
+  };
 
   useEffect(() => {
     const newData = { ...data };
     setDeepValue(newData, "timetables", timetables);
     localStorage.setItem("data", JSON.stringify(newData));
     setData(newData);
-  }, [timetables]);  
+  }, [timetables]);
 
   const handleBack = () => {
     vibrate(5);
@@ -310,6 +329,27 @@ function Timetables({ onBack }) {
               name={"teacher"}
               id={"teachers"}
             />
+          </div>
+          <div className={styles.bottomButtons}>
+            <div className={styles.destructiveBtns}>
+              <Button
+                onClick={handleDeleteTimetable}
+                variant="outlined"
+                border="rounded"
+                iconName="delete"
+              ></Button>
+              <Button
+                variant="outlined"
+                border="rounded"
+                iconName="ink_eraser"
+              ></Button>
+            </div>
+            <Button
+              variant="filled"
+              border="rounded"
+              iconName="share"
+              text="Share"
+            ></Button>
           </div>
         </div>
       </div>
