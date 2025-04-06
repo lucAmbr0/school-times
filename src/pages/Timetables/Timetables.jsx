@@ -158,20 +158,32 @@ function Timetables({ onBack }) {
   const handleRoomChange = (val = "N/A") => {
     const updated = [...timetables];
     updated[activeTimetable].schedule[activeDay][activeHour].room = val;
+    checkIfDayOff();
     setTimetables(updated);
   };
 
   const handleSubjectChange = (val = "N/A") => {
     const updated = [...timetables];
     updated[activeTimetable].schedule[activeDay][activeHour].subject = val;
+    checkIfDayOff();
     setTimetables(updated);
   };
 
   const handleTeacherChange = (val = "N/A") => {
     const updated = [...timetables];
     updated[activeTimetable].schedule[activeDay][activeHour].teacher = val;
+    checkIfDayOff();
     setTimetables(updated);
   };
+
+  const checkIfDayOff = () => {
+    const cell = timetables[activeTimetable].schedule[activeDay][activeHour];
+    if (cell.room != "N/A" && cell.subject != "N/A" && cell.teacher != "N/A") {
+      cell.off = false;
+    } else {
+      cell.off = true;
+    }
+  }
 
   useEffect(() => {
     const newData = { ...data };

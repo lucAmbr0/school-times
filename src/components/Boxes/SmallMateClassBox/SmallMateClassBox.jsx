@@ -65,9 +65,8 @@ function SmallMateClassBox() {
   let room,subject,teacher;
   const day = (new Date().getDay() + 6) % 7;
   let hour = new Date().getHours() - 7;
-  hour = 9;
   if (timetables.length > 0) {
-    if (hour < 0 || hour > 9) {
+    if (hour < 0 || hour > 9 || current.schedule[day][hour].off) {
       room = "No lesson"
       subject = "";
       teacher = "";

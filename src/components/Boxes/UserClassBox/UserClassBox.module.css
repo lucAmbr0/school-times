@@ -15,11 +15,12 @@
     font-weight: 600;
     font-size: 32px;
     color: var(--palette-950);
-    margin: 20px 0 10px 0;
+    margin: 20px 0 20px 0;
 }
 
 .subjectAndTeacher {
     margin: 0;
+    margin-top: -10px;
     font-size: 28px;
     color: var(--palette-900);
     font-weight: 500;

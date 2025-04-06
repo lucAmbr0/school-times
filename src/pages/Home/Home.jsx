@@ -7,7 +7,7 @@ import SmallMateClassBox from "../../components/Boxes/SmallMateClassBox/SmallMat
 import { useData } from "../../scripts/useData";
 
 function Home() {
-  const [data, setData] = useData();
+  const [data] = useData();
 
   const element = (
     <>
