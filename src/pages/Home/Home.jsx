@@ -9,12 +9,15 @@ import { useData } from "../../scripts/useData";
 function Home() {
   const [data] = useData();
 
+  const day = (new Date().getDay() + 6) % 7;
+  const hour = new Date().getHours() - 7;
+
   const element = (
     <>
       <h1 className={styles.title}>
         Welcome, {data.user.name ? data.user.name : "Guest"} - {data.user.className}
       </h1>
-      <UserClassBox />
+      <UserClassBox day={day} hour={hour} />
       <HorizontalLine
         length={"85%"}
         height={"1px"}

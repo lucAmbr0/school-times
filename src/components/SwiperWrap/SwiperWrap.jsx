@@ -7,7 +7,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { useState } from "react";
 
-function SwiperWrap({ type, start, length }) {
+function SwiperWrap({ type, start, length, activeSlide, setActiveSlide }) {
   
   const startSlide = () => {
     if (type === "time") {
@@ -17,15 +17,13 @@ function SwiperWrap({ type, start, length }) {
     }
   };
 
-  const [activeSlide, setActiveSlide] = useState(startSlide);
-
-  const handleSlideChange = (swiper, activeSlide) => {
+  const handleSlideChange = (swiper, activeSlideDom) => {
     swiper.slides.forEach((s) => {
       s.classList.remove(`${styles.selectedSlide}`);
     });
-    activeSlide.classList.add(styles.selectedSlide);
-  }
-  
+    activeSlideDom.classList.add(styles.selectedSlide);
+  };
+
   const generateSlides = () => {
     const slides = [];
     if (type === "time") {
@@ -102,7 +100,7 @@ function SwiperWrap({ type, start, length }) {
         handleSlideChange(swiper, swiper.slides[swiper.activeIndex]);
       }}
     >
-      {slides}
+      {generateSlides()}
     </Swiper>
   );
 }
