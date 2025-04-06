@@ -18,7 +18,6 @@ function TabSwitcher({ posts }) {
   const hasInteracted = useRef(false);
   const vibrate = useVibration();
   const [swipeProgress, setSwipeProgress] = useState(0);
-  const [animationClass, setAnimationClass] = useState(""); // State for animation class
   
   let homeworkTab = [],
     eventsTab = [];
@@ -63,13 +62,13 @@ function TabSwitcher({ posts }) {
       setTab("Homework");
       setSwipeProgress(0);
       vibrate(5);
-      if (!hasInteracted.current) hasInteracted.current = true; // Trigger interaction
+      if (!hasInteracted.current) hasInteracted.current = true;
     },
     onSwipedRight: () => {
       setTab("Events");
       setSwipeProgress(0);
       vibrate(5);
-      if (!hasInteracted.current) hasInteracted.current = true; // Trigger interaction
+      if (!hasInteracted.current) hasInteracted.current = true;
     },
     onSwiping: (eventData) => {
       const deltaX = eventData.deltaX;
@@ -96,7 +95,7 @@ function TabSwitcher({ posts }) {
           onClick={() => {
             vibrate(5);
             setTab("Events");
-            if (!hasInteracted.current) hasInteracted.current = true; // Trigger interaction
+            if (!hasInteracted.current) hasInteracted.current = true;
           }}
           className={[styles.tabName, tab === "Events" ? styles.selectedTabName : ""].join(" ")}
           id="Events-btn"
@@ -107,7 +106,7 @@ function TabSwitcher({ posts }) {
           onClick={() => {
             vibrate(5);
             setTab("Homework");
-            if (!hasInteracted.current) hasInteracted.current = true; // Trigger interaction
+            if (!hasInteracted.current) hasInteracted.current = true;
           }}
           className={[styles.tabName, tab === "Homework" ? styles.selectedTabName : ""].join(" ")}
           id="Homework-btn"
