@@ -105,7 +105,7 @@ function SmallMateClassBox() {
         className={`${styles.timetablePage} ${appearAnim}`}
         style={containerStyle}
       >
-        <h3 className={boxStyles.boxTitle}>
+        <h3 className={boxStyles.boxTitle} style={{"margin": "0 10px"}}>
          {current.className ? "Class " + current.className : "No mates timetables saved"}
         </h3>
         {room && <h4 className={styles.room}>{room}</h4>}
