@@ -35,7 +35,7 @@ function App() {
     }
   };
   const [savedVersion, currVersion, updated, cleared] = checkUpdated();
-  const [showUpdateNotice, setShowUpdateNotice] = useState(true);
+  const [showUpdateNotice, setShowUpdateNotice] = useState(updated);
   return (
     <>
       <SpeedInsights />
