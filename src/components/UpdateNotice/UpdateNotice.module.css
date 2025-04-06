@@ -45,10 +45,47 @@
     animation: animationOpen 0.3s ease forwards;
 }
 
+@keyframes iconAnim {
+    from {
+        opacity: 0;
+        scale: 0.75;
+        transform: rotate(-60deg);
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+        transform: rotate(0deg);
+    }
+}
+
+.notificationHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    span {
+        margin-right: 10px;
+        font-size: 30px;
+        transform: rotate(-60deg);
+        opacity: 0;
+        scale: 0.75;
+        animation: iconAnim .3s 0.2s ease forwards;
+    }
+}
+
 .title {
     text-align: center;
     font-weight: 600;
+    font-size: 28px;
+    text-wrap: wrap;
     margin: 5px 0;
+}
+
+.subtitle {
+    text-align: justify;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 15px 0 0 0;
 }
 
 .versionsContainer {

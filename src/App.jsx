@@ -35,16 +35,15 @@ function App() {
     }
   };
   const [savedVersion, currVersion, updated, cleared] = checkUpdated();
-  const [showUpdateNotice, setShowUpdateNotice] = useState(updated);
+  const [showUpdateNotice, setShowUpdateNotice] = useState(true);
   return (
     <>
       <SpeedInsights />
       <Analytics />
+        { showUpdateNotice ? <UpdateNotice oldVersion={savedVersion} newVersion={currVersion} cleared={cleared} closeAction={() => {setShowUpdateNotice(false);}} /> : "" }
         <Header />
       <div className="appContainer">
         {renderPage()}
-        { showUpdateNotice ? <UpdateNotice oldVersion={savedVersion} newVersion={currVersion} cleared={cleared} closeAction={() => {setShowUpdateNotice(false);}
-        } /> : "" }
         <div className="placeholder"></div>
         <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
       </div>
