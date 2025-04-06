@@ -10,7 +10,7 @@ import useVibration from "../../../scripts/useVibration";
 function SmallMateClassBox() {
   const [data] = useData();
   const vibrate = useVibration();
-  const timetables = data.timetables.filter((t) => t.className !== "new") || [];
+  const timetables = data.timetables.filter((t) => t.className !== "new" && !t.isUser) || [];
 
   const [activeTimetableIdx, setActiveTimetableIdx] = useState(0);
   const [swipeProgress, setSwipeProgress] = useState(0);
@@ -57,10 +57,26 @@ function SmallMateClassBox() {
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
+    alignItems: "center"
   };
 
   const current = timetables[activeTimetableIdx] || {};
+  let room,subject,teacher;
+  const day = (new Date().getDay() + 6) % 7;
+  let hour = new Date().getHours() - 7;
+  hour = 9;
+  if (timetables.length > 0) {
+    if (hour < 0 || hour > 9) {
+      room = "No lesson"
+      subject = "";
+      teacher = "";
+    } else {
+      room = current.schedule[day][hour].room;
+      subject = current.schedule[day][hour].subject;
+      teacher = current.schedule[day][hour].teacher;
+    }
+  }
 
   const nextTimetable = () => {
     nextIdx(1);
@@ -91,16 +107,16 @@ function SmallMateClassBox() {
         style={containerStyle}
       >
         <h3 className={boxStyles.boxTitle}>
-          Class {current.className || "N/A"}
+         {current.className ? "Class " + current.className : "No mates timetables saved"}
         </h3>
-        <h4 className={styles.room}>{current.room || "N/A"}</h4>
-        <h5 className={styles.subjectAndTeacher}>
-          {current.subject || "N/A"}
+        {room && <h4 className={styles.room}>{room}</h4>}
+        {room && teacher ? <h5 className={styles.subjectAndTeacher}>
+          {subject}
           <br />
-          {current.teacher || "N/A"}
-        </h5>
-        <PercentageProgressBar percentage={30} className={styles.progressBar} />
+          {teacher}
+        </h5> : ""}
       </div>
+        <PercentageProgressBar percentage={0} />
     </div>
   );
 }
