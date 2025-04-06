@@ -72,7 +72,6 @@ function Timetables({ onBack }) {
     if (k < 0) k = 0;
     else if (k > days.length - 1) k = days.length - 1;
     setActiveDay(k);
-    console.log("ACTIVE DAY ", k);
     
   };
 
@@ -82,21 +81,9 @@ function Timetables({ onBack }) {
     if (k < 0) k = 0;
     else if (k > hours.length - 1) k = hours.length - 1;
     setActiveHour(k);
-    console.log("ACTIVE HOUR ", k);
   };
 
-  useEffect(() => {
-    document.getElementById("room").value = data.timetables[activeTimetable].schedule[activeDay][activeHour].room;
-    console.log(document.getElementById("room").value);
-    
-  }, [activeTimetable, activeDay, activeHour]);
-
   const handleRoomChange = (val = "N/A") => {
-    console.log(data.timetables[activeTimetable]);
-    console.log(data.timetables[activeTimetable].schedule);
-    console.log(data.timetables[activeTimetable].schedule[activeDay]);
-    console.log(data.timetables[activeTimetable].schedule[activeDay][activeHour]);
-    
     data.timetables[activeTimetable].schedule[activeDay][activeHour].room = val;
     setTimetables([...timetables]);
   }
