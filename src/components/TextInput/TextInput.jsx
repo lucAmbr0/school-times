@@ -37,13 +37,10 @@ function TextInput({type, path, name, id, placeholder, maxLength = 0, onChangeAc
   const [value, setValue] = useState(storedValue);
 
   useEffect(() => {
-    setTimeout(() => {
-      const newData = { ...data };
-      setDeepValue(newData, path, value);
-      localStorage.setItem("data", JSON.stringify(newData));
-      setData(newData);
-    }, 100);
-  }, [value, path]);
+    const storedData = JSON.parse(localStorage.getItem("data")) || {};
+    const storedValue = getDeepValue(storedData, path) || getDeepValue(data, path);
+    setValue(storedValue);
+  }, [path, data]);
 
   useEffect(() => {
     if (type == "textarea") {
@@ -59,11 +56,12 @@ function TextInput({type, path, name, id, placeholder, maxLength = 0, onChangeAc
   }, []);
 
   const handleTextChange = (event) => {
-    let newValue = event.target.value;
-    if (newValue != value) {
-      if (event.target.localName == "textarea") newValue = newValue.split(",");
-      setValue(newValue);
-      onChangeAction(event);
+    const newValue = event.target.value;
+    if (newValue !== value) {
+      const updatedData = { ...data };
+      setDeepValue(updatedData, path, newValue);
+      localStorage.setItem("data", JSON.stringify(updatedData));
+      setData(updatedData);
     }
   };
 

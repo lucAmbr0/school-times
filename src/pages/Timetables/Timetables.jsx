@@ -64,7 +64,8 @@ function Timetables({ onBack }) {
   }, [timetables, activeTimetable]);
 
   const handleClassSlotChange = (val) => {
-    setActiveTimetable(timetables.find((t) => t.className === val));
+    const selectedTimetable = timetables.find((t) => t.className === val);
+    setActiveTimetable(selectedTimetable);
   };
 
   function setDeepValue(obj, path, value) {
@@ -93,7 +94,7 @@ function Timetables({ onBack }) {
       <PageHeader handleBack={handleBack} />
       <div id="timetablesPage" className={styles.container}>
         <h1 className={styles.title}>Timetables</h1>
-        {/* <div className={styles.newTimetableBtnContainer}>
+        <div className={styles.newTimetableBtnContainer}>
           <Button
             onClick={handleNewTimetable}
             text="New timetable"
@@ -119,14 +120,10 @@ function Timetables({ onBack }) {
               maxLength={5}
               id={"className"}
               name={"Class name"}
-              path={
-                "timetables.[" +
-                timetables.indexOf(activeTimetable) +
-                "].className"
-              }
-              // onChangeAction={changeClassName}
+              path={`timetables[${timetables.indexOf(
+                activeTimetable
+              )}].className`}
             />
-
             <label className={styles.settingLabel} htmlFor="matesNames">
               Mates names
             </label>
@@ -134,7 +131,9 @@ function Timetables({ onBack }) {
               maxLength={40}
               id={"matesNames"}
               name={"Mates names"}
-              path={"settings.buffer"}
+              path={`timetables[${timetables.indexOf(
+                activeTimetable
+              )}].matesNames`}
             />
           </div>
           <HorizontalLine
@@ -142,7 +141,7 @@ function Timetables({ onBack }) {
             length={"95%"}
             height={"1px"}
           />
-        </div> */}
+        </div>
       </div>
     </>
   );
