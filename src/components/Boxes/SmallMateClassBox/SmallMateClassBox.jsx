@@ -14,12 +14,12 @@ function SmallMateClassBox() {
 
   const [activeTimetableIdx, setActiveTimetableIdx] = useState(0);
   const [swipeProgress, setSwipeProgress] = useState(0);
-  const [appearAnim, setAppearAnim] = useState(""); // inizialmente nessuna animazione
+  const [appearAnim, setAppearAnim] = useState("");
   const hasInteracted = useRef(false);
 
   const nextIdx = (delta) => {
     if (!hasInteracted.current) {
-      hasInteracted.current = true; // ora possiamo iniziare ad animare
+      hasInteracted.current = true;
     }
 
     setAppearAnim(styles.disappear);
