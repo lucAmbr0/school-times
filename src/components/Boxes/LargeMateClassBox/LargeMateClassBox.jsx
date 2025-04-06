@@ -4,7 +4,7 @@ import styles from "./LargeMateClassBox.module.css";
 import PropTypes from "prop-types";
 
 function LargeMateClassBox({className = "N/A", room = "N/A", matesNames = "N/A", subject = "N/A", teacher = "N/A"}) {
-    const properties = [className, room, matesNames, subject, teacher];
+    const properties = [room, className, matesNames, subject, teacher];
     const containerStyles = `${styles.container}${subject === "N/A" ? ` ${styles.disabled}` : ""}`;
     const element = (
         <div className={containerStyles}>
