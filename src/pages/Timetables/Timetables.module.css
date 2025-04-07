@@ -190,3 +190,28 @@
     font-weight: 500;
     margin: 10px 0;
 }
+
+.boxLayoutSettingsContainer {
+    background-color: rgba(var(--palette-100-rgb), 0.3);
+    border: solid 1px var(--palette-200);
+    width: calc(100% - 40px);
+    margin: 10px auto;
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.mainPropertyContainer {
+    margin: 10px auto 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.otherPropsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px;
+    justify-content: center;
+    align-items: center;
+}

@@ -277,6 +277,8 @@ function Timetables({ onBack }) {
     setTimetables(updated);
   };
 
+  const propsOptions = ["Room", "Subject", "Teacher", "Class", "Mates"];
+
   return (
     <>
       <PageHeader handleBack={handleBack} />
@@ -436,6 +438,17 @@ function Timetables({ onBack }) {
             ></Button>
           </div>
         </div>
+        {/* <div className={styles.boxLayoutSettingsContainer}>
+          <div className={styles.mainPropertyContainer}>
+              <Dropdown id={"mainPropDropdown"} options={propsOptions} />
+          </div>
+          <div className={styles.otherPropsGrid}>
+            <Dropdown path="settings.buffer" name={"prop1 Dropdown"} id={"prop1Dropdown"} options={propsOptions} />
+            <Dropdown path="settings.buffer" name={"prop2 Dropdown"} id={"prop2Dropdown"} options={propsOptions} />
+            <Dropdown path="settings.buffer" name={"prop3 Dropdown"} id={"prop3Dropdown"} options={propsOptions} />
+            <Dropdown path="settings.buffer" name={"prop4 Dropdown"} id={"prop4Dropdown"} options={propsOptions} />
+          </div>
+        </div> */}
       </div>
     </>
   );
