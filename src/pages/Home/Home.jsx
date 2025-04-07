@@ -15,7 +15,7 @@ function Home() {
   const element = (
     <>
       <h1 className={styles.title}>
-        Welcome, {data.user.name ? data.user.name : "Guest"} - {data.user.className}
+        Welcome, {data.user.name ? data.user.name : "Guest"}{(data.user.className !== "you" && data.user.className) ? " - " + data.user.className : ""}
       </h1>
       <UserClassBox day={day} hour={hour} />
       <HorizontalLine
