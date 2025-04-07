@@ -65,14 +65,16 @@ class WidgetsSwitches {
         this.upcomingEvents = true
         this.coffeeKey = true
         this.homework = true
-        this.customLinks = []
+        this.link1 = new CustomLink("School site")
+        this.link2 = new CustomLink("Classroom")
     }
 }
 
 class CustomLink {
-    constructor(label = "N/A", link = "./") {
+    constructor(label) {
+        this.visible = true,
         this.label = label,
-        this.link = link
+        this.url = "./"
     }
 }
 

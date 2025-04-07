@@ -19,6 +19,10 @@ function Home() {
   const day = (new Date().getDay() + 6) % 7;
   const hour = new Date().getHours() - 7;
 
+  const openLink = (url) => {
+    window.open(url, "_blank");
+  }
+  
   const element = (
     <>
       <h1 className={styles.title}>
@@ -52,18 +56,20 @@ function Home() {
         ) : (
           ""
         )}
-        <SmallChip
-          text={"School site"}
+        {widgets.link1.visible ? <SmallChip
+          text={data.settings.widgets.link1.label}
           iconName={"arrow_outward"}
           type={"link"}
-          value={"./"}
-        />
-        <SmallChip
-          text={"Classroom"}
+          value={widgets.link1.url}
+          onClick={() => openLink(widgets.link1.url)}
+          /> : ""}
+        {widgets.link2.visible ? <SmallChip
+          text={data.settings.widgets.link2.label}
           iconName={"arrow_outward"}
           type={"link"}
-          value={"./"}
-        />
+          value={widgets.link2.url}
+          onClick={() => openLink(widgets.link2.url)}
+        /> : ""}
       </div>
     </>
   );

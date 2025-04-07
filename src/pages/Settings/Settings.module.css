@@ -120,3 +120,20 @@
         background-color: var(--palette-100);
     }
 }
+
+.customLinkContainer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    width: 120%;
+}
+
+.customLinkContainer button {
+    margin: 0;
+}
+
+.customLinkContainer input {
+    height: calc(100% - 20px);
+}

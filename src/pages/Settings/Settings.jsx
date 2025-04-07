@@ -32,6 +32,26 @@ function Settings({ onBack }) {
     setData(newData);
   };
 
+  const handlePasteLink = (idx) => async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      if (!text) return;
+  
+      // const path = `settings.widgets.link${idx}.url`;
+      const newData = { ...data };
+      if (idx == 1) {
+        newData.settings.widgets.link1.url = text;
+      } else if (idx == 2) {
+        newData.settings.widgets.link2.url = text;
+      }
+      setData(newData);
+  
+    } catch (err) {
+      console.error("Errore durante l'incolla dal clipboard:", err);
+    }
+  };
+  
+  
   const element = (
     <>
       {showThemeSelector ? (
@@ -74,6 +94,25 @@ function Settings({ onBack }) {
             <Switch id={"coffeeKeyWidgetSwitch"} path={"settings.widgets.coffeeKey"} />
             <label htmlFor="coffeeKeyWidgetSwitch" className={styles.settingLabel}>Homework</label>
             <Switch id={"coffeeKeyWidgetSwitch"} path={"settings.widgets.homework"} />
+            <label htmlFor="link1WidgetSwitch" className={styles.settingLabel}>Custom link 1</label>
+            <Switch id={"link1WidgetSwitch"} path={"settings.widgets.link1.visible"} />
+            <label htmlFor="link2WidgetSwitch" className={styles.settingLabel}>Custom link 2</label>
+            <Switch id={"link2WidgetSwitch"} path={"settings.widgets.link2.visible"} />
+          </div>
+        </div>
+        <div className={styles.settingsSection}>
+          <h3 className={styles.sectionTitle}>Custom links</h3>
+          <div className={styles.settingsGrid}>
+            <label htmlFor="link1Switch" className={styles.settingLabel}>Link 1</label>
+            <div className={styles.customLinkContainer}>
+              <TextInput id={"link1Label"} placeholder={"Label"} path={"settings.widgets.link1.label"} maxLength={200} />
+              <Button onClick={handlePasteLink(1)} iconName="content_paste" border="soft" variant="outlined" text="Paste" />
+            </div>
+            <label htmlFor="link1Switch" className={styles.settingLabel}>Link 2</label>
+            <div className={styles.customLinkContainer}>
+              <TextInput id={"link1Label"} placeholder={"Label"} path={"settings.widgets.link2.label"} maxLength={200} />
+              <Button onClick={handlePasteLink(2)} iconName="content_paste" border="soft" variant="outlined" text="Paste" />
+            </div>
           </div>
         </div>
         <div className={styles.settingsSection}>
