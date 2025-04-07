@@ -9,6 +9,8 @@ import { useData } from "../../scripts/useData";
 function Home() {
   const [data] = useData();
 
+  const widgets = data.settings.widgets;
+  
   const day = (new Date().getDay() + 6) % 7;
   const hour = new Date().getHours() - 7;
 
@@ -26,10 +28,10 @@ function Home() {
         alpha={1}
       />
       <div className={styles.smallBoxesContainer}>
-        <SmallMateClassBox />
-        <UpcomingEventsBox />
-        <SmallChip text={"Coffee key"} iconName={"local_cafe"} type={"euro"} />
-        <SmallChip text={"Homework"} iconName={"lists"} type={"progress"} />
+        {widgets.matesTimetables ? <SmallMateClassBox /> : ""}
+        {widgets.upcomingEvents ? <UpcomingEventsBox /> : ""}
+        {widgets.coffeeKey ? <SmallChip text={"Coffee key"} iconName={"local_cafe"} type={"euro"} /> : ""}
+        {widgets.homework ? <SmallChip text={"Homework"} iconName={"lists"} type={"progress"} /> : ""}
         <SmallChip text={"School site"} iconName={"arrow_outward"} type={"link"} value={"./"} />
         <SmallChip text={"Classroom"} iconName={"arrow_outward"} type={"link"} value={"./"} />
       </div>

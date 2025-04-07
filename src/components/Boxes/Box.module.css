@@ -5,15 +5,20 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 100%;
     aspect-ratio: 1 / 1;
     border-radius: 22px;
     background-color: var(--palette-100);
     border: solid 1px var(--palette-300);
     overflow: hidden;
+    grid-row: span 2;
+    grid-column: span 1;
 }
 
 .thinBox {
+    width: 100%;
     aspect-ratio: 2 / 1;
+    grid-row: span 1;
 }
 
 .boxTitle {

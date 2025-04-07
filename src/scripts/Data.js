@@ -59,6 +59,23 @@ export class Cell {
     }
 }
 
+class WidgetsSwitches {
+    constructor() {
+        this.matesTimetables = true
+        this.upcomingEvents = true
+        this.coffeeKey = true
+        this.homework = true
+        this.customLinks = []
+    }
+}
+
+class CustomLink {
+    constructor(label = "N/A", link = "./") {
+        this.label = label,
+        this.link = link
+    }
+}
+
 class Settings {
     constructor() {
         this.darkMode = "system";
@@ -68,6 +85,7 @@ class Settings {
         this.tab = "Home";
         this.version = null;
         this.boxLayout = ["Room", "Class name", "Mates names", "Subject", "Teacher"];
+        this.widgets = new WidgetsSwitches()
     }
 }
 

@@ -3,14 +3,14 @@ import ThemeSelectorBox from "../../components/ThemeSelectorBox/ThemeSelectorBox
 import Button from "../../components/Button/Button";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import TextInput from "../../components/TextInput/TextInput";
-import useVibration from '../../scripts/useVibration';
+import useVibration from "../../scripts/useVibration";
 import Switch from "../../components/Switch/Switch/Switch";
 import styles from "./Settings.module.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { useEffect, useState } from "react";
 import { useData } from "../../scripts/useData";
 
-function Settings({onBack}) {
+function Settings({ onBack }) {
   const vibrate = useVibration();
   const [data, setData] = useData();
   const [showThemeSelector, setShowThemeSelector] = useState(false);
@@ -23,18 +23,22 @@ function Settings({onBack}) {
     setTimeout(() => {
       onBack();
     }, 300);
-  }
+  };
 
-  const syncUserInfo = () =>  {
+  const syncUserInfo = () => {
     const newData = { ...data };
-    newData.user.name = timetables.find(t => t.isUser).matesNames;
-    newData.user.className = timetables.find(t => t.isUser).className;
+    newData.user.name = timetables.find((t) => t.isUser).matesNames;
+    newData.user.className = timetables.find((t) => t.isUser).className;
     setData(newData);
   };
 
   const element = (
     <>
-      {showThemeSelector ? <ThemeSelectorBox backAction={() => setShowThemeSelector(false)} /> : ""}
+      {showThemeSelector ? (
+        <ThemeSelectorBox backAction={() => setShowThemeSelector(false)} />
+      ) : (
+        ""
+      )}
       <PageHeader handleBack={handleBack} />
       <div id={"settings"} className={styles.container}>
         <h1 className={styles.title}>Settings</h1>
@@ -45,36 +49,113 @@ function Settings({onBack}) {
             <DarkModeSwitch />
             <label className={styles.settingLabel}>Color theme</label>
             <div className={styles.themeSelectorBtnContainer}>
-            <Button onClick={() => setShowThemeSelector(true)} border="soft" variant="filled" iconName="edit" text={data.settings.palette} />
+              <Button
+                onClick={() => setShowThemeSelector(true)}
+                border="soft"
+                variant="filled"
+                iconName="edit"
+                text={data.settings.palette}
+              />
             </div>
-            <label className={styles.settingLabel}>Haptic feedback</label>
-            <Switch path={"settings.hapticFeedback"} />
+            <label htmlFor="hapticFeedbackSwitch" className={styles.settingLabel}>Haptic feedback</label>
+            <Switch id={"hapticFeedbackSwitch"} path={"settings.hapticFeedback"} />
             <label className={styles.settingLabel}>Language</label>
             <Dropdown path={"settings.language"} options={["English"]} />
           </div>
         </div>
         <div className={styles.settingsSection}>
+          <h3 className={styles.sectionTitle}>Widgets</h3>
+          <div className={styles.settingsGrid}>
+            <label htmlFor="matesTimetablesWidgetSwitch" className={styles.settingLabel}>Mates' timetables</label>
+            <Switch id={"matesTimetablesWidgetSwitch"} path={"settings.widgets.matesTimetables"} />
+            <label htmlFor="upcomingEventsWidgetSwitch" className={styles.settingLabel}>Upcoming events</label>
+            <Switch id={"upcomingEventsWidgetSwitch"} path={"settings.widgets.upcomingEvents"} />
+            <label htmlFor="coffeeKeyWidgetSwitch" className={styles.settingLabel}>Coffee key</label>
+            <Switch id={"coffeeKeyWidgetSwitch"} path={"settings.widgets.coffeeKey"} />
+            <label htmlFor="coffeeKeyWidgetSwitch" className={styles.settingLabel}>Homework</label>
+            <Switch id={"coffeeKeyWidgetSwitch"} path={"settings.widgets.homework"} />
+          </div>
+        </div>
+        <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>Customization</h3>
           <div className={styles.settingsGrid}>
-            <label htmlFor="name" className={styles.settingLabel}>Name</label>
-            <TextInput onChangeAction={syncUserInfo} maxLength={20} path={`timetables[${timetables.indexOf(timetables.find(t => t.isUser))}].matesNames`} id={"name"} name={"Name"} />
-            <label htmlFor="class-name" className={styles.settingLabel}>Class name</label>
-            <TextInput onChangeAction={syncUserInfo} maxLength={5} path={`timetables[${timetables.indexOf(timetables.find(t => t.isUser))}].className`} id={"class-name"} name={"Class name"} />
-            <label htmlFor="school-name" className={styles.settingLabel}>School name</label>
-            <TextInput maxLength={40} path={"user.schoolName"} id={"school-name"} name={"School name"} />
-            <label htmlFor="favorite-subject" className={styles.settingLabel}>Favorite subject</label>
-            <TextInput maxLength={40} path={"user.favoriteSubject"} id={"favorite-subject"} name={"Favorite subject"} />
+            <label htmlFor="name" className={styles.settingLabel}>
+              Name
+            </label>
+            <TextInput
+              onChangeAction={syncUserInfo}
+              maxLength={20}
+              path={`timetables[${timetables.indexOf(
+                timetables.find((t) => t.isUser)
+              )}].matesNames`}
+              id={"name"}
+              name={"Name"}
+            />
+            <label htmlFor="class-name" className={styles.settingLabel}>
+              Class name
+            </label>
+            <TextInput
+              onChangeAction={syncUserInfo}
+              maxLength={5}
+              path={`timetables[${timetables.indexOf(
+                timetables.find((t) => t.isUser)
+              )}].className`}
+              id={"class-name"}
+              name={"Class name"}
+            />
+            <label htmlFor="school-name" className={styles.settingLabel}>
+              School name
+            </label>
+            <TextInput
+              maxLength={40}
+              path={"user.schoolName"}
+              id={"school-name"}
+              name={"School name"}
+            />
+            <label htmlFor="favorite-subject" className={styles.settingLabel}>
+              Favorite subject
+            </label>
+            <TextInput
+              maxLength={40}
+              path={"user.favoriteSubject"}
+              id={"favorite-subject"}
+              name={"Favorite subject"}
+            />
           </div>
         </div>
         <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>School data</h3>
-          <p className={styles.schDataLabel}>Write your rooms, subjects and teachers in the boxes below separated by comma to fill classes' timetables</p>
+          <p className={styles.schDataLabel}>
+            Write your rooms, subjects and teachers in the boxes below separated
+            by comma to fill classes' timetables
+          </p>
           <h3 className={styles.textAreaLabel}>Rooms</h3>
-          <TextInput maxLength={512} path={"user.rooms"} type="textarea" id={"rooms"} name={"Rooms"} placeholder={"Room 25, Electronics Lab 2, Main hall"} />
+          <TextInput
+            maxLength={512}
+            path={"user.rooms"}
+            type="textarea"
+            id={"rooms"}
+            name={"Rooms"}
+            placeholder={"Room 25, Electronics Lab 2, Main hall"}
+          />
           <h3 className={styles.textAreaLabel}>Subjects</h3>
-          <TextInput maxLength={512} path={"user.subjects"} type="textarea" id={"subjects"} name={"Subjects"} placeholder={"English, Maths, History"} />
+          <TextInput
+            maxLength={512}
+            path={"user.subjects"}
+            type="textarea"
+            id={"subjects"}
+            name={"Subjects"}
+            placeholder={"English, Maths, History"}
+          />
           <h3 className={styles.textAreaLabel}>Teachers</h3>
-          <TextInput maxLength={512} path={"user.teachers"} type="textarea" id={"teachers"} name={"Teachers"} placeholder={"Bess Ross, Jesus Byrd, Emily Schmidt"} />
+          <TextInput
+            maxLength={512}
+            path={"user.teachers"}
+            type="textarea"
+            id={"teachers"}
+            name={"Teachers"}
+            placeholder={"Bess Ross, Jesus Byrd, Emily Schmidt"}
+          />
         </div>
       </div>
     </>
