@@ -1,6 +1,9 @@
 .selectContainer {
     position: relative;
     display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .container {
@@ -17,6 +20,7 @@
     font-size: 20px;
     color: var(--palette-950);
     font-weight: 300;
+    overflow: hidden;
 }
 
 .dropdownIcon {
@@ -33,4 +37,5 @@
     font-size: 20px;
     color: var(--palette-950);
     font-weight: 300;
+    overflow: hidden;
 }

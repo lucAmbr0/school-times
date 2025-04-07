@@ -64,7 +64,6 @@ function Dropdown({
 
   return (
     <div className={styles.selectContainer}>
-      <span className={iconClasses}>arrow_drop_down</span>
       <select
         className={styles.container}
         name={name}
@@ -78,6 +77,7 @@ function Dropdown({
           </option>
         ))}
       </select>
+        <span className={iconClasses}>arrow_drop_down</span>
     </div>
   );
 }

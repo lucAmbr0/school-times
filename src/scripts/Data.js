@@ -1,3 +1,5 @@
+import { Construction } from "lucide-react";
+
 class Data {
     constructor() {
         this.user = new Person(true);
@@ -65,6 +67,7 @@ class Settings {
         this.language = "English";
         this.tab = "Home";
         this.version = null;
+        this.boxLayout = ["Room", "Class name", "Mates names", "Subject", "Teacher"];
     }
 }
 

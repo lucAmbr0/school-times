@@ -6,34 +6,71 @@ import styles from "./LargeMateClassBox.module.css";
 function LargeMateClassBox({ timetable, day = 0, hour = 0 }) {
   const [data] = useData();
   //   const vibrate = useVibration();
-  let room, subject, teacher;
+  const propsLayout = data.settings.boxLayout;
+  let layout = [];
 
   if (
     hour < 0 ||
     hour > 9 ||
     (hour >= 0 && hour <= 9 && timetable.schedule[day][hour].off)
   ) {
-    room = "No lesson";
-    subject = "";
-    teacher = "";
+    layout[0] = "No lesson";
+    layout[1] = timetable.className;
+    layout[2] = timetable.matesNames;
+    layout[3] = "";
+    layout[4] = "";
   } else {
-    room = timetable.schedule[day][hour].room;
-    subject = timetable.schedule[day][hour].subject;
-    teacher = timetable.schedule[day][hour].teacher;
+    for (let i = 0; i < propsLayout.length; i++) {
+      switch (propsLayout[i]) {
+        case "Room":
+          layout[i] = timetable.schedule[day][hour].room;
+          break;
+        case "Class name":
+          layout[i] = timetable.className;
+          break;
+        case "Mates names":
+          layout[i] = timetable.matesNames;
+          break;
+        case "Subject":
+          layout[i] = timetable.schedule[day][hour].subject;
+          break;
+        case "Teacher":
+          layout[i] = timetable.schedule[day][hour].teacher;
+          break;
+        default:
+          layout[i] = "ERR";
+          break;
+      }
+    }
   }
 
-  const properties = [room, timetable.className, timetable.matesNames, subject, teacher];
   const containerStyles = `${styles.container}${
-    room === "No lesson" ? ` ${styles.disabled}` : ""
+    layout[0] === "No lesson" ? ` ${styles.disabled}` : ""
   }`;
   const element = (
     <div className={containerStyles}>
-      <h2 className={styles.mainProperty}>{properties[0]}</h2>
+      <h2 className={styles.mainProperty}>{layout[0]}</h2>
       <div className={styles.grid}>
-        {properties[1] ? <p className={styles.property}>{properties[1]}</p> : ""}
-        {properties[2] ? <p className={styles.property}>{properties[2]}</p> : ""}
-        {properties[3] ? <p className={styles.property}>{properties[3]}</p> : ""}
-        {properties[4] ? <p className={styles.property}>{properties[4]}</p> : ""}
+        {layout[1] ? (
+          <p className={styles.property}>{layout[1]}</p>
+        ) : (
+          ""
+        )}
+        {layout[2] ? (
+          <p className={styles.property}>{layout[2]}</p>
+        ) : (
+          ""
+        )}
+        {layout[3] ? (
+          <p className={styles.property}>{layout[3]}</p>
+        ) : (
+          ""
+        )}
+        {layout[4] ? (
+          <p className={styles.property}>{layout[4]}</p>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

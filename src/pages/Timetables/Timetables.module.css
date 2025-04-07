@@ -191,6 +191,13 @@
     margin: 10px 0;
 }
 
+.timetablesLayoutTitle {
+    margin: 20px 0 10px 20px;
+    text-align: start;
+    font-size: 24px;
+    color: var(--palette-950);
+}
+
 .boxLayoutSettingsContainer {
     background-color: rgba(var(--palette-100-rgb), 0.3);
     border: solid 1px var(--palette-200);
@@ -205,13 +212,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    div select {
+        font-weight: 500;
+        text-align: center;
+    }
 }
 
 .otherPropsGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 0px;
-    justify-content: center;
     align-items: center;
+    gap: 10px 0;
+    margin: 10px auto;
+    width: calc(100% - 20px);
+}
+
+.otherPropsGrid > *:nth-child(odd) {
+    justify-self: start;
+}
+
+.otherPropsGrid > *:nth-child(even) {
+    justify-self: end;
 }

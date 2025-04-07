@@ -277,7 +277,7 @@ function Timetables({ onBack }) {
     setTimetables(updated);
   };
 
-  const propsOptions = ["Room", "Subject", "Teacher", "Class", "Mates"];
+  const propsOptions = ["Room", "Subject", "Teacher", "Class name", "Mates names"];
 
   return (
     <>
@@ -438,17 +438,18 @@ function Timetables({ onBack }) {
             ></Button>
           </div>
         </div>
-        {/* <div className={styles.boxLayoutSettingsContainer}>
+        <h3 className={styles.timetablesLayoutTitle}>Timetables layout</h3>
+        <div className={styles.boxLayoutSettingsContainer}>
           <div className={styles.mainPropertyContainer}>
-              <Dropdown id={"mainPropDropdown"} options={propsOptions} />
+              <Dropdown path="settings.boxLayout[0]" name={"Main prop dropdown"} id={"mainPropDropdown"} options={propsOptions} />
           </div>
           <div className={styles.otherPropsGrid}>
-            <Dropdown path="settings.buffer" name={"prop1 Dropdown"} id={"prop1Dropdown"} options={propsOptions} />
-            <Dropdown path="settings.buffer" name={"prop2 Dropdown"} id={"prop2Dropdown"} options={propsOptions} />
-            <Dropdown path="settings.buffer" name={"prop3 Dropdown"} id={"prop3Dropdown"} options={propsOptions} />
-            <Dropdown path="settings.buffer" name={"prop4 Dropdown"} id={"prop4Dropdown"} options={propsOptions} />
+            <Dropdown path="settings.boxLayout[1]" name={"prop1 Dropdown"} id={"prop1Dropdown"} options={propsOptions} />
+            <Dropdown path="settings.boxLayout[2]" name={"prop2 Dropdown"} id={"prop2Dropdown"} options={propsOptions} />
+            <Dropdown path="settings.boxLayout[3]" name={"prop3 Dropdown"} id={"prop3Dropdown"} options={propsOptions} />
+            <Dropdown path="settings.boxLayout[4]" name={"prop4 Dropdown"} id={"prop4Dropdown"} options={propsOptions} />
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );
