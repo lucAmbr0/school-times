@@ -217,8 +217,8 @@ function Timetables({ onBack }) {
     vibrate(5);
     document
       .querySelector("#timetablesPage")
-      .classList.add(styles.exitAnimation);
-    document.querySelector("#pageHeader").classList.add(styles.exitAnimation);
+      .classList.add(styles.animationOut);
+    document.querySelector("#pageHeader").classList.add(styles.animationOut);
     setTimeout(() => {
       onBack();
     }, 300);
@@ -227,11 +227,11 @@ function Timetables({ onBack }) {
   const handleCloseErase = () => {
     document
       .querySelector("#eraseContainer")
-      .classList.add(styles.exitAnimation);
+      .classList.add(styles.animationClose);
     setTimeout(() => {
       document
         .querySelector("#eraseContainer")
-        .classList.remove("exitAnimation");
+        .classList.remove("animationClose");
       setShowErase(false);
     }, 200);
   };

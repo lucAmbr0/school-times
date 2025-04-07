@@ -24,7 +24,7 @@
     }
 }
 
-.exitAnimation {
+.animationOut {
     animation: settingsOut 0.3s forwards ease !important;
 }
 
@@ -160,7 +160,7 @@
     }
 }
 
-.exitAnimation {
+.animationClose {
     animation: animationClose 0.2s forwards ease !important;
 }
 
