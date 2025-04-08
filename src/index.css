@@ -6,6 +6,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-button, input, option, textarea {
+button, input, option, textarea, select {
   font-family: "Inter";
 }

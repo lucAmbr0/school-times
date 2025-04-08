@@ -77,7 +77,7 @@ function Dropdown({
           </option>
         ))}
       </select>
-        <span className={iconClasses}>arrow_drop_down</span>
+        {/* <span className={iconClasses}>arrow_drop_down</span> */}
     </div>
   );
 }

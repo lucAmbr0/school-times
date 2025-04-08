@@ -180,9 +180,6 @@
     gap: 20px;
     animation: animationOpen 0.2s ease forwards;
 
-    Button {
-        margin: 0 0;
-    }
 }
 
 .eraseLabel {
@@ -221,10 +218,11 @@
 
 .otherPropsGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+    grid-template-columns: auto auto;
     grid-template-rows: 1fr 1fr;
     align-items: center;
-    gap: 10px 0;
+    gap: 10px;
     margin: 10px auto;
     width: calc(100% - 20px);
 }
