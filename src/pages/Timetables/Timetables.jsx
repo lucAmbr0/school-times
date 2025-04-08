@@ -163,6 +163,10 @@ function Timetables({ onBack }) {
     }
   };
 
+  const handleTimetableClassInfo = () => {
+    if (!editTimetableClassInfo) showSnackbar("You can edit your own name and class name in settings")
+  }
+
   const handleDaySlotChange = (val) => {
     let k = days.indexOf(val);
     if (k < 0) k = 0;
@@ -350,6 +354,7 @@ function Timetables({ onBack }) {
               Class name
             </label>
             <TextInput
+              onClickAction={handleTimetableClassInfo}
               disabled={!editTimetableClassInfo}
               maxLength={5}
               id={"className"}
@@ -361,6 +366,7 @@ function Timetables({ onBack }) {
               Mates names
             </label>
             <TextInput
+              onClickAction={handleTimetableClassInfo}
               disabled={!editTimetableClassInfo}
               maxLength={40}
               id={"matesNames"}

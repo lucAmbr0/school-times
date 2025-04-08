@@ -36,6 +36,7 @@ function TextInput({
   placeholder,
   disabled = false,
   maxLength = 0,
+  onClickAction = () => {},
   onChangeAction = () => {},
 }) {
   const [data, setData] = useData();
@@ -87,6 +88,7 @@ function TextInput({
         className={styles.textArea}
         disabled={disabled}
         value={value}
+        onTouchStart={onClickAction}
         placeholder={placeholder + "..."}
         name={name}
         maxLength={maxLength}
@@ -99,6 +101,7 @@ function TextInput({
     return (
       <input
         type={type}
+        onTouchStart={onClickAction}
         className={styles.inputElement}
         disabled={disabled}
         value={value}
