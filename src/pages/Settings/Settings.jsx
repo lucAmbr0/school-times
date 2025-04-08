@@ -9,6 +9,7 @@ import styles from "./Settings.module.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { useEffect, useState } from "react";
 import { useData } from "../../scripts/useData";
+import { showSnackbar } from "../../scripts/snackbar"
 
 function Settings({ onBack }) {
   const vibrate = useVibration();
@@ -45,9 +46,11 @@ function Settings({ onBack }) {
         newData.settings.widgets.link2.url = text;
       }
       setData(newData);
+      showSnackbar(`Saved link ${text.substring(0, 20)} as custom link ${idx}`);
   
     } catch (err) {
       console.error("Errore durante l'incolla dal clipboard:", err);
+      showSnackbar("Couldn't read link URL from your clipboard");
     }
   };
   

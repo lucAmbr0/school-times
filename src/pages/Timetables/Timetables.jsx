@@ -5,6 +5,7 @@ import HorizontalLine from "../../components/Separator/HorizontalLine";
 import useVibration from "../../scripts/useVibration";
 import Button from "../../components/Button/Button";
 import Overlay from "../../components/Overlay/Overlay";
+import { showSnackbar } from "../../scripts/snackbar";
 import { Cell } from "../../scripts/Data";
 import { useData } from "../../scripts/useData";
 import { useState, useEffect } from "react";
@@ -127,7 +128,7 @@ function Timetables({ onBack }) {
 
         setTimetables([...timetables, newTimetable]);
       } else {
-        alert("The maximum amount of timetables is 10.");
+        showSnackbar("The maximum amount of timetables is 10.");
       }
     } else {
       const index = timetables.findIndex((t) => t.className === "new");
@@ -138,7 +139,7 @@ function Timetables({ onBack }) {
   const handleDeleteTimetable = () => {
     const timetable = timetables[activeTimetable];
     if (timetable.isUser) {
-      alert("You can't delete your own timetable.");
+      showSnackbar("You can't delete your own timetable.");
       return;
     }
 
