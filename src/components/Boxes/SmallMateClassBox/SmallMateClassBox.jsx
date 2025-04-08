@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSwipeable } from "react-swipeable";
 import PercentageProgressBar from "../../ProgressBar/PercentageProgressBar/PercentageProgressBar";
 import VerticalDots from "../../VerticalDots/VerticalDots";
@@ -10,12 +10,15 @@ import useVibration from "../../../scripts/useVibration";
 function SmallMateClassBox() {
   const [data] = useData();
   const vibrate = useVibration();
-  const timetables = data.timetables.filter((t) => t.className !== "new" && !t.isUser) || [];
+  const timetables =
+    data.timetables.filter((t) => t.className !== "new" && !t.isUser) || [];
 
   const [activeTimetableIdx, setActiveTimetableIdx] = useState(0);
   const [swipeProgress, setSwipeProgress] = useState(0);
   const [appearAnim, setAppearAnim] = useState("");
   const hasInteracted = useRef(false);
+
+  let progress = 0;
 
   const nextIdx = (delta) => {
     if (!hasInteracted.current) {
@@ -58,16 +61,28 @@ function SmallMateClassBox() {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
-    alignItems: "center"
+    alignItems: "center",
   };
 
   const current = timetables[activeTimetableIdx] || {};
-  let room,subject,teacher;
+  let room, subject, teacher;
   const day = (new Date().getDay() + 6) % 7;
   let hour = new Date().getHours() - 7;
   if (timetables.length > 0) {
+    let firstHour = -1;
+    let lastHour = -1;
+    for (let i = 0; i < 10; i++) {
+      if (firstHour === -1 && !current.schedule[day][i].off) firstHour = i;
+      if (!current.schedule[day][i].off) lastHour = i;
+    }
+
+    const dayDuration = lastHour - firstHour + 1;
+    const now = new Date();
+    const elapsed = hour - firstHour + now.getMinutes() / 60;
+    progress = Math.min((elapsed / dayDuration) * 100, 100);
+    
     if (hour < 0 || hour > 9 || current.schedule[day][hour].off) {
-      room = "No lesson"
+      room = "No lesson";
       subject = "";
       teacher = "";
     } else {
@@ -105,17 +120,23 @@ function SmallMateClassBox() {
         className={`${styles.timetablePage} ${appearAnim}`}
         style={containerStyle}
       >
-        <h3 className={boxStyles.boxTitle} style={{"margin": "0 10px"}}>
-         {current.className ? "Class " + current.className : "No mates timetables saved"}
+        <h3 className={boxStyles.boxTitle} style={{ margin: "0 10px" }}>
+          {current.className
+            ? "Class " + current.className
+            : "No mates timetables saved"}
         </h3>
         {room && <h4 className={styles.room}>{room}</h4>}
-        {room && teacher ? <h5 className={styles.subjectAndTeacher}>
-          {subject}
-          <br />
-          {teacher}
-        </h5> : ""}
+        {room && teacher ? (
+          <h5 className={styles.subjectAndTeacher}>
+            {subject}
+            <br />
+            {teacher}
+          </h5>
+        ) : (
+          ""
+        )}
       </div>
-        <PercentageProgressBar percentage={0} />
+      <PercentageProgressBar percentage={progress} />
     </div>
   );
 }

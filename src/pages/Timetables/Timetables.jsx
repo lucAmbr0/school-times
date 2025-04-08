@@ -220,7 +220,6 @@ function Timetables({ onBack }) {
   }, [timetables]);
 
   useEffect(() => {
-    console.log("BOBBO");
     if (timetables[activeTimetable].isUser)
       setEditTimetableClassInfo(false);
     else setEditTimetableClassInfo(true);
