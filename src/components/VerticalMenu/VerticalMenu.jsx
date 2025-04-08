@@ -29,7 +29,7 @@ function VerticalMenu({showMenu, setShowMenu}) {
     }, [showSettings]);
     const menu = showMenu ? (
     <>
-        <Overlay zIndex={101} blur={"0px"} color={"rgba(0,0,0,0.1)"} event={() => { document.querySelector("#settingsContainer").classList.add(styles.menuOut); setTimeout(() => {setShowMenu(false)}, 250)}} />
+        <Overlay zIndex={101} blur={"0px"} color={"rgba(0,0,0,0.075)"} event={() => { document.querySelector("#settingsContainer").classList.add(styles.menuOut); setTimeout(() => {setShowMenu(false)}, 150)}} />
         <div id="settingsContainer" className={styles.container}>
             <button onClick={() => {vibrate(5); window.location.reload(true) }} className={styles.button}>
                 <span className="material-symbols-outlined">refresh</span>Reload

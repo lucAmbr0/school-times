@@ -1,6 +1,6 @@
 @keyframes menuIn {
     0% {
-        transform: translateY(-10%);
+        transform: translateY(-5%);
         clip-path: inset(0 0 40% 0 round 15px);
         opacity: 0;
     }
@@ -28,7 +28,7 @@
 }
 
 .menuOut {
-    animation: menuOut 0.25s ease forwards !important;
+    animation: menuOut 0.15s ease forwards !important;
 }
 
 .container {
@@ -44,7 +44,7 @@
     border-radius: 15px;
     padding: 5px 0;
     /* box-shadow: 0 0 15px rgba(0,0,0,0.25); */
-    animation: menuIn 0.25s ease;
+    animation: menuIn 0.2s ease;
 }
 
 .button {
