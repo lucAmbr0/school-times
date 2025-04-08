@@ -34,6 +34,7 @@ function TextInput({
   name,
   id,
   placeholder,
+  disabled = false,
   maxLength = 0,
   onChangeAction = () => {},
 }) {
@@ -84,6 +85,7 @@ function TextInput({
     return (
       <textarea
         className={styles.textArea}
+        disabled={disabled}
         value={value}
         placeholder={placeholder + "..."}
         name={name}
@@ -98,6 +100,7 @@ function TextInput({
       <input
         type={type}
         className={styles.inputElement}
+        disabled={disabled}
         value={value}
         maxLength={maxLength}
         name={name}

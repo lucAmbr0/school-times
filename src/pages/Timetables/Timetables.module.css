@@ -234,3 +234,7 @@
 .otherPropsGrid > *:nth-child(even) {
     justify-self: end;
 }
+
+.invisible {
+    display: none !important;
+}

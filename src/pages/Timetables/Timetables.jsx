@@ -75,6 +75,7 @@ function Timetables({ onBack }) {
   const [activeTimetable, setActiveTimetable] = useState(
     timetables.indexOf(data.timetables.find((t) => t.isUser)) || 0
   );
+  const [editTimetableClassInfo, setEditTimetableClassInfo] = useState(true);
 
   function setDeepValue(obj, path, value) {
     const keys = path.split(/[\.\[\]]/).filter(Boolean);
@@ -214,6 +215,13 @@ function Timetables({ onBack }) {
     setData(newData);
   }, [timetables]);
 
+  useEffect(() => {
+    console.log("BOBBO");
+    if (timetables[activeTimetable].isUser)
+      setEditTimetableClassInfo(false);
+    else setEditTimetableClassInfo(true);
+  }, [activeTimetable]);
+
   const handleBack = () => {
     vibrate(5);
     document
@@ -278,7 +286,13 @@ function Timetables({ onBack }) {
     setTimetables(updated);
   };
 
-  const propsOptions = ["Room", "Subject", "Teacher", "Class name", "Mates names"];
+  const propsOptions = [
+    "Room",
+    "Subject",
+    "Teacher",
+    "Class name",
+    "Mates names",
+  ];
 
   return (
     <>
@@ -331,11 +345,12 @@ function Timetables({ onBack }) {
               onChange={handleClassSlotChange}
             />
           </div>
-          <div className={styles.settingsGrid}>
+          <div id="timetableClassInfoSettings" className={styles.settingsGrid}>
             <label className={styles.settingLabel} htmlFor="className">
               Class name
             </label>
             <TextInput
+              disabled={!editTimetableClassInfo}
               maxLength={5}
               id={"className"}
               name={"Class name"}
@@ -346,6 +361,7 @@ function Timetables({ onBack }) {
               Mates names
             </label>
             <TextInput
+              disabled={!editTimetableClassInfo}
               maxLength={40}
               id={"matesNames"}
               name={"Mates names"}
@@ -442,13 +458,38 @@ function Timetables({ onBack }) {
         <h3 className={styles.timetablesLayoutTitle}>Timetables layout</h3>
         <div className={styles.boxLayoutSettingsContainer}>
           <div className={styles.mainPropertyContainer}>
-              <Dropdown path="settings.boxLayout[0]" name={"Main prop dropdown"} id={"mainPropDropdown"} options={propsOptions} />
+            <Dropdown
+              path="settings.boxLayout[0]"
+              name={"Main prop dropdown"}
+              id={"mainPropDropdown"}
+              options={propsOptions}
+            />
           </div>
           <div className={styles.otherPropsGrid}>
-            <Dropdown path="settings.boxLayout[1]" name={"prop1 Dropdown"} id={"prop1Dropdown"} options={propsOptions} />
-            <Dropdown path="settings.boxLayout[2]" name={"prop2 Dropdown"} id={"prop2Dropdown"} options={propsOptions} />
-            <Dropdown path="settings.boxLayout[3]" name={"prop3 Dropdown"} id={"prop3Dropdown"} options={propsOptions} />
-            <Dropdown path="settings.boxLayout[4]" name={"prop4 Dropdown"} id={"prop4Dropdown"} options={propsOptions} />
+            <Dropdown
+              path="settings.boxLayout[1]"
+              name={"prop1 Dropdown"}
+              id={"prop1Dropdown"}
+              options={propsOptions}
+            />
+            <Dropdown
+              path="settings.boxLayout[2]"
+              name={"prop2 Dropdown"}
+              id={"prop2Dropdown"}
+              options={propsOptions}
+            />
+            <Dropdown
+              path="settings.boxLayout[3]"
+              name={"prop3 Dropdown"}
+              id={"prop3Dropdown"}
+              options={propsOptions}
+            />
+            <Dropdown
+              path="settings.boxLayout[4]"
+              name={"prop4 Dropdown"}
+              id={"prop4Dropdown"}
+              options={propsOptions}
+            />
           </div>
         </div>
       </div>
