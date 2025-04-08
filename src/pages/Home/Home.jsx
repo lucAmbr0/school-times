@@ -31,7 +31,7 @@ function Home() {
           ? " - " + data.user.className
           : ""}
       </h1>
-      <UserClassBox day={day} hour={hour} />
+      <UserClassBox day={day} hour={hour} showProgress={true} />
       <HorizontalLine
         length={"85%"}
         height={"1px"}

@@ -8,13 +8,17 @@
 }
 
 .bar {
+    width: 100%;
     height: 5px;
-    background-color: var(--palette-200);
     border-radius: 2px;
     margin: 0 2px;
     width: 100%;
+    background-color: var(--palette-200);
 }
 
 .barActive {
     background-color: var(--palette-400);
+    border-radius: 2px;
+    height: 100%;
+    width: 100%;
 }
