@@ -37,7 +37,7 @@
     min-height: 50px;
     background-color: var(--palette-50);
     border: solid 1px var(--palette-300);
-    z-index: 102;
+    z-index: 106;
     top: 12.5px;
     left: auto;
     right: calc(5% + 5px);

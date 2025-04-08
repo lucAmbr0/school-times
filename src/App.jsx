@@ -42,7 +42,7 @@ function App() {
       <Analytics />
         { showUpdateNotice ? <UpdateNotice oldVersion={savedVersion} newVersion={currVersion} cleared={cleared} closeAction={() => {setShowUpdateNotice(false);}} /> : "" }
         <Header />
-      <div className="appContainer">
+      <div id="appContainer" className="appContainer">
         {renderPage()}
         <div className="placeholder"></div>
         <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
