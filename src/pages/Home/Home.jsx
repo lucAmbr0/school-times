@@ -47,6 +47,7 @@ function Home() {
             text={"Coffee key"}
             iconName={"local_cafe"}
             type={"euro"}
+            value={1}
           />
         ) : (
           ""

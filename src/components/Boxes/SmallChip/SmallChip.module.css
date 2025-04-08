@@ -44,3 +44,8 @@ button.box {
 .underlineLink {
     text-decoration: underline !important;
 }
+
+.progressBackground {
+    background: linear-gradient(to right, var(--palette-200) 0%, var(--palette-100) 0%);
+    transition: background 0.3s ease;
+}

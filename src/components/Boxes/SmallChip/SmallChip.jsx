@@ -1,34 +1,94 @@
+import { useState } from "react";
+import { useSwipeable } from "react-swipeable";
 import boxStyles from "../Box.module.css";
 import styles from "./SmallChip.module.css";
 
-function SmallChip({ text, iconName, value, type, onClick }) {
+function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
   const iconClasses = `material-symbols-outlined ${styles.icon}`;
-  let valueStyles = `${styles.value}`;
+  const isEuro = type === "euro";
+  const isProgress = type === "progress";
 
-  if (value === undefined) {
-    value = "N/A";
-  } else {
-    switch (type) {
-      case "euro":
-        value = `€ ${value}`;
-        break;
-      case "percent":
-        value = `${value}%`;
-        break;
-      case "progress":
-        if (value[1]) value = `${value[0]}/${value[1]}`;
-        else value = `N/A`;
-        break;
-      case "link":
-        valueStyles = `${styles.value} ${styles.underlineLink}`;
-        break;
-    }
+  const [value, setValue] = useState(() => {
+    if (type === "percent")
+      return initialValue !== undefined ? `${initialValue}%` : "N/A";
+    if (isProgress) return [0, 0];
+    if (initialValue === undefined) return "N/A";
+    return initialValue;
+  });
+
+  let valueStyles = `${styles.value}`;
+  if (type === "link") valueStyles += ` ${styles.underlineLink}`;
+
+  const swipeHandlers = useSwipeable({
+    onSwipedUp: () => {
+      if (isEuro) {
+        setValue((prev) => {
+          const parsed = parseFloat(prev);
+          return !isNaN(parsed) ? (parsed + 0.1).toFixed(2) : prev;
+        });
+      } else if (isProgress) {
+        setValue(([done, total]) => [done, total + 1]);
+      }
+    },
+    onSwipedDown: () => {
+      if (isEuro) {
+        setValue((prev) => {
+          const parsed = parseFloat(prev);
+          const newVal = parsed - 0.1;
+          return !isNaN(parsed)
+            ? newVal >= 0
+              ? newVal.toFixed(2)
+              : "0.00"
+            : prev;
+        });
+      } else if (isProgress) {
+        setValue(([done, total]) => [
+          Math.min(done, total - 1),
+          Math.max(0, total - 1),
+        ]);
+      }
+    },
+    onSwipedLeft: () => {
+      if (isProgress) {
+        setValue(([done, total]) => [Math.max(0, done - 1), total]);
+      }
+    },
+    onSwipedRight: () => {
+      if (isProgress) {
+        setValue(([done, total]) => [Math.min(total, done + 1), total]);
+      }
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackTouch: true,
+    trackMouse: false,
+  });
+
+  let displayValue = value;
+  if (isEuro && !isNaN(parseFloat(value))) {
+    displayValue = `€ ${parseFloat(value).toFixed(2)}`;
+  } else if (isProgress && Array.isArray(value)) {
+    displayValue = `${value[0]}/${value[1]}`;
+  }
+
+  let progressStyle = {};
+  if (isProgress) {
+    const [done, total] = Array.isArray(value) ? value : [0, 0];
+    const percent = total === 0 ? 0 : (done / total) * 100;
+    displayValue = `${done}/${total}`;
+    progressStyle.background = `linear-gradient(to right, var(--palette-200) ${percent}%, var(--palette-100) ${percent}%)`;
   }
 
   return (
     <button
-      className={[boxStyles.box, boxStyles.thinBox, styles.box].join(" ")}
+      className={[
+        boxStyles.box,
+        boxStyles.thinBox,
+        styles.box,
+        isProgress ? styles.progressBackground : "",
+      ].join(" ")}
+      style={progressStyle}
       onClick={onClick}
+      {...(isEuro || isProgress ? swipeHandlers : {})}
     >
       <div className={styles.header}>
         <h3 className={styles.title}>{text}</h3>
@@ -36,7 +96,7 @@ function SmallChip({ text, iconName, value, type, onClick }) {
           {iconName && <span className={iconClasses}>{iconName}</span>}
         </div>
       </div>
-      <h2 className={valueStyles}>{type == "link" ? "Open" : value}</h2>
+      <h2 className={valueStyles}>{type === "link" ? "Open" : displayValue}</h2>
     </button>
   );
 }
