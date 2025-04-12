@@ -5,7 +5,7 @@ import styles from './Button.module.css';
 import useVibration from "../../scripts/useVibration";
 
 // Ex. usage:
-// <Button text="Done" border="square" variant="filled" iconName="check" onClick={() => {console.log("Clicked!")}} />
+// <Button text="Done" border="square" variant="filled" iconName="check" onClick={() => {}} />
 
 const errNoClkEvent = () => { console.error("Error: No onClick event provided") };
 
