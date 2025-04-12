@@ -9,21 +9,22 @@ import useVibration from "../../scripts/useVibration";
 
 const errNoClkEvent = () => { console.error("Error: No onClick event provided") };
 
-function Button({ text = "", border = "soft", variant = "filled", iconName = "", iconState = "empty", onClick = errNoClkEvent }) {
+function Button({ onClick, children, text = "", border = "soft", variant = "filled", iconName = "", iconState = "empty", ...props }) {
   const iconClasses = `material-symbols-outlined ${styles.icon} ${iconState == "filled" ? styles.filledIcon : ""}`;
   const vibrate = useVibration();
   
   let btnClasses = `${styles.button} ${styles[border]} ${styles[variant]} ${!text && styles.iconOnly}`
 
-  const handleClick = () => {
-    onClick();
+  const handleClick = (e) => {
+    if (onClick) onClick(e);
     vibrate(5);
   }
   
   return (
-    <button className={btnClasses} onClick={handleClick}>
+    <button className={btnClasses} onClick={handleClick} {...props}>
       {iconName && <span className={iconClasses}>{iconName}</span>}
       {text && text}
+      {children}
     </button>
   );
 }

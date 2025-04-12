@@ -297,7 +297,7 @@ function Timetables({ onBack }) {
     "Mates names",
   ];
 
-  const handleShareTimetable = () => {
+  const handleShareTimetable = (e) => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(
         JSON.stringify(timetables[activeTimetable])
