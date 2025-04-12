@@ -19,7 +19,7 @@ function checkUpdated(forcedMinimumVersion = null) {
   let updated = false;
   let cleared = false;
 
-  if (forcedMinimumVersion && compareVersions(savedVersion, forcedMinimumVersion) < 0) {
+  if (localStorage.length > 0 && forcedMinimumVersion && compareVersions(savedVersion, forcedMinimumVersion) < 0) {
     localStorage.clear();
     cleared = true;
 
