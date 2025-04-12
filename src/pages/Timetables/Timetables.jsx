@@ -10,9 +10,12 @@ import { Cell } from "../../scripts/Data";
 import { useData } from "../../scripts/useData";
 import { useState, useEffect } from "react";
 import styles from "./Timetables.module.css";
+import btnStyles from "../../components/Button/Button.module.css";
 
 function Timetables({ onBack }) {
   const vibrate = useVibration();
+  const iconClasses = `material-symbols-outlined ${btnStyles.icon}`;
+  let btnClasses = `${btnStyles.button} ${btnStyles.rounded} ${btnStyles.filled}`;
   const [data, setData] = useData();
   const [showErase, setShowErase] = useState(false);
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -485,13 +488,10 @@ function Timetables({ onBack }) {
                 iconName="ink_eraser"
               ></Button>
             </div>
-            <Button
-              onClick={handleShareTimetable}
-              variant="filled"
-              border="rounded"
-              iconName="share"
-              text="Share"
-            ></Button>
+            <button className={btnClasses} onClick={handleShareTimetable}>
+              <span className={iconClasses}>share</span>
+              Share
+            </button>
           </div>
         </div>
         <h3 className={styles.timetablesLayoutTitle}>Timetables layout</h3>
