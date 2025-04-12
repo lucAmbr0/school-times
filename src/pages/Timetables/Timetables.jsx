@@ -311,18 +311,21 @@ function Timetables({ onBack }) {
         "Couldn't write timetable to clipboard, check permissions and try again."
       );
     }
-    if (navigator.share()) {
+    if (navigator.share) {
       navigator
         .share({
           title: "Check out my timetable on https://school-times.vercel.app !",
           text: JSON.stringify(timetables[activeTimetable]),
         })
+        .then(() => showSnackbar("Timetable shared successfully!"))
         .catch((error) => {
           showSnackbar(
             "Couldn't share timetable, check permissions and try again."
           );
           console.error("Error sharing:", error);
         });
+    } else {
+      showSnackbar("Sharing is not supported on this device.");
     }
   };
 
