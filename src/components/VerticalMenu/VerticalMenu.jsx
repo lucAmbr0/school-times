@@ -1,12 +1,14 @@
 import Overlay from "../Overlay/Overlay";
 import styles from "./VerticalMenu.module.css"
 import Settings from "../../pages/Settings/Settings"
+import About from "../../pages/About/About";
 import useVibration from "../../scripts/useVibration";
 import { useState, useEffect } from "react";
 
 function VerticalMenu({showMenu, setShowMenu}) {
     const vibrate = useVibration();
-    const [showSettings, setShowSettings] = useState();
+    const [showSettings, setShowSettings] = useState(false);
+    const [showAbout, setShowAbout] = useState(false);
     useEffect(() => {
         const handleBack = (event) => {
             if (showSettings) {
@@ -37,7 +39,7 @@ function VerticalMenu({showMenu, setShowMenu}) {
             <button onClick={() => {vibrate(5);setShowMenu(false); setShowSettings(!showSettings)}} className={styles.button}>
                 <span className="material-symbols-outlined">settings</span>Settings
             </button>
-            <button className={styles.button}>
+            <button onClick={() => {vibrate(5);setShowMenu(false); setShowAbout(!showAbout)}} className={styles.button}>
                 <span className="material-symbols-outlined">info</span>About
             </button>
         </div>
@@ -48,6 +50,7 @@ function VerticalMenu({showMenu, setShowMenu}) {
         <>
         {menu}
         {showSettings ? <Settings onBack={() => setShowSettings(false)} /> : ""}
+        {showAbout ? <About onBack={() => setShowAbout(false)} /> : ""}
         </>
     )
 
