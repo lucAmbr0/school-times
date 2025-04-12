@@ -49,8 +49,11 @@
 }
 
 .newTimetableBtnContainer {
+    display: flex;
+    margin: 0 20px;
+    gap: 10px;
     Button {
-        margin: 10px 20px;
+        margin: 10px 0px;
     }
 }
 

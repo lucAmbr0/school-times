@@ -164,8 +164,9 @@ function Timetables({ onBack }) {
   };
 
   const handleTimetableClassInfo = () => {
-    if (!editTimetableClassInfo) showSnackbar("You can edit your own name and class name in settings")
-  }
+    if (!editTimetableClassInfo)
+      showSnackbar("You can edit your own name and class name in settings");
+  };
 
   const handleDaySlotChange = (val) => {
     let k = days.indexOf(val);
@@ -220,8 +221,7 @@ function Timetables({ onBack }) {
   }, [timetables]);
 
   useEffect(() => {
-    if (timetables[activeTimetable].isUser)
-      setEditTimetableClassInfo(false);
+    if (timetables[activeTimetable].isUser) setEditTimetableClassInfo(false);
     else setEditTimetableClassInfo(true);
   }, [activeTimetable]);
 
@@ -297,6 +297,33 @@ function Timetables({ onBack }) {
     "Mates names",
   ];
 
+  const handleShareTimetable = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(
+        JSON.stringify(timetables[activeTimetable])
+      );
+      showSnackbar("Timetable copied to clipboard!");
+    } else {
+      showSnackbar(
+        "Couldn't write timetable to clipboard, check permissions and try again."
+      );
+    }
+    if (navigator.share()) {
+      navigator
+        .share({
+          title: "Timetable for class " + timetables[activeTimetable].className,
+          text: "Check out my timetable on https://school-times.vercel.app !",
+          url: JSON.stringify(timetables[activeTimetable]),
+        })
+        .catch((error) => {
+          showSnackbar(
+            "Couldn't share timetable, check permissions and try again."
+          );
+          console.error("Error sharing:", error);
+        });
+    }
+  };
+
   return (
     <>
       <PageHeader handleBack={handleBack} />
@@ -333,9 +360,16 @@ function Timetables({ onBack }) {
         <div className={styles.newTimetableBtnContainer}>
           <Button
             onClick={handleNewTimetable}
-            text="New timetable"
+            text="New"
             iconName="add"
-            border="rounded"
+            border="soft"
+            variant="outlined"
+          />
+          <Button
+            onClick={handleNewTimetable}
+            text="Import"
+            iconName="download"
+            border="soft"
             variant="outlined"
           />
         </div>
@@ -453,6 +487,7 @@ function Timetables({ onBack }) {
               ></Button>
             </div>
             <Button
+              onClick={handleShareTimetable}
               variant="filled"
               border="rounded"
               iconName="share"
