@@ -311,9 +311,8 @@ function Timetables({ onBack }) {
     if (navigator.share()) {
       navigator
         .share({
-          title: "Timetable for class " + timetables[activeTimetable].className,
-          text: "Check out my timetable on https://school-times.vercel.app !",
-          url: JSON.stringify(timetables[activeTimetable]),
+          title: "Check out my timetable on https://school-times.vercel.app !",
+          text: JSON.stringify(timetables[activeTimetable]),
         })
         .catch((error) => {
           showSnackbar(
