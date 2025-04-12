@@ -166,7 +166,9 @@ function Timetables({ onBack }) {
 
   const handleTimetableClassInfo = () => {
     if (!editTimetableClassInfo)
-      showSnackbar("You can edit your own name and class name only in settings");
+      showSnackbar(
+        "You can edit your own name and class name only in settings"
+      );
   };
 
   const handleDaySlotChange = (val) => {
@@ -299,37 +301,52 @@ function Timetables({ onBack }) {
   ];
 
   const handleShareTimetable = (e) => {
+    let tClone = Object.assign({}, timetables[activeTimetable]);
+    tClone.isUser = false;
+    if (
+      tClone.className === "new" ||
+      tClone.className === "" ||
+      tClone.className === "you"
+    ) {
+      showSnackbar(
+        "Please set a valid name for the timetable before sharing it."
+      );
+      return;
+    }
+
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(JSON.stringify(timetables));
+      navigator.clipboard.writeText(
+        JSON.stringify(tClone)
+      );
       showSnackbar("All timetables copied to clipboard!");
     } else {
       showSnackbar(
-      "Couldn't write timetables to clipboard, check permissions and try again."
+        "Couldn't write timetables to clipboard, check permissions and try again."
       );
     }
     if (navigator.share) {
-      const file = new Blob([JSON.stringify(timetables[activeTimetable])], {
-      type: "application/json",
+      const file = new Blob([JSON.stringify(tClone)], {
+        type: "application/json",
       });
-      const fileName = `${timetables[activeTimetable].className}_timetable.json`;
+      const fileName = `${tClone.className}_timetable.json`;
       const shareData = {
-      title: "Check out my timetable on https://school-times.vercel.app !",
-      files: [new File([file], fileName)],
+        title: "Check out my timetable on https://school-times.vercel.app !",
+        files: [new File([file], fileName)],
       };
       navigator
-      .share(shareData)
-      .then(() => showSnackbar("Timetable shared successfully!"))
-      .catch(() => {
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(file);
-        link.download = fileName;
-        link.click();
-      });
+        .share(shareData)
+        .then(() => showSnackbar("Timetable shared successfully!"))
+        .catch(() => {
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(file);
+          link.download = fileName;
+          link.click();
+        });
     } else {
-      const file = new Blob([JSON.stringify(timetables[activeTimetable])], {
-      type: "application/json",
+      const file = new Blob([JSON.stringify(tClone)], {
+        type: "application/json",
       });
-      const fileName = `${timetables[activeTimetable].className}_timetable.json`;
+      const fileName = `${tClone.className}_timetable.json`;
       const link = document.createElement("a");
       link.href = URL.createObjectURL(file);
       link.download = fileName;
@@ -349,7 +366,10 @@ function Timetables({ onBack }) {
           try {
             const importedTimetable = JSON.parse(e.target.result);
             if (importedTimetable && importedTimetable.className) {
-              const newTimetable = Object.assign(new Timetable(), importedTimetable);
+              const newTimetable = Object.assign(
+                new Timetable(),
+                importedTimetable
+              );
               const updatedTimetables = [...timetables, newTimetable];
               setTimetables(updatedTimetables);
 
@@ -358,6 +378,7 @@ function Timetables({ onBack }) {
               setData(newData);
               data.updateUserDataFromTimetables();
               showSnackbar("Timetable imported successfully!");
+              setActiveTimetable(updatedTimetables.length - 1);
             } else {
               showSnackbar("Invalid timetable file.");
             }
@@ -532,13 +553,13 @@ function Timetables({ onBack }) {
                 iconName="ink_eraser"
               ></Button>
             </div>
-           <Button 
-           onClick={handleShareTimetable}
-           variant="filled"
-           border="rounded"
-           iconName="share"
-           text="Share"
-           />
+            <Button
+              onClick={handleShareTimetable}
+              variant="filled"
+              border="rounded"
+              iconName="share"
+              text="Share"
+            />
           </div>
         </div>
         <h3 className={styles.timetablesLayoutTitle}>Timetables layout</h3>
