@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import 'material-symbols';
 import styles from './Button.module.css';
-import useVibration from "../../scripts/useVibration";
+import useVibration from "../../../../scripts/useVibration";
 
 // Ex. usage:
 // <Button text="Done" border="square" variant="filled" iconName="check" onClick={() => {console.log("Clicked!")}} />
