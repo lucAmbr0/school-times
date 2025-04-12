@@ -19,6 +19,8 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
     return initialValue;
   });
 
+  const [animationClass, setAnimationClass] = useState("");
+
   useEffect(() => {
     if (isEuro) {
       setValue(data.settings.widgets.coffeeBalance || 0);
@@ -47,7 +49,21 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
     }
   };
 
-  let valueStyles = `${styles.value}`;
+  const updateValue = (newValue) => {
+    setAnimationClass((prevValue) => {
+      if (type === "progress" && Array.isArray(value)) {
+        const [prevDone] = value;
+        const [newDone] = newValue;
+        return newDone > prevDone ? styles.valueUp : styles.valueDown;
+      } else if (type === "euro" && !isNaN(parseFloat(value))) {
+        return parseFloat(newValue) > parseFloat(value) ? styles.valueUp : styles.valueDown;
+      }
+      return "";
+    });
+    setValue(newValue);
+  };
+
+  let valueStyles = `${styles.value} ${animationClass}`;
   if (type === "link") valueStyles += ` ${styles.underlineLink}`;
 
   const swipeHandlers = useSwipeable({
@@ -57,12 +73,14 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
           const parsed = parseFloat(prev);
           const newValue = !isNaN(parsed) ? (parsed + 0.1).toFixed(2) : prev;
           updateData(newValue);
+          updateValue(newValue);
           return newValue;
         });
       } else if (isProgress) {
         setValue(([done, total]) => {
           const newValue = [done, total + 1];
           updateData(newValue);
+          updateValue(newValue);
           return newValue;
         });
       }
@@ -78,6 +96,7 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
               : "0.00"
             : prev;
           updateData(newValue);
+          updateValue(newValue);
           return newValue;
         });
       } else if (isProgress) {
@@ -87,6 +106,7 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
             Math.max(0, total - 1),
           ];
           updateData(newValue);
+          updateValue(newValue);
           return newValue;
         });
       }
@@ -96,6 +116,7 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
         setValue(([done, total]) => {
           const newValue = [Math.max(0, done - 1), total];
           updateData(newValue);
+          updateValue(newValue);
           return newValue;
         });
       }
@@ -105,6 +126,7 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
         setValue(([done, total]) => {
           const newValue = [Math.min(total, done + 1), total];
           updateData(newValue);
+          updateValue(newValue);
           return newValue;
         });
       }
@@ -147,7 +169,9 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
           {iconName && <span className={iconClasses}>{iconName}</span>}
         </div>
       </div>
-      <h2 className={valueStyles}>{type === "link" ? "Open" : displayValue}</h2>
+      <h2 className={valueStyles} onAnimationEnd={() => setAnimationClass("")}>
+        {type === "link" ? "Open" : displayValue}
+      </h2>
     </button>
   );
 }

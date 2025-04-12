@@ -34,11 +34,67 @@ button.box {
     margin: 10px 10px 0 10px;
 }
 
+@keyframes valueUp {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+        transform: translateY(50%);
+    }
+
+    50% {
+        scale: 1;
+        transform: translateY(0);
+    }
+
+    70% {
+        scale: 1.05;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes valueDown {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+        transform: translateY(-50%);
+    }
+
+    50% {
+        scale: 1;
+        transform: translateY(0);
+    }
+
+    70% {
+        scale: 1.05;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+        transform: translateY(0);
+    }
+}
+
 .value {
     margin: 0 10px 5px 10px;
     font-size: 30px;
     text-align: right;
     font-weight: 600;
+}
+
+.valueUp {
+    animation: valueUp 0.2s ease-in-out;
+}
+
+.valueDown {
+    animation: valueDown 0.2s ease-in-out;
 }
 
 .underlineLink {
