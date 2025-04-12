@@ -10,12 +10,9 @@ import { Cell } from "../../scripts/Data";
 import { useData } from "../../scripts/useData";
 import { useState, useEffect } from "react";
 import styles from "./Timetables.module.css";
-import btnStyles from "../../components/Button/Button.module.css";
 
 function Timetables({ onBack }) {
   const vibrate = useVibration();
-  const iconClasses = `material-symbols-outlined ${btnStyles.icon}`;
-  let btnClasses = `${btnStyles.button} ${btnStyles.rounded} ${btnStyles.filled}`;
   const [data, setData] = useData();
   const [showErase, setShowErase] = useState(false);
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -317,15 +314,6 @@ function Timetables({ onBack }) {
           title: "Check out my timetable on https://school-times.vercel.app !",
           text: JSON.stringify(timetables[activeTimetable]),
         })
-        .then(() => showSnackbar("Timetable shared successfully!"))
-        .catch((error) => {
-          showSnackbar(
-            "Couldn't share timetable, check permissions and try again."
-          );
-          console.error("Error sharing:", error);
-        });
-    } else {
-      showSnackbar("Sharing is not supported on this device.");
     }
   };
 
@@ -491,10 +479,13 @@ function Timetables({ onBack }) {
                 iconName="ink_eraser"
               ></Button>
             </div>
-            <button className={btnClasses} onClick={handleShareTimetable}>
-              <span className={iconClasses}>share</span>
-              Share
-            </button>
+           <Button 
+           onClick={handleShareTimetable}
+           variant="filled"
+           border="rounded"
+           iconName="share"
+           text="Share"
+           />
           </div>
         </div>
         <h3 className={styles.timetablesLayoutTitle}>Timetables layout</h3>
