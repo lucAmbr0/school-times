@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import boxStyles from "../Box.module.css";
 import styles from "./SmallChip.module.css";
@@ -13,10 +13,39 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
   const [value, setValue] = useState(() => {
     if (type === "percent")
       return initialValue !== undefined ? `${initialValue}%` : "N/A";
-    if (isProgress) return [0, 0];
+    if (isProgress) return [data.settings.widgets.homeworkProgress[0] || 0, data.settings.widgets.homeworkProgress[1] || 0];
+    if (isEuro) return data.settings.widgets.coffeeBalance || 0;
     if (initialValue === undefined) return "N/A";
     return initialValue;
   });
+
+  useEffect(() => {
+    if (isEuro) {
+      setValue(data.settings.widgets.coffeeBalance || 0);
+    } else if (isProgress) {
+      setValue([
+        data.settings.widgets.homeworkProgress[0] || 0,
+        data.settings.widgets.homeworkProgress[1] || 0,
+      ]);
+    }
+  }, [data, isEuro, isProgress]);
+
+  const updateData = (newValue) => {
+    if (isEuro) {
+      setData({ ...data, settings: { ...data.settings, widgets: { ...data.settings.widgets, coffeeBalance: newValue } } });
+    } else if (isProgress) {
+      setData({
+        ...data,
+        settings: {
+          ...data.settings,
+          widgets: {
+            ...data.settings.widgets,
+            homeworkProgress: newValue,
+          },
+        },
+      });
+    }
+  };
 
   let valueStyles = `${styles.value}`;
   if (type === "link") valueStyles += ` ${styles.underlineLink}`;
@@ -26,10 +55,16 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
       if (isEuro) {
         setValue((prev) => {
           const parsed = parseFloat(prev);
-          return !isNaN(parsed) ? (parsed + 0.1).toFixed(2) : prev;
+          const newValue = !isNaN(parsed) ? (parsed + 0.1).toFixed(2) : prev;
+          updateData(newValue);
+          return newValue;
         });
       } else if (isProgress) {
-        setValue(([done, total]) => [done, total + 1]);
+        setValue(([done, total]) => {
+          const newValue = [done, total + 1];
+          updateData(newValue);
+          return newValue;
+        });
       }
     },
     onSwipedDown: () => {
@@ -37,27 +72,41 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
         setValue((prev) => {
           const parsed = parseFloat(prev);
           const newVal = parsed - 0.1;
-          return !isNaN(parsed)
+          const newValue = !isNaN(parsed)
             ? newVal >= 0
               ? newVal.toFixed(2)
               : "0.00"
             : prev;
+          updateData(newValue);
+          return newValue;
         });
       } else if (isProgress) {
-        setValue(([done, total]) => [
-          Math.min(done, total - 1),
-          Math.max(0, total - 1),
-        ]);
+        setValue(([done, total]) => {
+          const newValue = [
+            Math.min(done, total - 1),
+            Math.max(0, total - 1),
+          ];
+          updateData(newValue);
+          return newValue;
+        });
       }
     },
     onSwipedLeft: () => {
       if (isProgress) {
-        setValue(([done, total]) => [Math.max(0, done - 1), total]);
+        setValue(([done, total]) => {
+          const newValue = [Math.max(0, done - 1), total];
+          updateData(newValue);
+          return newValue;
+        });
       }
     },
     onSwipedRight: () => {
       if (isProgress) {
-        setValue(([done, total]) => [Math.min(total, done + 1), total]);
+        setValue(([done, total]) => {
+          const newValue = [Math.min(total, done + 1), total];
+          updateData(newValue);
+          return newValue;
+        });
       }
     },
     preventDefaultTouchmoveEvent: true,
