@@ -65,6 +65,8 @@ class WidgetsSwitches {
         this.upcomingEvents = true
         this.coffeeKey = true
         this.homework = true
+        this.coffeeKeyBalance = 0;
+        this.homeworkProgress = [0, 0];
         this.link1 = new CustomLink("School site")
         this.link2 = new CustomLink("Classroom")
     }

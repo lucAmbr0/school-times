@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import boxStyles from "../Box.module.css";
 import styles from "./SmallChip.module.css";
+import { useData } from "../../../scripts/useData";
 
 function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
+  const [data, setData] = useData();
   const iconClasses = `material-symbols-outlined ${styles.icon}`;
   const isEuro = type === "euro";
   const isProgress = type === "progress";
