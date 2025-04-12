@@ -180,6 +180,10 @@ function SmallChip({
     }
   };
 
+  const handleShareTimetable = () => {
+    // Function logic for sharing timetable
+  };
+
   return (
     <>
       <button
@@ -204,6 +208,11 @@ function SmallChip({
           onAnimationEnd={() => setAnimationClass("")}
         ></h2>
           {type === "link" ? "Open" : displayValue}
+      <Button
+        onClick={handleShareTimetable} // Ensure the function is passed directly to the onClick prop
+      >
+        Share Timetable
+      </Button>
     </>
   );
 }

@@ -16,7 +16,7 @@ function Button({ onClick, children, text = "", border = "soft", variant = "fill
   let btnClasses = `${styles.button} ${styles[border]} ${styles[variant]} ${!text && styles.iconOnly}`
 
   const handleClick = (e) => {
-    if (onClick) onClick(e);
+    if (onClick) onClick(e); // Directly invoke the onClick handler
     vibrate(5);
   }
   
