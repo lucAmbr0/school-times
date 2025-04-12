@@ -6,7 +6,7 @@ import useVibration from "../../scripts/useVibration";
 import Button from "../../components/Button/Button";
 import Overlay from "../../components/Overlay/Overlay";
 import { showSnackbar } from "../../scripts/snackbar";
-import { Cell } from "../../scripts/Data";
+import { Timetable, Cell } from "../../scripts/Data";
 import { useData } from "../../scripts/useData";
 import { useState, useEffect } from "react";
 import styles from "./Timetables.module.css";
@@ -14,6 +14,7 @@ import styles from "./Timetables.module.css";
 function Timetables({ onBack }) {
   const vibrate = useVibration();
   const [data, setData] = useData();
+  data.updateUserDataFromTimetables();
   const [showErase, setShowErase] = useState(false);
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const hours = [
@@ -165,7 +166,7 @@ function Timetables({ onBack }) {
 
   const handleTimetableClassInfo = () => {
     if (!editTimetableClassInfo)
-      showSnackbar("You can edit your own name and class name in settings");
+      showSnackbar("You can edit your own name and class name only in settings");
   };
 
   const handleDaySlotChange = (val) => {
@@ -299,22 +300,74 @@ function Timetables({ onBack }) {
 
   const handleShareTimetable = (e) => {
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(
-        JSON.stringify(timetables[activeTimetable])
-      );
-      showSnackbar("Timetable copied to clipboard!");
+      navigator.clipboard.writeText(JSON.stringify(timetables));
+      showSnackbar("All timetables copied to clipboard!");
     } else {
       showSnackbar(
-        "Couldn't write timetable to clipboard, check permissions and try again."
+      "Couldn't write timetables to clipboard, check permissions and try again."
       );
     }
     if (navigator.share) {
+      const file = new Blob([JSON.stringify(timetables[activeTimetable])], {
+      type: "application/json",
+      });
+      const fileName = `${timetables[activeTimetable].className}_timetable.json`;
+      const shareData = {
+      title: "Check out my timetable on https://school-times.vercel.app !",
+      files: [new File([file], fileName)],
+      };
       navigator
-        .share({
-          title: "Check out my timetable on https://school-times.vercel.app !",
-          text: JSON.stringify(timetables[activeTimetable]),
-        })
+      .share(shareData)
+      .then(() => showSnackbar("Timetable shared successfully!"))
+      .catch(() => {
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(file);
+        link.download = fileName;
+        link.click();
+      });
+    } else {
+      const file = new Blob([JSON.stringify(timetables[activeTimetable])], {
+      type: "application/json",
+      });
+      const fileName = `${timetables[activeTimetable].className}_timetable.json`;
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(file);
+      link.download = fileName;
+      link.click();
     }
+  };
+
+  const handleImportTimetable = () => {
+    var input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.click();
+    input.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const importedTimetable = JSON.parse(e.target.result);
+            if (importedTimetable && importedTimetable.className) {
+              const newTimetable = Object.assign(new Timetable(), importedTimetable);
+              const updatedTimetables = [...timetables, newTimetable];
+              setTimetables(updatedTimetables);
+
+              const newData = { ...data };
+              newData.timetables = updatedTimetables;
+              setData(newData);
+              data.updateUserDataFromTimetables();
+              showSnackbar("Timetable imported successfully!");
+            } else {
+              showSnackbar("Invalid timetable file.");
+            }
+          } catch (error) {
+            showSnackbar("Error reading timetable file.");
+          }
+        };
+        reader.readAsText(file);
+      }
+    });
   };
 
   return (
@@ -359,7 +412,7 @@ function Timetables({ onBack }) {
             variant="outlined"
           />
           <Button
-            onClick={handleNewTimetable}
+            onClick={handleImportTimetable}
             text="Import"
             iconName="download"
             border="soft"

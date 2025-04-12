@@ -21,6 +21,28 @@ class Data {
         }
         return new Data();
     }
+
+    updateUserDataFromTimetables() {
+        const roomsSet = new Set(this.user.rooms.split(", ").filter(room => room));
+        const subjectsSet = new Set(this.user.subjects.split(", ").filter(subject => subject));
+        const teachersSet = new Set(this.user.teachers.split(", ").filter(teacher => teacher));
+
+        this.timetables.forEach(timetable => {
+            timetable.schedule.forEach(day => {
+                day.forEach(cell => {
+                    if (!cell.off) {
+                        if (cell.room) roomsSet.add(cell.room);
+                        if (cell.subject) subjectsSet.add(cell.subject);
+                        if (cell.teacher) teachersSet.add(cell.teacher);
+                    }
+                });
+            });
+        });
+
+        this.user.rooms = Array.from(roomsSet).join(", ");
+        this.user.subjects = Array.from(subjectsSet).join(", ");
+        this.user.teachers = Array.from(teachersSet).join(", ");
+    }
 }
 
 class Person {
@@ -37,14 +59,14 @@ class Person {
     }
 }
 
-class Timetable {
+export class Timetable {
     constructor(isUser = false, className = "") {
         this.isUser = isUser;
         this.matesNames = "";
         this.className = className;
         this.dayStart = 0;
         this.timeStart = 0;
-        this.schedule = Array.from({ length: 7 }, () => 
+        this.schedule = Array.from({ length: 7 }, () =>
             Array.from({ length: 10 }, () => new Cell(true))
         );
     }
@@ -75,8 +97,8 @@ class WidgetsSwitches {
 class CustomLink {
     constructor(label) {
         this.visible = true,
-        this.label = label,
-        this.url = "./"
+            this.label = label,
+            this.url = "./"
     }
 }
 
