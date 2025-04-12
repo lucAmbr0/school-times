@@ -39,7 +39,7 @@ function SmallMateClassBox() {
     vibrate(5);
   };
 
-  const swipeHandlers = useSwipeable({
+  const swipeHandlers = timetables.length > 1 ? useSwipeable({
     onSwipedUp: () => nextIdx(1),
     onSwipedDown: () => nextIdx(-1),
     onSwiping: (eventData) => {
@@ -50,7 +50,11 @@ function SmallMateClassBox() {
       );
     },
     delta: 10,
-  });
+  }) : useSwipeable({
+    onSwipedUp: () => {},
+    onSwipedDown: () => {},
+    onSwiping: () => {},
+});
 
   const containerStyle = {
     transform: `translateY(${swipeProgress}%)`,
@@ -72,7 +76,7 @@ function SmallMateClassBox() {
     let firstHour = -1;
     let lastHour = -1;
     for (let i = 0; i < 10; i++) {
-      if (firstHour === -1 && !current.schedule[day][i].off) firstHour = i;
+      if (firstHour === -1 && current && !current.schedule[day][i].off) firstHour = i;
       if (!current.schedule[day][i].off) lastHour = i;
     }
 

@@ -2,9 +2,16 @@ import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import boxStyles from "../Box.module.css";
 import styles from "./SmallChip.module.css";
+import Overlay from "../../Overlay/Overlay";
 import { useData } from "../../../scripts/useData";
 
-function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
+function SmallChip({
+  text,
+  iconName,
+  value: initialValue,
+  type,
+  onClick = () => {},
+}) {
   const [data, setData] = useData();
   const iconClasses = `material-symbols-outlined ${styles.icon}`;
   const isEuro = type === "euro";
@@ -13,7 +20,11 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
   const [value, setValue] = useState(() => {
     if (type === "percent")
       return initialValue !== undefined ? `${initialValue}%` : "N/A";
-    if (isProgress) return [data.settings.widgets.homeworkProgress[0] || 0, data.settings.widgets.homeworkProgress[1] || 0];
+    if (isProgress)
+      return [
+        data.settings.widgets.homeworkProgress[0] || 0,
+        data.settings.widgets.homeworkProgress[1] || 0,
+      ];
     if (isEuro) return data.settings.widgets.coffeeBalance || 0;
     if (initialValue === undefined) return "N/A";
     return initialValue;
@@ -34,7 +45,13 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
 
   const updateData = (newValue) => {
     if (isEuro) {
-      setData({ ...data, settings: { ...data.settings, widgets: { ...data.settings.widgets, coffeeBalance: newValue } } });
+      setData({
+        ...data,
+        settings: {
+          ...data.settings,
+          widgets: { ...data.settings.widgets, coffeeBalance: newValue },
+        },
+      });
     } else if (isProgress) {
       setData({
         ...data,
@@ -56,7 +73,9 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
         const [newDone] = newValue;
         return newDone > prevDone ? styles.valueUp : styles.valueDown;
       } else if (type === "euro" && !isNaN(parseFloat(value))) {
-        return parseFloat(newValue) > parseFloat(value) ? styles.valueUp : styles.valueDown;
+        return parseFloat(newValue) > parseFloat(value)
+          ? styles.valueUp
+          : styles.valueDown;
       }
       return "";
     });
@@ -101,10 +120,7 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
         });
       } else if (isProgress) {
         setValue(([done, total]) => {
-          const newValue = [
-            Math.min(done, total - 1),
-            Math.max(0, total - 1),
-          ];
+          const newValue = [Math.min(done, total - 1), Math.max(0, total - 1)];
           updateData(newValue);
           updateValue(newValue);
           return newValue;
@@ -151,28 +167,46 @@ function SmallChip({ text, iconName, value: initialValue, type, onClick }) {
     progressStyle.background = `linear-gradient(to right, var(--palette-200) ${percent}%, var(--palette-100) ${percent}%)`;
   }
 
+  const handleChipClick = (e) => {
+    if (type === "link") {
+      onClick();
+    } else if (
+      value[0] !== 0 ||
+      (isProgress && value[0] != 0) ||
+      value[1] != 0
+    ) {
+      updateData([0, 0]);
+      updateValue([0, 0]);
+    }
+  };
+
   return (
-    <button
-      className={[
-        boxStyles.box,
-        boxStyles.thinBox,
-        styles.box,
-        isProgress ? styles.progressBackground : "",
-      ].join(" ")}
-      style={progressStyle}
-      onClick={onClick}
-      {...(isEuro || isProgress ? swipeHandlers : {})}
-    >
-      <div className={styles.header}>
-        <h3 className={styles.title}>{text}</h3>
-        <div className={styles.iconContainer}>
-          {iconName && <span className={iconClasses}>{iconName}</span>}
+    <>
+      <button
+        className={[
+          boxStyles.box,
+          boxStyles.thinBox,
+          styles.box,
+          isProgress ? styles.progressBackground : "",
+        ].join(" ")}
+        style={progressStyle}
+        onClick={handleChipClick}
+        {...(isEuro || isProgress ? swipeHandlers : {})}
+      >
+        <div className={styles.header}>
+          <h3 className={styles.title}>{text}</h3>
+          <div className={styles.iconContainer}>
+            {iconName && <span className={iconClasses}>{iconName}</span>}
+          </div>
         </div>
-      </div>
-      <h2 className={valueStyles} onAnimationEnd={() => setAnimationClass("")}>
-        {type === "link" ? "Open" : displayValue}
-      </h2>
-    </button>
+        <h2
+          className={valueStyles}
+          onAnimationEnd={() => setAnimationClass("")}
+        >
+          {type === "link" ? "Open" : displayValue}
+        </h2>
+      </button>
+    </>
   );
 }
 
