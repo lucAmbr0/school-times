@@ -1,7 +1,8 @@
 import "./App.css";
 import React, { useState } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import ScreenRatioError from "./components/ScreenRatioError/ScreenRatioError";
 import useThemeColor from "./scripts/useThemeColor";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
@@ -17,21 +18,21 @@ function App() {
   const [data, setData] = useData();
   const [currentPage, setCurrentPage] = useState(data.settings.tab);
   useThemeColor();
-  
+
   const renderPage = () => {
-    data.settings.tab = currentPage
+    data.settings.tab = currentPage;
     setData(data);
     switch (currentPage) {
       case "Home":
         return <Home />;
-        case "Explore":
-          return <Explore />;
-          case "Events":
-            return <Events />;
+      case "Explore":
+        return <Explore />;
+      case "Events":
+        return <Events />;
       case "Profile":
         return <Profile />;
-        default:
-          return <Home />;
+      default:
+        return <Home />;
     }
   };
   const [savedVersion, currVersion, updated, cleared] = checkUpdated();
@@ -40,13 +41,30 @@ function App() {
     <>
       <SpeedInsights />
       <Analytics />
-        { showUpdateNotice ? <UpdateNotice oldVersion={savedVersion} newVersion={currVersion} cleared={cleared} closeAction={() => {setShowUpdateNotice(false);}} /> : "" }
-        <Header />
-      <div id="appContainer" className="appContainer">
-        {renderPage()}
-        <div className="placeholder"></div>
-        <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
-      </div>
+      {showUpdateNotice ? (
+        <UpdateNotice
+          oldVersion={savedVersion}
+          newVersion={currVersion}
+          cleared={cleared}
+          closeAction={() => {
+            setShowUpdateNotice(false);
+          }}
+        />
+      ) : (
+        ""
+      )}
+      {window.innerWidth <= 768 ? (
+        <>
+          <Header />
+          <div id="appContainer" className="appContainer">
+            {renderPage()}
+            <div className="placeholder"></div>
+          <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
+          </div>
+        </>
+      ) : (
+        <ScreenRatioError />
+      )}
     </>
   );
 }

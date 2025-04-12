@@ -1,3 +1,9 @@
+@media (min-width: 769px) {
+    body {
+        visibility: hidden;
+    }
+}
+
 body {
     background-color: var(--palette-200);
     margin: 0;
