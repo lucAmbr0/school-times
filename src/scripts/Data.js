@@ -1,6 +1,4 @@
-import { Construction } from "lucide-react";
-
-class Data {
+export class Data {
     constructor() {
         this.user = new Person(true);
         this.timetables = [new Timetable(true, "you")];

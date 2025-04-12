@@ -9,7 +9,8 @@ import styles from "./Settings.module.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { useEffect, useState } from "react";
 import { useData } from "../../scripts/useData";
-import { showSnackbar } from "../../scripts/snackbar"
+import { Data } from "../../scripts/Data";
+import { showSnackbar } from "../../scripts/snackbar";
 
 function Settings({ onBack }) {
   const vibrate = useVibration();
@@ -37,7 +38,7 @@ function Settings({ onBack }) {
     try {
       const text = await navigator.clipboard.readText();
       if (!text) return;
-  
+
       // const path = `settings.widgets.link${idx}.url`;
       const newData = { ...data };
       if (idx == 1) {
@@ -47,14 +48,65 @@ function Settings({ onBack }) {
       }
       setData(newData);
       showSnackbar(`Saved link ${text.substring(0, 20)} as custom link ${idx}`);
-  
     } catch (err) {
       console.error("Errore durante l'incolla dal clipboard:", err);
       showSnackbar("Couldn't read link URL from your clipboard");
     }
   };
-  
-  
+
+  const handleBackup = () => {
+      const file = new Blob([JSON.stringify(data)], {
+        type: "application/json",
+      });
+      const fileName = `school-times_backup_${new Date().getDate()}.json`;
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(file);
+      link.download = fileName;
+      link.click();
+      showSnackbar("Backup downloaded successfully!")
+  }
+
+  const handleRestore = () => {
+        var input = document.createElement("input");
+        input.setAttribute("type", "file");
+        input.click();
+        input.addEventListener("change", (event) => {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              try {
+                const importedFile = JSON.parse(e.target.result);
+                if (importedFile) {
+                  const newData = Object.assign(
+                    new Data(),
+                    importedFile
+                  );
+                  localStorage.clear();
+                  localStorage.setItem("data", JSON.stringify(newData));
+                  showSnackbar("App data restored successfully!");
+                  window.location.reload();
+                } else {
+                  showSnackbar("Invalid backup file.");
+                }
+              } catch (error) {
+                console.log(error);
+                
+                showSnackbar("Error reading backup file.");
+              }
+            };
+            reader.readAsText(file);
+          }
+        });
+  }
+
+  const handleReset = () => {
+    if (confirm("Are you sure you want to delete all the app data? This action cannot be undone, it is recommended to make a backup before resetting the app.")) {
+      localStorage.clear();
+      window.location.reload();
+    }
+  }
+
   const element = (
     <>
       {showThemeSelector ? (
@@ -80,8 +132,16 @@ function Settings({ onBack }) {
                 text={data.settings.palette}
               />
             </div>
-            <label htmlFor="hapticFeedbackSwitch" className={styles.settingLabel}>Haptic feedback</label>
-            <Switch id={"hapticFeedbackSwitch"} path={"settings.hapticFeedback"} />
+            <label
+              htmlFor="hapticFeedbackSwitch"
+              className={styles.settingLabel}
+            >
+              Haptic feedback
+            </label>
+            <Switch
+              id={"hapticFeedbackSwitch"}
+              path={"settings.hapticFeedback"}
+            />
             <label className={styles.settingLabel}>Language</label>
             <Dropdown path={"settings.language"} options={["English"]} />
           </div>
@@ -89,32 +149,100 @@ function Settings({ onBack }) {
         <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>Widgets</h3>
           <div className={styles.settingsGrid}>
-            <label htmlFor="matesTimetablesWidgetSwitch" className={styles.settingLabel}>Mates' timetables</label>
-            <Switch id={"matesTimetablesWidgetSwitch"} path={"settings.widgets.matesTimetables"} />
-            <label htmlFor="upcomingEventsWidgetSwitch" className={styles.settingLabel}>Upcoming events</label>
-            <Switch id={"upcomingEventsWidgetSwitch"} path={"settings.widgets.upcomingEvents"} />
-            <label htmlFor="coffeeKeyWidgetSwitch" className={styles.settingLabel}>Coffee key</label>
-            <Switch id={"coffeeKeyWidgetSwitch"} path={"settings.widgets.coffeeKey"} />
-            <label htmlFor="coffeeKeyWidgetSwitch" className={styles.settingLabel}>Homework</label>
-            <Switch id={"coffeeKeyWidgetSwitch"} path={"settings.widgets.homework"} />
-            <label htmlFor="link1WidgetSwitch" className={styles.settingLabel}>Custom link 1</label>
-            <Switch id={"link1WidgetSwitch"} path={"settings.widgets.link1.visible"} />
-            <label htmlFor="link2WidgetSwitch" className={styles.settingLabel}>Custom link 2</label>
-            <Switch id={"link2WidgetSwitch"} path={"settings.widgets.link2.visible"} />
+            <label
+              htmlFor="matesTimetablesWidgetSwitch"
+              className={styles.settingLabel}
+            >
+              Mates' timetables
+            </label>
+            <Switch
+              id={"matesTimetablesWidgetSwitch"}
+              path={"settings.widgets.matesTimetables"}
+            />
+            <label
+              htmlFor="upcomingEventsWidgetSwitch"
+              className={styles.settingLabel}
+            >
+              Upcoming events
+            </label>
+            <Switch
+              id={"upcomingEventsWidgetSwitch"}
+              path={"settings.widgets.upcomingEvents"}
+            />
+            <label
+              htmlFor="coffeeKeyWidgetSwitch"
+              className={styles.settingLabel}
+            >
+              Coffee key
+            </label>
+            <Switch
+              id={"coffeeKeyWidgetSwitch"}
+              path={"settings.widgets.coffeeKey"}
+            />
+            <label
+              htmlFor="coffeeKeyWidgetSwitch"
+              className={styles.settingLabel}
+            >
+              Homework
+            </label>
+            <Switch
+              id={"coffeeKeyWidgetSwitch"}
+              path={"settings.widgets.homework"}
+            />
+            <label htmlFor="link1WidgetSwitch" className={styles.settingLabel}>
+              Custom link 1
+            </label>
+            <Switch
+              id={"link1WidgetSwitch"}
+              path={"settings.widgets.link1.visible"}
+            />
+            <label htmlFor="link2WidgetSwitch" className={styles.settingLabel}>
+              Custom link 2
+            </label>
+            <Switch
+              id={"link2WidgetSwitch"}
+              path={"settings.widgets.link2.visible"}
+            />
           </div>
         </div>
         <div className={styles.settingsSection}>
           <h3 className={styles.sectionTitle}>Custom links</h3>
           <div className={styles.settingsGrid}>
-            <label htmlFor="link1Switch" className={styles.settingLabel}>Link 1</label>
+            <label htmlFor="link1Switch" className={styles.settingLabel}>
+              Link 1
+            </label>
             <div className={styles.customLinkContainer}>
-              <TextInput id={"link1Label"} placeholder={"Label"} path={"settings.widgets.link1.label"} maxLength={200} />
-              <Button onClick={handlePasteLink(1)} iconName="content_paste" border="soft" variant="outlined" text="Paste" />
+              <TextInput
+                id={"link1Label"}
+                placeholder={"Label"}
+                path={"settings.widgets.link1.label"}
+                maxLength={200}
+              />
+              <Button
+                onClick={handlePasteLink(1)}
+                iconName="content_paste"
+                border="soft"
+                variant="outlined"
+                text="Paste"
+              />
             </div>
-            <label htmlFor="link1Switch" className={styles.settingLabel}>Link 2</label>
+            <label htmlFor="link1Switch" className={styles.settingLabel}>
+              Link 2
+            </label>
             <div className={styles.customLinkContainer}>
-              <TextInput id={"link1Label"} placeholder={"Label"} path={"settings.widgets.link2.label"} maxLength={200} />
-              <Button onClick={handlePasteLink(2)} iconName="content_paste" border="soft" variant="outlined" text="Paste" />
+              <TextInput
+                id={"link1Label"}
+                placeholder={"Label"}
+                path={"settings.widgets.link2.label"}
+                maxLength={200}
+              />
+              <Button
+                onClick={handlePasteLink(2)}
+                iconName="content_paste"
+                border="soft"
+                variant="outlined"
+                text="Paste"
+              />
             </div>
           </div>
         </div>
@@ -198,6 +326,41 @@ function Settings({ onBack }) {
             name={"Teachers"}
             placeholder={"Bess Ross, Jesus Byrd, Emily Schmidt"}
           />
+        </div>
+        <div className={styles.settingsSection}>
+          <h3 className={styles.sectionTitle}>Backup</h3>
+          <div className={styles.settingsGrid}>
+            <label htmlFor="backup" className={styles.settingLabel}>
+              Backup all app data
+            </label>
+            <Button
+              onClick={handleBackup}
+              iconName="backup"
+              border="soft"
+              variant="filled"
+              text="Backup"
+            />
+            <label htmlFor="restore" className={styles.settingLabel}>
+              Restore a backup
+            </label>
+            <Button
+              onClick={handleRestore}
+              iconName="restore"
+              border="soft"
+              variant="filled"
+              text="Restore"
+            />
+            <label htmlFor="delete" className={styles.settingLabel}>
+              Reset app data
+            </label>
+            <Button
+              onClick={handleReset}
+              iconName="delete"
+              border="soft"
+              variant="outlined"
+              text="Reset data"
+            />
+          </div>
         </div>
       </div>
     </>
