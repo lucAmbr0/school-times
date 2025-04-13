@@ -5,7 +5,7 @@
     align-items: flex-start;
     margin: 0;
     padding: 10px;
-    border-radius: 11px;
+    border-radius: 12px;
     background-color: var(--palette-100);
     transition: 0.2s ease;
 }
