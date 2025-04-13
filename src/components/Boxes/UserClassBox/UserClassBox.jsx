@@ -50,7 +50,7 @@ function UserClassBox({ day = 0, hour = 0, showProgress = false }) {
         {room && room !== "No lesson" ? (
           <StepProgressBar
             totalBars={dayDuration}
-            activeBars={dayDuration - hour}
+            activeBars={hour - firstHour + 1}
             progress={showProgress ? hourProgress : 100}
           />
         ) : (
