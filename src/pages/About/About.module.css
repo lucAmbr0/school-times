@@ -47,3 +47,47 @@
     margin-top: 95px;
     margin-bottom: 20px;
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0;
+}
+
+.grid > *:nth-child(odd) {
+    justify-self: start;
+}
+
+.grid > *:nth-child(even) {
+    justify-self: end;
+    margin: 5px 0;
+}
+
+.label {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--palette-950);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+}
+
+.sectionTitle {
+    font-size: 22px;
+    color: var(--palette-950);
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.linksContainer {
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}

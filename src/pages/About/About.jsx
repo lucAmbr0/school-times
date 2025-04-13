@@ -1,4 +1,7 @@
 import PageHeader from "../../components/PageHeader/PageHeader";
+import packageJson from "../../../package.json";
+import HorizontalLine from "../../components/Separator/HorizontalLine";
+import ExternalLink from "../../components/ExternalLink/ExternalLink";
 import { useData } from "../../scripts/useData";
 import useVibration from "../../scripts/useVibration";
 import styles from "./About.module.css";
@@ -21,6 +24,70 @@ function About({ onBack }) {
       <PageHeader handleBack={handleBack} />
       <div id="aboutPage" className={styles.container}>
         <h1 className={styles.title}>About</h1>
+        <div className={styles.grid}>
+          <label className={styles.label} htmlFor="versionInAbout">
+            App version
+          </label>
+          <p className={styles.label} id="versionInAbout">
+            v{packageJson.version}
+          </p>
+        </div>
+        <HorizontalLine
+          margin={"20px auto"}
+          length={"calc(100% - 40px)"}
+          alpha={1}
+          color={"var(--palette-300)"}
+        />
+        <h3 className={styles.sectionTitle}>Repository links</h3>
+        <div className={styles.linksContainer}>
+          <ExternalLink
+            name={"GitHub Repository"}
+            displayUrl={"https://github.com/lucAmbr0/school-times/"}
+          />
+          <ExternalLink
+            name={"Changelog"}
+            displayUrl={
+              "https://github.com/lucAmbr0/school-times/commits/main/"
+            }
+          />
+          <ExternalLink
+            name={"Download source code"}
+            displayUrl={
+              "https://github.com/lucAmbr0/school-times/archive/refs/heads/main.zip"
+            }
+          />
+          <ExternalLink
+            name={"License GPL-3.0"}
+            displayUrl={
+              "https://github.com/lucAmbr0/school-times/blob/master/LICENSE"
+            }
+          />
+        </div>
+        {/* <h3 className={styles.sectionTitle}>Send a feedback</h3>
+        <div className={styles.linksContainer}>
+          <ExternalLink
+            name={"Email me"}
+            displayUrl={"./"}
+          />
+          <ExternalLink
+            name={"Feature request"}
+            displayUrl={
+              "./"
+            }
+          />
+          <ExternalLink
+            name={"Bug report"}
+            displayUrl={
+              "./"
+            }
+          />
+          <ExternalLink
+            name={"Teamwork"}
+            displayUrl={
+              "./"
+            }
+          />
+        </div> */}
       </div>
     </>
   );

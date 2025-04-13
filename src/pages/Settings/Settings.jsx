@@ -7,7 +7,7 @@ import useVibration from "../../scripts/useVibration";
 import Switch from "../../components/Switch/Switch/Switch";
 import styles from "./Settings.module.css";
 import PageHeader from "../../components/PageHeader/PageHeader";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useData } from "../../scripts/useData";
 import { Data } from "../../scripts/Data";
 import { showSnackbar } from "../../scripts/snackbar";

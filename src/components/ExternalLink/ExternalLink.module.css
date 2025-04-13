@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    padding: 10px;
+    border-radius: 11px;
+    background-color: var(--palette-100);
+    transition: 0.2s ease;
+}
+
+.container:active {
+    scale: 0.975;
+    background-color: var(--palette-200);
+}
+
+.nameContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
+    span {
+        font-size: 24px;
+        margin-right: 5px;
+        color: var(--palette-950);
+    }
+}
+
+.linkName {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--palette-950);
+}
+
+.displayUrl {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--palette-900);
+    text-align: start;
+    text-wrap: wrap;
+}
