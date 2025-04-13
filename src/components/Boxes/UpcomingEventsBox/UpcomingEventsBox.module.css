@@ -6,9 +6,10 @@
     margin: 10px 0;
     padding-top: 2px;
     gap: 8px;
-    width: 100%;
+    width: 90%;
     height: 100%;
     overflow-y: scroll;   
+    border-radius: 11px;
 }
 
 .noEventsLabel {

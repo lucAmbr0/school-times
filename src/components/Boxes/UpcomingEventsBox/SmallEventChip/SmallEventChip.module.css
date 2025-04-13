@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
-    width: 90%;
+    width: 100%;
     border-radius: 12px;
     height: fit-content;
     background-color: var(--palette-200);
