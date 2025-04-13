@@ -7,11 +7,13 @@
 * Worked on this project for: <a href="https://wakatime.com/badge/github/lucAmbr0/school-times"><img src="https://wakatime.com/badge/github/lucAmbr0/school-times.svg?style=flat" alt="wakatime"></a>
 # Introduction
 
-<div style="display: flex">
+<div style="display: flex>
   <a href="https://ko-fi.com/lucambr0">
   <img width="50%" src="https://storage.ko-fi.com/cdn/generated/fhfuc7slzawvi/2025-04-12_rest-a79d5e1b01cc7b09aa44f99e0e6f2d06-w2eypt8y.jpg" >
   </a>
 </div>
+
+<br>
 
 * **School Times** is the third remake of the best school managing webapp ever! **An all-in-one web tool** that allows you to easily see everything that you need to know during your **school day**, from timetables (supports up to 10 timetables) to homework and tests, easily organized on your phone at a glance.
 
