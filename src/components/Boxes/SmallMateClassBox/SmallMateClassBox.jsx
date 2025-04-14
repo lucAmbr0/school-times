@@ -20,6 +20,17 @@ function SmallMateClassBox() {
 
   let progress = 0;
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRefresh((prev) => !prev);
+      console.log("BOBBO");
+      
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+  const [refresh, setRefresh] = useState(false);
+
   const nextIdx = (delta) => {
     if (!hasInteracted.current) {
       hasInteracted.current = true;
@@ -51,10 +62,10 @@ function SmallMateClassBox() {
     },
     delta: 10,
   }) : useSwipeable({
-    onSwipedUp: () => {},
-    onSwipedDown: () => {},
-    onSwiping: () => {},
-});
+    onSwipedUp: () => { },
+    onSwipedDown: () => { },
+    onSwiping: () => { },
+  });
 
   const containerStyle = {
     transform: `translateY(${swipeProgress}%)`,
@@ -84,7 +95,7 @@ function SmallMateClassBox() {
     const now = new Date();
     const elapsed = hour - firstHour + now.getMinutes() / 60;
     progress = Math.min((elapsed / dayDuration) * 100, 100);
-    
+
     if (hour < 0 || hour > 9 || current.schedule[day][hour].off) {
       room = "No lesson";
       subject = "";

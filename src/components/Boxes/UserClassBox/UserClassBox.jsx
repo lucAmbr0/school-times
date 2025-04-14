@@ -27,8 +27,8 @@ function UserClassBox({ day = 0, hour = 0, showProgress = false }) {
 
     return () => clearInterval(interval);
   }, []);
-
   const [refresh, setRefresh] = useState(false);
+  
   let room, subject, teacher;
 
   if (
