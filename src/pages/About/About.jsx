@@ -31,6 +31,12 @@ function About({ onBack }) {
           <p className={styles.label} id="versionInAbout">
             v{packageJson.version}
           </p>
+          <ExternalLink
+            name={"Tutorials"}
+            displayUrl={
+              "https://github.com/lucAmbr0/school-times#zap-usage"
+            }
+          />
         </div>
         <HorizontalLine
           margin={"20px auto"}
