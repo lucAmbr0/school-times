@@ -69,31 +69,34 @@ function About({ onBack }) {
             }
           />
         </div>
-        {/* <h3 className={styles.sectionTitle}>Send a feedback</h3>
+        <h3 className={styles.sectionTitle}>Send feedback</h3>
         <div className={styles.linksContainer}>
-          <ExternalLink
+          {/* <ExternalLink
             name={"Email me"}
             displayUrl={"./"}
-          />
+          /> */}
           <ExternalLink
             name={"Feature request"}
             displayUrl={
-              "./"
+              "https://forms.gle/nns5LJANJ6MCBNdz9"
             }
+            url={"https://bit.ly/3G7uAFI"}
           />
           <ExternalLink
             name={"Bug report"}
             displayUrl={
-              "./"
+              "https://forms.gle/RDRTPP1KYAmF7RJJ9"
             }
+            url={"https://bit.ly/42lYo8Q"}
           />
           <ExternalLink
-            name={"Teamwork"}
+            name={"Rate this app"}
             displayUrl={
-              "./"
+              "https://forms.gle/ZV4ooh5oatUTB2AB9"
             }
+            url={"https://bit.ly/4jahSVt"}
           />
-        </div> */}
+        </div>
       </div>
     </>
   );
