@@ -50,6 +50,7 @@ function Header() {
           <Button
             onClick={() => {
               setShowTimetablesPage(true);
+              umami.track("page", {"page": "Timetables", "source-action": "app-header"})
             }}
             iconName="table_edit"
             variant="outlined"

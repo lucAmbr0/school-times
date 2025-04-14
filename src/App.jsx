@@ -37,6 +37,17 @@ function App() {
   };
   const [savedVersion, currVersion, updated, cleared] = checkUpdated();
   const [showUpdateNotice, setShowUpdateNotice] = useState(updated);
+
+  if (process.env.NODE_ENV === "production") {
+    const script = document.createElement("script");
+    script.src = "https://cloud.umami.is/script.js";
+    script.setAttribute(
+      "data-website-id",
+      "0326da66-101e-4439-8400-5ae584408e72"
+    );
+    document.head.appendChild(script);
+  }
+
   return (
     <>
       <SpeedInsights />
@@ -59,7 +70,7 @@ function App() {
           <div id="appContainer" className="appContainer">
             {renderPage()}
             <div className="placeholder"></div>
-          <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
+            <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
           </div>
         </>
       ) : (
