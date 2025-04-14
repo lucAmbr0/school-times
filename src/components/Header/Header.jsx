@@ -5,6 +5,7 @@ import useVibration from "../../scripts/useVibration";
 import Timetables from "../../pages/Timetables/Timetables";
 import "material-symbols";
 import styles from "./Header.module.css";
+import { umamiTrack } from "../../scripts/umamiTrack";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
@@ -50,6 +51,7 @@ function Header() {
           <Button
             onClick={() => {
               setShowTimetablesPage(true);
+              umamiTrack("page-opened", {page: "Timetables"})
             }}
             iconName="table_edit"
             variant="outlined"
