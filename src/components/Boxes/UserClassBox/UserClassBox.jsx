@@ -1,7 +1,8 @@
 import StepProgressBar from "../../ProgressBar/StepProgressBar/StepProgressBar";
-import React from "react";
+import {useEffect, useState} from "react";
 import "material-symbols";
 // import {useVibration} from "../../../scripts/useVibration"
+import { showSnackbar } from "../../../scripts/snackbar";
 import { useData } from "../../../scripts/useData";
 import styles from "./UserClassBox.module.css";
 
@@ -19,6 +20,15 @@ function UserClassBox({ day = 0, hour = 0, showProgress = false }) {
   const dayDuration = lastHour - firstHour + 1;
   const hourProgress = 100 / 60 * (new Date().getMinutes());
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRefresh((prev) => !prev);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const [refresh, setRefresh] = useState(false);
   let room, subject, teacher;
 
   if (
