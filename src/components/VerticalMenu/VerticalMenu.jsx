@@ -3,6 +3,7 @@ import styles from "./VerticalMenu.module.css"
 import Settings from "../../pages/Settings/Settings"
 import About from "../../pages/About/About";
 import useVibration from "../../scripts/useVibration";
+import { umamiTrack } from "../../scripts/umamiTrack";
 import { useState, useEffect } from "react";
 
 function VerticalMenu({showMenu, setShowMenu}) {
@@ -33,13 +34,13 @@ function VerticalMenu({showMenu, setShowMenu}) {
     <>
         <Overlay zIndex={101} blur={"0px"} color={"rgba(0,0,0,0.075)"} event={() => { document.querySelector("#settingsContainer").classList.add(styles.menuOut); setTimeout(() => {setShowMenu(false)}, 150)}} />
         <div id="settingsContainer" className={styles.container}>
-            <button onClick={() => {vibrate(5); umami.track("action", {action: "reload-app", source: "vert-menu-app-header"}); window.location.reload(true) }} className={styles.button}>
+            <button onClick={() => {vibrate(5); umamiTrack("reload", {action: "reload", source: "vert-menu-app-header"}); window.location.reload(true) }} className={styles.button}>
                 <span className="material-symbols-outlined">refresh</span>Reload
             </button>
-            <button onClick={() => {vibrate(5); umami.track("page", {page: "Settings", source: "vert-menu-app-header"});setShowMenu(false); setShowSettings(!showSettings)}} className={styles.button}>
+            <button onClick={() => {vibrate(5); umamiTrack("page-opened", {page: "Settings"});setShowMenu(false); setShowSettings(!showSettings)}} className={styles.button}>
                 <span className="material-symbols-outlined">settings</span>Settings
             </button>
-            <button onClick={() => {vibrate(5); umami.track("page", {page: "About", source: "vert-menu-app-header"});setShowMenu(false); setShowAbout(!showAbout)}} className={styles.button}>
+            <button onClick={() => {vibrate(5); umamiTrack("page-opened", {page: "About"});setShowMenu(false); setShowAbout(!showAbout)}} className={styles.button}>
                 <span className="material-symbols-outlined">info</span>About
             </button>
         </div>

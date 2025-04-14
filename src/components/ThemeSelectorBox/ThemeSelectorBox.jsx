@@ -2,6 +2,7 @@ import styles from "./ThemeSelectorBox.module.css";
 import useThemeColor from "../../scripts/useThemeColor";
 import Overlay from "../Overlay/Overlay";
 import useVibration from "../../scripts/useVibration";
+import { umamiTrack } from "../../scripts/umamiTrack";
 import { useData } from "../../scripts/useData";
 import { useState } from "react";
 import { palettes } from "../../scripts/useThemeColor";
@@ -14,6 +15,8 @@ function ThemeSelectorBox({ backAction }) {
 
   const handleThemeChange = (newPalette) => {
     setPalette(newPalette);
+    umamiTrack("color-palette-change", {theme: newPalette, usingScheme: darkMode});
+    
     setData({ ...data, settings: { ...data.settings, palette: newPalette } });
     handleCloseThemeSelector();
   };

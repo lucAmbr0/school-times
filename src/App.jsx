@@ -39,11 +39,12 @@ function App() {
   const [showUpdateNotice, setShowUpdateNotice] = useState(updated);
 
   if (process.env.NODE_ENV === "production") {
+    console.log("UMAMI ENABLED");
     const script = document.createElement("script");
     script.src = "https://cloud.umami.is/script.js";
     script.setAttribute(
       "data-website-id",
-      "0326da66-101e-4439-8400-5ae584408e72"
+      import.meta.env.VITE_UMAMI_WEBSITE_ID
     );
     document.head.appendChild(script);
   }
