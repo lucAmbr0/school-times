@@ -1,4 +1,4 @@
-import React from "react";
+import {useEffect, useState} from "react";
 import { useData } from "../../../scripts/useData";
 import "material-symbols";
 import styles from "./LargeMateClassBox.module.css";
@@ -44,9 +44,17 @@ function LargeMateClassBox({ timetable, day = 0, hour = 0 }) {
     }
   }
 
-  const containerStyles = `${styles.container}${
-    layout[0] === "No lesson" ? ` ${styles.disabled}` : ""
-  }`;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRefresh((prev) => !prev);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+  const [refresh, setRefresh] = useState(false);
+
+  const containerStyles = `${styles.container}${layout[0] === "No lesson" ? ` ${styles.disabled}` : ""
+    }`;
   const element = (
     <div className={containerStyles}>
       <h2 className={styles.mainProperty}>{layout[0]}</h2>
