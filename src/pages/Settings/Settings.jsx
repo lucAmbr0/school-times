@@ -28,10 +28,24 @@ function Settings({ onBack }) {
   };
 
   const syncUserInfo = () => {
-    const newData = { ...data };
-    newData.user.name = timetables.find((t) => t.isUser).matesNames;
-    newData.user.className = timetables.find((t) => t.isUser).className;
-    setData(newData);
+    setTimeout(() => {
+      const newData = { ...data };
+      const userTimetableIdx = timetables.indexOf(timetables.find(t => t.className == data.user.className));
+      if (userTimetableIdx == - 1) {
+        userTimetableIdx = 0;
+        newData.user.className = timetables[0];
+        newData.user.name = timetables[0];
+      }
+      console.log(userTimetableIdx);
+
+      newData.user.userTimetableIdx = userTimetableIdx;
+      newData.user.name = timetables[userTimetableIdx].matesNames;
+      
+      setData(newData);
+      timetables.forEach(t => {
+        t.isUser = timetables.indexOf(t) == userTimetableIdx;
+      })
+    }, 20);
   };
 
   const handlePasteLink = (idx) => async () => {
@@ -55,49 +69,49 @@ function Settings({ onBack }) {
   };
 
   const handleBackup = () => {
-      const file = new Blob([JSON.stringify(data)], {
-        type: "application/json",
-      });
-      const fileName = `school-times_backup_${new Date().getDate()}.json`;
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(file);
-      link.download = fileName;
-      link.click();
-      showSnackbar("Backup downloaded successfully!")
+    const file = new Blob([JSON.stringify(data)], {
+      type: "application/json",
+    });
+    const fileName = `school-times_backup_${new Date().getDate()}.json`;
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = fileName;
+    link.click();
+    showSnackbar("Backup downloaded successfully!")
   }
 
   const handleRestore = () => {
-        var input = document.createElement("input");
-        input.setAttribute("type", "file");
-        input.click();
-        input.addEventListener("change", (event) => {
-          const file = event.target.files[0];
-          if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              try {
-                const importedFile = JSON.parse(e.target.result);
-                if (importedFile) {
-                  const newData = Object.assign(
-                    new Data(),
-                    importedFile
-                  );
-                  localStorage.clear();
-                  localStorage.setItem("data", JSON.stringify(newData));
-                  showSnackbar("App data restored successfully!");
-                  window.location.reload();
-                } else {
-                  showSnackbar("Invalid backup file.");
-                }
-              } catch (error) {
-                console.log(error);
-                
-                showSnackbar("Error reading backup file.");
-              }
-            };
-            reader.readAsText(file);
+    var input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.click();
+    input.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const importedFile = JSON.parse(e.target.result);
+            if (importedFile) {
+              const newData = Object.assign(
+                new Data(),
+                importedFile
+              );
+              localStorage.clear();
+              localStorage.setItem("data", JSON.stringify(newData));
+              showSnackbar("App data restored successfully!");
+              window.location.reload();
+            } else {
+              showSnackbar("Invalid backup file.");
+            }
+          } catch (error) {
+            console.log(error);
+
+            showSnackbar("Error reading backup file.");
           }
-        });
+        };
+        reader.readAsText(file);
+      }
+    });
   }
 
   const handleReset = () => {
@@ -264,7 +278,14 @@ function Settings({ onBack }) {
             <label htmlFor="class-name" className={styles.settingLabel}>
               Class name
             </label>
-            <TextInput
+            <Dropdown
+              onChange={syncUserInfo}
+              path="user.className"
+              id={"class-name"}
+              name={"Class name"}
+              options={timetables.map(t => t.className)}
+            />
+            {/* <TextInput
               onChangeAction={syncUserInfo}
               maxLength={5}
               path={`timetables[${timetables.indexOf(
@@ -272,7 +293,7 @@ function Settings({ onBack }) {
               )}].className`}
               id={"class-name"}
               name={"Class name"}
-            />
+            /> */}
             <label htmlFor="school-name" className={styles.settingLabel}>
               School name
             </label>

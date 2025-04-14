@@ -47,7 +47,6 @@ class Person {
     constructor(isUser) {
         this.isUser = isUser;
         this.name = "";
-        this.className = "";
         this.schoolName = "";
         this.schoolAddress = "";
         this.favoriteSubject = "";

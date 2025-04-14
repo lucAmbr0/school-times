@@ -1,5 +1,5 @@
 import StepProgressBar from "../../ProgressBar/StepProgressBar/StepProgressBar";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import "material-symbols";
 // import {useVibration} from "../../../scripts/useVibration"
 import { showSnackbar } from "../../../scripts/snackbar";
@@ -9,7 +9,7 @@ import styles from "./UserClassBox.module.css";
 function UserClassBox({ day = 0, hour = 0, showProgress = false }) {
   const [data] = useData();
   //   const vibrate = useVibration();
-  const timetable = data.timetables.find((t) => t.isUser) || [];
+  const timetable = data.timetables.find((t) => t.isUser) || data.timetables[0];
 
   let firstHour = -1;
   let lastHour = -1;
@@ -28,7 +28,7 @@ function UserClassBox({ day = 0, hour = 0, showProgress = false }) {
     return () => clearInterval(interval);
   }, []);
   const [refresh, setRefresh] = useState(false);
-  
+
   let room, subject, teacher;
 
   if (

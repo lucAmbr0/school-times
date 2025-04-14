@@ -5,6 +5,7 @@ import HorizontalLine from "../../components/Separator/HorizontalLine";
 import useVibration from "../../scripts/useVibration";
 import Button from "../../components/Button/Button";
 import Overlay from "../../components/Overlay/Overlay";
+import Switch from "../../components/Switch/Switch/Switch";
 import { showSnackbar } from "../../scripts/snackbar";
 import { Timetable, Cell } from "../../scripts/Data";
 import { useData } from "../../scripts/useData";
@@ -164,13 +165,6 @@ function Timetables({ onBack }) {
     }
   };
 
-  const handleTimetableClassInfo = () => {
-    if (!editTimetableClassInfo)
-      showSnackbar(
-        "You can edit your own name and class name only in settings"
-      );
-  };
-
   const handleDaySlotChange = (val) => {
     let k = days.indexOf(val);
     if (k < 0) k = 0;
@@ -222,11 +216,6 @@ function Timetables({ onBack }) {
     localStorage.setItem("data", JSON.stringify(newData));
     setData(newData);
   }, [timetables]);
-
-  useEffect(() => {
-    if (timetables[activeTimetable].isUser) setEditTimetableClassInfo(false);
-    else setEditTimetableClassInfo(true);
-  }, [activeTimetable]);
 
   const handleBack = () => {
     vibrate(5);
@@ -444,8 +433,6 @@ function Timetables({ onBack }) {
               Class name
             </label>
             <TextInput
-              onClickAction={handleTimetableClassInfo}
-              disabled={!editTimetableClassInfo}
               maxLength={5}
               id={"className"}
               name={"Class name"}
@@ -456,8 +443,6 @@ function Timetables({ onBack }) {
               Mates names
             </label>
             <TextInput
-              onClickAction={handleTimetableClassInfo}
-              disabled={!editTimetableClassInfo}
               maxLength={40}
               id={"matesNames"}
               name={"Mates names"}

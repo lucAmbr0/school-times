@@ -21,7 +21,7 @@ function getDeepValue(obj, path) {
     .reduce((o, key) => (o && o[key] !== undefined ? o[key] : false), obj);
 }
 
-function Switch({ path, id }) {
+function Switch({ path, id, onChange = () => {} }) {
   const vibrate = useVibration();
   const [data, setData] = useData();
 
@@ -40,6 +40,7 @@ function Switch({ path, id }) {
 
   const toggleSwitch = () => {
     setIsOn(!isOn);
+    onChange();
     vibrate(5);
   };
 

@@ -68,7 +68,7 @@ function SmallMateClassBox() {
   const containerStyle = {
     transform: `translateY(${swipeProgress}%)`,
     transition: swipeProgress === 0 ? "transform 0.2s ease" : "none",
-    opacity: 1 - Math.abs(swipeProgress / 15),
+    opacity: 1 - Math.abs(swipeProgress / 12),
     width: "100%",
     height: "100%",
     display: "flex",
@@ -117,6 +117,7 @@ function SmallMateClassBox() {
     <div
       {...swipeHandlers}
       className={boxStyles.box}
+      style={{zIndex: "10", overflow: "hidden"}}
       onWheel={(e) => {
         if (e.deltaY > 0) {
           nextTimetable();
@@ -133,7 +134,7 @@ function SmallMateClassBox() {
         className={`${styles.timetablePage} ${appearAnim}`}
         style={containerStyle}
       >
-        <h3 className={boxStyles.boxTitle} style={{ margin: "0 20px" }}>
+        <h3 className={boxStyles.boxTitle} style={{ margin: "5px 20px" }}>
           {current.className
             ? "Class " + current.className
             : "No mates timetables saved"}
