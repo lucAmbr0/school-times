@@ -314,16 +314,6 @@ function Timetables({ onBack }) {
       return;
     }
 
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(
-        JSON.stringify(tClone)
-      );
-      showSnackbar("All timetables copied to clipboard!");
-    } else {
-      showSnackbar(
-        "Couldn't write timetables to clipboard, check permissions and try again."
-      );
-    }
     if (navigator.share) {
       const file = new Blob([JSON.stringify(tClone)], {
         type: "application/json",
