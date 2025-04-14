@@ -25,7 +25,7 @@ function SmallChip({
         data.settings.widgets.homeworkProgress[0] || 0,
         data.settings.widgets.homeworkProgress[1] || 0,
       ];
-    if (isEuro) return data.settings.widgets.coffeeBalance || 0;
+    if (isEuro) return data.settings.widgets.coffeeKeyBalance || 0;
     if (initialValue === undefined) return "N/A";
     return initialValue;
   });
@@ -34,7 +34,7 @@ function SmallChip({
 
   useEffect(() => {
     if (isEuro) {
-      setValue(data.settings.widgets.coffeeBalance || 0);
+      setValue(data.settings.widgets.coffeeKeyBalance || 0);
     } else if (isProgress) {
       setValue([
         data.settings.widgets.homeworkProgress[0] || 0,
@@ -49,7 +49,7 @@ function SmallChip({
         ...data,
         settings: {
           ...data.settings,
-          widgets: { ...data.settings.widgets, coffeeBalance: newValue },
+          widgets: { ...data.settings.widgets, coffeeKeyBalance: newValue },
         },
       });
     } else if (isProgress) {
