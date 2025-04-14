@@ -9,7 +9,7 @@ function NavbarBtn({onNavigate, text = "", iconName = "", active = false}) {
   const vibrate = useVibration();
 
   const element = (
-        <button onClick={() => {onNavigate(text); vibrate(5); umami.track("navbar-tab", {"tab": text, "source-action": "navbar-click<"})}}>
+        <button onClick={() => {onNavigate(text); vibrate(5); umami.track("navbar-tab", {tab: text, source: "navbar-click<"})}}>
       <div className={pillClasses}>
         {iconName && <span className={iconClasses}>{iconName}</span>}
       </div>
