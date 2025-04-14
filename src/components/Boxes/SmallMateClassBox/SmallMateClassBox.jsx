@@ -23,8 +23,6 @@ function SmallMateClassBox() {
   useEffect(() => {
     const interval = setInterval(() => {
       setRefresh((prev) => !prev);
-      console.log("BOBBO");
-      
     }, 10000);
 
     return () => clearInterval(interval);
@@ -70,7 +68,7 @@ function SmallMateClassBox() {
   const containerStyle = {
     transform: `translateY(${swipeProgress}%)`,
     transition: swipeProgress === 0 ? "transform 0.2s ease" : "none",
-    opacity: 1 - Math.abs(swipeProgress / 25),
+    opacity: 1 - Math.abs(swipeProgress / 15),
     width: "100%",
     height: "100%",
     display: "flex",

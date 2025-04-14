@@ -9,7 +9,7 @@ h5 {
 @keyframes appearUp {
     0% {
         transform: translateY(-10%);
-        opacity: 0.25;
+        opacity: 0;
     }
     90% {
         opacity: 1;
