@@ -121,6 +121,8 @@ function SmallChip({
       } else if (isProgress) {
         setValue(([done, total]) => {
           const newValue = [Math.min(done, total - 1), Math.max(0, total - 1)];
+          newValue[0] = newValue[0] < 0 ? 0 : newValue[0];
+          newValue[1] = newValue[1] < 0 ? 0 : newValue[1];
           updateData(newValue);
           updateValue(newValue);
           return newValue;
