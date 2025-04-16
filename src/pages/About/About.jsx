@@ -1,6 +1,7 @@
 import PageHeader from "../../components/PageHeader/PageHeader";
 import packageJson from "../../../package.json";
 import HorizontalLine from "../../components/Separator/HorizontalLine";
+import { umamiTrack } from "../../scripts/umamiTrack";
 import ExternalLink from "../../components/ExternalLink/ExternalLink";
 import { useData } from "../../scripts/useData";
 import useVibration from "../../scripts/useVibration";
@@ -21,9 +22,10 @@ function About({ onBack }) {
 
   const handleClickDonationImg = () => {
     vibrate(5);
+    umamiTrack("donation-about-clicked");
     window.open("https://bit.ly/3Y4FFO1", "_blank");
-  }
-  
+  };
+
   const element = (
     <>
       <PageHeader handleBack={handleBack} />
@@ -36,14 +38,18 @@ function About({ onBack }) {
           <p className={styles.label} id="versionInAbout">
             v{packageJson.version}
           </p>
-          <button onClick={handleClickDonationImg} className={styles.donationBtn}>
-          <img src="https://storage.ko-fi.com/cdn/generated/fhfuc7slzawvi/2025-04-12_rest-a79d5e1b01cc7b09aa44f99e0e6f2d06-w2eypt8y.jpg" alt="Donate campaign image" />
+          <button
+            onClick={handleClickDonationImg}
+            className={styles.donationBtn}
+          >
+            <img
+              src="https://storage.ko-fi.com/cdn/generated/fhfuc7slzawvi/2025-04-12_rest-a79d5e1b01cc7b09aa44f99e0e6f2d06-w2eypt8y.jpg"
+              alt="Donate campaign image"
+            />
           </button>
           <ExternalLink
             name={"Tutorials"}
-            displayUrl={
-              "https://github.com/lucAmbr0/school-times#zap-usage"
-            }
+            displayUrl={"https://github.com/lucAmbr0/school-times#zap-usage"}
           />
         </div>
         <HorizontalLine
@@ -85,23 +91,17 @@ function About({ onBack }) {
           /> */}
           <ExternalLink
             name={"Feature request"}
-            displayUrl={
-              "https://forms.gle/nns5LJANJ6MCBNdz9"
-            }
+            displayUrl={"https://forms.gle/nns5LJANJ6MCBNdz9"}
             url={"https://bit.ly/3G7uAFI"}
           />
           <ExternalLink
             name={"Bug report"}
-            displayUrl={
-              "https://forms.gle/RDRTPP1KYAmF7RJJ9"
-            }
+            displayUrl={"https://forms.gle/RDRTPP1KYAmF7RJJ9"}
             url={"https://bit.ly/42lYo8Q"}
           />
           <ExternalLink
             name={"Rate this app"}
-            displayUrl={
-              "https://forms.gle/ZV4ooh5oatUTB2AB9"
-            }
+            displayUrl={"https://forms.gle/ZV4ooh5oatUTB2AB9"}
             url={"https://bit.ly/4jahSVt"}
           />
         </div>

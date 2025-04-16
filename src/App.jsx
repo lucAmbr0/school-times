@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 import ScreenRatioError from "./components/ScreenRatioError/ScreenRatioError";
@@ -13,10 +13,24 @@ import Header from "./components/Header/Header";
 import checkUpdated from "./scripts/checkUpdated";
 import UpdateNotice from "./components/UpdateNotice/UpdateNotice";
 import { useData } from "./scripts/useData";
+import DonationPopup from "./components/DonationPopup/DonationPopup";
 
 function App() {
   const [data, setData] = useData();
   const [currentPage, setCurrentPage] = useState(data.settings.tab);
+  const [launches, setLaunches] = useState(data.settings.appLaunches || 0);
+
+  const [showDonationPopup, setShowDonationPopup] = useState(false);
+
+  useEffect(() => {
+    const upd = launches + 1;
+    setLaunches(upd);
+    setData({ ...data, settings: { ...data.settings, appLaunches: upd } });
+    if (upd % 50 == 0 && upd > 0) {
+      setShowDonationPopup(true);
+    }
+  }, []);
+
   useThemeColor();
 
   const renderPage = () => {
@@ -53,13 +67,22 @@ function App() {
     <>
       <SpeedInsights />
       <Analytics />
-      {showUpdateNotice ? (
+      {showUpdateNotice && launches > 0 ? (
         <UpdateNotice
           oldVersion={savedVersion}
           newVersion={currVersion}
           cleared={cleared}
           closeAction={() => {
             setShowUpdateNotice(false);
+          }}
+        />
+      ) : (
+        ""
+      )}
+      {showDonationPopup && launches > 0 && !showUpdateNotice ? (
+        <DonationPopup
+          closeAction={() => {
+            setShowDonationPopup(false);
           }}
         />
       ) : (

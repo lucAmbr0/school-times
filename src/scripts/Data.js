@@ -101,6 +101,7 @@ class CustomLink {
 
 class Settings {
     constructor() {
+        this.appLaunches = 0;
         this.darkMode = "system";
         this.palette = "Cornflower";
         this.hapticFeedback = false;
