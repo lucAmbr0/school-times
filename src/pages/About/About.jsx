@@ -19,6 +19,11 @@ function About({ onBack }) {
     }, 300);
   };
 
+  const handleClickDonationImg = () => {
+    vibrate(5);
+    window.open("https://bit.ly/3Y4FFO1", "_blank");
+  }
+  
   const element = (
     <>
       <PageHeader handleBack={handleBack} />
@@ -31,6 +36,9 @@ function About({ onBack }) {
           <p className={styles.label} id="versionInAbout">
             v{packageJson.version}
           </p>
+          <button onClick={handleClickDonationImg} className={styles.donationBtn}>
+          <img src="https://storage.ko-fi.com/cdn/generated/fhfuc7slzawvi/2025-04-12_rest-a79d5e1b01cc7b09aa44f99e0e6f2d06-w2eypt8y.jpg" alt="Donate campaign image" />
+          </button>
           <ExternalLink
             name={"Tutorials"}
             displayUrl={
