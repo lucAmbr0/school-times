@@ -8,7 +8,7 @@
     padding: 5px 0;
     background-color: var(--palette-100);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     flex-direction: row;
     justify-content: space-around;
     border-top: solid 1px var(--palette-300);

@@ -37,9 +37,9 @@ function VerticalMenu({showMenu, setShowMenu}) {
             <button onClick={() => {vibrate(5); umamiTrack("reload", {action: "reload", source: "vert-menu-app-header"}); window.location.reload(true) }} className={styles.button}>
                 <span className="material-symbols-outlined">refresh</span>Reload
             </button>
-            <button onClick={() => {vibrate(5); umamiTrack("page-opened", {page: "Settings"});setShowMenu(false); setShowSettings(!showSettings)}} className={styles.button}>
+            {/* <button onClick={() => {vibrate(5); umamiTrack("page-opened", {page: "Settings"});setShowMenu(false); setShowSettings(!showSettings)}} className={styles.button}>
                 <span className="material-symbols-outlined">settings</span>Settings
-            </button>
+            </button> */}
             <button onClick={() => {vibrate(5); umamiTrack("page-opened", {page: "About"});setShowMenu(false); setShowAbout(!showAbout)}} className={styles.button}>
                 <span className="material-symbols-outlined">info</span>About
             </button>

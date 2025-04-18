@@ -34,7 +34,9 @@ body {
 }
 
 .placeholder {
+    position: sticky;
     height: 85px;
+    bottom: 0;
     width: 100%;
     background-color: transparent;
 }

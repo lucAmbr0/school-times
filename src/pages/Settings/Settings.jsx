@@ -12,20 +12,20 @@ import { useData } from "../../scripts/useData";
 import { Data } from "../../scripts/Data";
 import { showSnackbar } from "../../scripts/snackbar";
 
-function Settings({ onBack }) {
+function Settings({ onBack = () => {} }) {
   const vibrate = useVibration();
   const [data, setData] = useData();
   const [showThemeSelector, setShowThemeSelector] = useState(false);
   const [timetables, setTimetables] = useState(data.timetables);
 
-  const handleBack = () => {
-    vibrate(5);
-    document.querySelector("#settings").classList.add(styles.exitAnimation);
-    document.querySelector("#pageHeader").classList.add(styles.exitAnimation);
-    setTimeout(() => {
-      onBack();
-    }, 300);
-  };
+  // const handleBack = () => {
+  //   vibrate(5);
+  //   document.querySelector("#settings").classList.add(styles.exitAnimation);
+  //   document.querySelector("#pageHeader").classList.add(styles.exitAnimation);
+  //   setTimeout(() => {
+  //     onBack();
+  //   }, 300);
+  // };
 
   const syncUserInfo = () => {
     setTimeout(() => {
@@ -128,7 +128,7 @@ function Settings({ onBack }) {
       ) : (
         ""
       )}
-      <PageHeader handleBack={handleBack} />
+      {/* <PageHeader handleBack={handleBack} /> */}
       <div id={"settings"} className={styles.container}>
         <h1 className={styles.title}>Settings</h1>
         <div className={styles.settingsSection}>
