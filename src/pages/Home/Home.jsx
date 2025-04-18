@@ -8,6 +8,7 @@ import { useData } from "../../scripts/useData";
 
 function Home() {
   const [data] = useData();
+  const usrTmt = data.timetables.find(t => t.isUser);
 
   const widgets = data.settings.widgets || {
     matesTimetables: true,
@@ -26,9 +27,9 @@ function Home() {
   const element = (
     <>
       <h1 className={styles.title}>
-        Welcome, {data.user.name ? data.user.name : "Guest"}
-        {data.user.className !== "you" && data.user.className
-          ? " - " + data.user.className
+        Welcome, {usrTmt.matesNames ? usrTmt.matesNames : "Guest"}
+        {usrTmt.className !== "you" && usrTmt.className
+          ? " - " + usrTmt.className
           : ""}
       </h1>
       <UserClassBox day={day} hour={hour} showProgress={true} />

@@ -30,14 +30,12 @@ function Settings({ onBack = () => {} }) {
   const syncUserInfo = () => {
     setTimeout(() => {
       const newData = { ...data };
-      const userTimetableIdx = timetables.indexOf(timetables.find(t => t.className == data.user.className));
+      let userTimetableIdx = timetables.indexOf(timetables.find(t => t.className == data.user.className));
       if (userTimetableIdx == - 1) {
         userTimetableIdx = 0;
         newData.user.className = timetables[0];
         newData.user.name = timetables[0];
       }
-      console.log(userTimetableIdx);
-
       newData.user.userTimetableIdx = userTimetableIdx;
       newData.user.name = timetables[userTimetableIdx].matesNames;
       
