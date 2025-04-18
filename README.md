@@ -190,10 +190,13 @@ You can reach me out on my socials for any question/critics.
 
 Not ready yet :D
 
-<div style="display: flex">
-<!-- <img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot1.png?raw=true" width="200" /> -->
-<!-- <img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot2.png?raw=true" width="200" /> -->
-<!-- <img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot3.png?raw=true" width="200" /> -->
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr">
+<img src="https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/Home.png?raw=true" width="200" />
+<img src="https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/DarkMode.png?raw=true" width="200" />
+<img src="https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/Pine.png?raw=true" width="200" />
+<img src="https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/Explore.png?raw=true" width="200" />
+<img src="https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/Settings.png?raw=true" width="200" />
+<img src="https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/Themes.png?raw=true" width="200" />
 </div>
 
 ## :star2: Credit/Acknowledgment
