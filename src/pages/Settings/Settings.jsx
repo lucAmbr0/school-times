@@ -173,7 +173,7 @@ function Settings({ onBack = () => {} }) {
               id={"matesTimetablesWidgetSwitch"}
               path={"settings.widgets.matesTimetables"}
             />
-            <label
+            {/* <label
               htmlFor="upcomingEventsWidgetSwitch"
               className={styles.settingLabel}
             >
@@ -182,7 +182,7 @@ function Settings({ onBack = () => {} }) {
             <Switch
               id={"upcomingEventsWidgetSwitch"}
               path={"settings.widgets.upcomingEvents"}
-            />
+            /> */}
             <label
               htmlFor="coffeeKeyWidgetSwitch"
               className={styles.settingLabel}

@@ -41,7 +41,7 @@ function Home() {
       />
       <div className={styles.smallBoxesContainer}>
         {widgets.matesTimetables ? <SmallMateClassBox /> : ""}
-        {widgets.upcomingEvents ? <UpcomingEventsBox /> : ""}
+        {/* {widgets.upcomingEvents ? <UpcomingEventsBox /> : ""} */}
         {widgets.coffeeKey ? (
           <SmallChip
             text={"Coffee key"}
