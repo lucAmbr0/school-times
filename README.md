@@ -4,10 +4,6 @@
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/lucAmbr0/school-times)
 <a href="https://wakatime.com/badge/github/lucAmbr0/school-times"><img src="https://wakatime.com/badge/github/lucAmbr0/school-times.svg?style=flat" alt="wakatime"></a>
 
-> The app was originally supposed to integrate Classeviva API to show information from the user's school register. Due to technical impossibility to integrate this function, the development of the app is suspended.
-
-> If you know how to solve this problem and want to collaborate with me to complete this app please <a href="mailto:luca.ambrosonee@gmail.com?subject=Fix%20Classeviva%20API%20integration%20in%20school-times">contact me.</a>
-
 # Introduction
 
 <div style="display: flex>
@@ -15,10 +11,13 @@
   <img width="150px" src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_badge_red.png" >
   </a>
 </div>
-
 <br>
 
-- **School Times** is the third remake of the best school managing webapp ever! **An all-in-one web tool** that allows you to easily see everything that you need to know during your **school day**, from timetables (supports up to 10 timetables) to homework and tests, easily organized on your phone at a glance.
+> ⚠ The app was originally supposed to integrate Classeviva API to show information from the user's school register. Due to technical impossibility to integrate this function, the development of the app is suspended.
+
+> If you know how to solve this problem and want to collaborate with me to complete this app please <a href="mailto:luca.ambrosonee@gmail.com?subject=Fix%20Classeviva%20API%20integration%20in%20school-times">contact me.</a>
+
+**School Times** is the third remake of the best school managing webapp ever! **An all-in-one web tool** that allows you to easily see everything that you need to know during your **school day**, from timetables (supports up to 10 timetables) to homework and tests, easily organized on your phone at a glance.
 
 ## :ledger: Index
 
@@ -147,6 +146,10 @@ school-times
 ```
 
 ## :cherry_blossom: Community
+
+> ⚠ The app was originally supposed to integrate Classeviva API to show information from the user's school register. Due to technical impossibility to integrate this function, the development of the app is suspended.
+
+> If you know how to solve this problem and want to collaborate with me to complete this app please <a href="mailto:luca.ambrosonee@gmail.com?subject=Fix%20Classeviva%20API%20integration%20in%20school-times">contact me.</a>
 
 Teamwork is important! If you want to contribute and help in this project, fixing bugs, adding features or changing the look and feel of the app feel free to contribute!
 If you like this app and find it useful consider spreading the word to your friends!
