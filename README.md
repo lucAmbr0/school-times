@@ -90,15 +90,10 @@ school-times
 │   node_modules
 │   package-lock.json
 │   package.json
-│   public
 │   README.md
-│
 ├───public
 │   ├───icons
 │   └───screenshots
-├───assets
-│   ├───fonts
-│   └───styles
 └───src
     ├───assets
     │   ├───fonts
@@ -112,11 +107,14 @@ school-times
     │   │   │   └───SmallEventChip
     │   │   └───UserClassBox
     │   ├───Button
+    │   ├───DonationPopup
     │   ├───Dropdown
+    │   ├───ExternalLink
     │   ├───Header
     │   ├───Navbar
     │   │   └───NavbarBtn
     │   ├───Overlay
+    │   ├───PageHeader
     │   ├───Post
     │   ├───ProfileCard
     │   │   ├───FavoriteSubject
@@ -126,22 +124,30 @@ school-times
     │   ├───ProgressBar
     │   │   ├───PercentageProgressBar
     │   │   └───StepProgressBar
+    │   ├───ScreenRatioError
     │   ├───Separator
+    │   ├───Snackbar
     │   ├───SwiperWrap
     │   ├───Switch
-    │   │   └───DarkModeSwitch
+    │   │   ├───DarkModeSwitch
+    │   │   └───Switch
     │   ├───Table
     │   ├───TabSwitcher
     │   ├───TextInput
+    │   ├───ThemeSelectorBox
+    │   ├───Timetable
+    │   ├───UpdateNotice
     │   ├───VerticalDots
     │   └───VerticalMenu
     ├───context
     ├───pages
+    │   ├───About
     │   ├───Events
     │   ├───Explore
     │   ├───Home
     │   ├───Profile
-    │   └───Settings
+    │   ├───Settings
+    │   └───Timetables
     └───scripts
 ```
 
