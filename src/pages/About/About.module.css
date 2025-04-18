@@ -114,3 +114,13 @@
     gap: 10px;
     margin-bottom: 30px;
 }
+
+.footerSignature {
+    font-size: 18px;
+    text-align: center;
+    color: var(--palette-900);
+    text-decoration: underline;
+    img {
+        margin-left: 10px;
+    }
+}
