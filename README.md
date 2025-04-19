@@ -197,8 +197,6 @@ You can reach me out on my socials for any question/critics.
 
 ## :camera: Gallery
 
-Not ready yet :D
-
 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr">
 <img src="https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/Home.png?raw=true" width="200" />
 <img src="https://github.com/lucAmbr0/school-times/blob/main/public/screenshots/DarkMode.png?raw=true" width="200" />
